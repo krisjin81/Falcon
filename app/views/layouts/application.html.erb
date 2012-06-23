@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Falcon</title>
+  <title><%= content_for?(:title) ? yield(:title) : t('application.title') %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="wrapper">
+    <%= render 'layouts/nav_bar' %>
+    <div class="container">
+      <div class="content">
+        <%= render :partial => 'layouts/messages' %>
+        <%= yield %>
+      </div>
+    </div>
+    <div class="push"></div>
+  </div>
 
-<%= yield %>
-
+  <footer>
+    <div class="container">
+      <p class="brand"><%=raw t('application.copyright') %></p>
+    </div>
+  </footer>
 </body>
 </html>

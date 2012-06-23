@@ -9,6 +9,8 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+require File.expand_path('lib/sti_type_casting.rb')
+
 module Falcon
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -58,5 +60,9 @@ module Falcon
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.generators do |g|
+      g.test_framework  :rspec, :fixture_replacement => :factory_girl
+    end
   end
 end

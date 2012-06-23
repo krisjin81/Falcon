@@ -14,6 +14,9 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
+  gem 'compass-rails', '~> 1.0.1'
+  gem 'bootstrap-sass', '~> 2.0.3.1'
+
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
@@ -30,7 +33,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'mongrel'
   gem 'pry-rails'
-  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+  gem 'annotate', '= 2.5.0.pre1'
   gem 'ruby-debug-base', '=0.10.4'
   gem 'ruby-debug', '=0.10.4'
   gem 'cucumber-rails', '~> 1.3.0', :require => false
@@ -41,6 +44,7 @@ group :development, :test do
   gem 'email_spec', '~> 1.2.1'
   gem 'forgery', '~> 0.5.0'
   gem 'factory_girl_rails', '~> 1.7.0'
+  gem 'letter_opener', '~> 0.0.2'
 end
 
 # To use ActiveModel has_secure_password

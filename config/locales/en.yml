@@ -2,4 +2,50 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  application:
+    title: "Falcon"
+    copyright: "&copy; Falcon 2012"
+  helpers:
+    actions:
+      edit: "Edit"
+      create: "Create"
+      update: "Update"
+      delete: "Delete"
+      change: "Change"
+      sign_in: "Sign in"
+      sign_out: "Sign out"
+      sign_up: "Sign up"
+      send: "Send"
+      test: "Test"
+      forgot_your_password: "Forgot your password?"
+      resend_confirmation_instruction: "Resent Confirmation"
+      change_password: "Change Password"
+      confirmation: "Are you sure?"
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name} was created successfully."
+      destroy:
+        notice: "%{resource_name} was deleted successfully."
+      update:
+        notice: "%{resource_name} was updated successfully."
+  sessions:
+    new:
+      title: "Sign in"
+  registrations:
+    new:
+      title: "Sign up"
+    change_password:
+      title: "Change Password"
+      password_hint: "leave blank if you don't want to change it"
+      current_password_hint: "we need your current password to confirm your changes"
+  passwords:
+    new:
+      title: "Forgot your password?"
+      description: "Send me reset instructions:"
+    edit:
+      title: "Change password"
+      new_password: "New Password"
+  confirmations:
+    new:
+      title: "Resend confirmation instructions"
