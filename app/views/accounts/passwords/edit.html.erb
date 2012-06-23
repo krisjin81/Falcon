@@ -1,13 +1,13 @@
 <div class="centred-block">
   <%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :id => 'edit_password', :method => :put }, :wrapper => :light) do |f| %>
-    <legend><%= t('passwords.edit.title') %></legend>
+    <legend><%= t('accounts.passwords.edit.title') %></legend>
 
     <% if resource.errors[:reset_password_token].present? %>
       <div class="alert alert-error"><%= f.full_error :reset_password_token %></div>
     <% end %>
 
     <%= f.hidden_field :reset_password_token %>
-    <%= f.input :password, :input_html => { :class => 'input-xxlarge' }, :placeholder => t('passwords.edit.new_password') %>
+    <%= f.input :password, :input_html => { :class => 'input-xxlarge' }, :placeholder => t('accounts.passwords.edit.new_password') %>
 
     <div class="form-actions">
       <%= f.submit t('helpers.actions.change'), :class => 'btn btn-primary' %>

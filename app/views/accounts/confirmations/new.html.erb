@@ -1,6 +1,6 @@
 <div class="centred-block">
   <%= simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, :id => 'confirm' }, :wrapper => :light) do |f| %>
-    <legend><%= t('confirmations.new.title') %></legend>
+    <legend><%= t('accounts.confirmations.new.title') %></legend>
 
     <%= f.input :email, :input_html => { :class => 'input-xxlarge' }, :placeholder => User.human_attribute_name(:email) %>
 

@@ -52,7 +52,14 @@ en:
     mailer:
       confirmation_instructions:
         subject: 'Confirmation instructions'
+        greeting: 'Welcome, %{username}!'
+        description: 'You can confirm your account email through the link below:'
+        confirm_my_account: 'Confirm my account'
       reset_password_instructions:
         subject: 'Reset password instructions'
+        greeting: 'Hello, %{username}'
+        description: 'Someone has requested a link to change your password, and you can do this through the link below.'
+        note: "If you didn't request this, please ignore this email. Your password won't change until you access the link above and create a new one."
+        change_my_password: 'Change my password'
       unlock_instructions:
         subject: 'Unlock Instructions'
