@@ -33,7 +33,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'mongrel'
   gem 'pry-rails'
-  gem 'annotate', '= 2.5.0.pre1'
+  gem 'annotate', '= 2.4.1.beta1'
   gem 'ruby-debug-base', '=0.10.4'
   gem 'ruby-debug', '=0.10.4'
   gem 'cucumber-rails', '~> 1.3.0', :require => false

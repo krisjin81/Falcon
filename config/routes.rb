@@ -1,5 +1,6 @@
 Falcon::Application.routes.draw do
   devise_for :accounts
+  devise_for :affiliates
 
   get "home/index"
 

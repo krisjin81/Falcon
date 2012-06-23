@@ -1,0 +1,7 @@
+<a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
+  <i class="icon-user"></i> <%= t('helpers.actions.sign_in') %> <b class="caret"></b>
+</a>
+<ul class="dropdown-menu">
+  <li><%= link_to t('helpers.actions.free_sign_in'), new_account_session_path %></li>
+  <li><%= link_to t('helpers.actions.affiliate_sign_in'), new_affiliate_session_path %></li>
+</ul>

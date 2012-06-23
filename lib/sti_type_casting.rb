@@ -17,17 +17,6 @@ module STITypeCasting
         raise ArgumentError.new("Type \#{type.inspect} should be a subclass of #{base.to_s}.") unless klass.present? && klass < #{base.to_s}
         klass
       end
-
-      def inherited(child)
-        child.instance_eval do
-          alias :original_model_name :model_name
-
-          def model_name
-            #{base.to_s}.model_name
-          end
-        end
-        super
-      end
     END
   end
 

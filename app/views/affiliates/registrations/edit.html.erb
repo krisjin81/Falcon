@@ -1,7 +1,7 @@
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :id => 'change_password', :method => :put }) do |f| %>
-  <legend><%= t('accounts.passwords.edit.title') %></legend>
-  <%= f.input :password, :hint => t('accounts.passwords.edit.password_hint'), :label => t('accounts.passwords.edit.new_password') %>
-  <%= f.input :current_password, :hint => t('accounts.passwords.edit.current_password_hint') %>
+  <legend><%= t('affiliates.passwords.edit.title') %></legend>
+  <%= f.input :password, :hint => t('affiliates.passwords.edit.password_hint'), :label => t('affiliates.passwords.edit.new_password') %>
+  <%= f.input :current_password, :hint => t('affiliates.passwords.edit.current_password_hint') %>
 
   <div class="form-actions">
     <%= f.submit t('helpers.actions.update'), :class => 'btn btn-primary' %>

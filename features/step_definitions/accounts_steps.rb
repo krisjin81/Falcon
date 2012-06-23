@@ -1,8 +1,8 @@
-Given /^I have registered account$/ do
+Given /^I am registered as free member account$/ do
   @account = create(:account)
 end
 
-Given /^I don't have registered account$/ do
+Given /^I am not registered as free member account$/ do
   @account = build(:account)
   User.where(:email => @account.email).delete_all
 end
@@ -41,7 +41,7 @@ When /^I sign out$/ do
   sign_out
 end
 
-When /^Ask to send me reset password instruction$/ do
+When /^I ask to send me reset password instruction$/ do
   visit new_account_password_path
   within("form#new_password") do
     fill_in "account_email", :with => @account.email
@@ -68,7 +68,7 @@ end
 When /^I change my password$/ do
   @password = @account.password
   @new_password = Forgery(:basic).password
-  within("form#edit_account_details") do
+  within("form#change_password") do
     fill_in "account_password", :with => @new_password
     fill_in "account_current_password", :with => @password
     click_button "Update"
@@ -77,7 +77,7 @@ end
 
 When /^I change password without providing current password$/ do
   @new_password = Forgery(:basic).password
-  within("form#edit_account_details") do
+  within("form#change_password") do
     fill_in "account_password", :with => @new_password
     click_button "Update"
   end
@@ -86,14 +86,14 @@ end
 When /^I change password with and provide incorrect current password$/ do
   @password = Forgery(:basic).password
   @new_password = Forgery(:basic).password
-  within("form#edit_account_details") do
+  within("form#change_password") do
     fill_in "account_password", :with => @new_password
     fill_in "account_current_password", :with => @password
     click_button "Update"
   end
 end
 
-Then /^Account should be created for "(.*?)"$/ do |email|
+Then /^Free member account should be created for "(.*?)"$/ do |email|
   @account = Account.find_by_email(email)
   @account.should_not be_nil
 end
@@ -137,7 +137,7 @@ Then /^I should see reset password link in email body$/ do
 end
 
 Then /^I should see change password page$/ do
-  page.should have_content "Change password"
+  page.should have_content "Change Password"
 end
 
 Then /^I should see password changed message$/ do

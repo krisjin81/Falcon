@@ -1,8 +1,8 @@
 <div class="centred-block">
   <%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :id => 'new_password', :method => :post }, :wrapper => :light) do |f| %>
-    <legend><%= t('accounts.passwords.new.title') %></legend>
+    <legend><%= t('affiliates.passwords.new.title') %></legend>
 
-    <p><%= t('accounts.passwords.new.description') %></p>
+    <p><%= t('affiliates.passwords.new.description') %></p>
 
     <%= f.input :email, :input_html => { :class => 'input-xxlarge' }, :placeholder => User.human_attribute_name(:email) %>
 

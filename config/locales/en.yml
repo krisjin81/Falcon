@@ -13,6 +13,8 @@ en:
       delete: "Delete"
       change: "Change"
       sign_in: "Sign in"
+      free_sign_in: "Free Member Sign in"
+      affiliate_sign_in: "Affiliate Sign in"
       sign_out: "Sign out"
       sign_up: "Sign up"
       send: "Send"
@@ -36,6 +38,26 @@ en:
     registrations:
       new:
         title: "Sign up"
+    passwords:
+      new:
+        title: "Forgot your password?"
+        description: "Send me reset instructions:"
+      edit:
+        title: "Change password"
+        new_password: "New Password"
+        title: "Change Password"
+        password_hint: "leave blank if you don't want to change it"
+        current_password_hint: "we need your current password to confirm your changes"
+    confirmations:
+      new:
+        title: "Resend confirmation instructions"
+  affiliates:
+    sessions:
+      new:
+        title: "Sign in as Affiliate"
+    registrations:
+      new:
+        title: "Sign up as Affiliate"
     passwords:
       new:
         title: "Forgot your password?"

@@ -1,10 +1,11 @@
-Feature: Sign out
+@accounts
+Feature: Free account member sign out
   In order to protect my account from unauthorized access
-  As a signed in user
+  As free account member
   I want to be able to sign out
 
-    Scenario: User signs out
-      Given I have registered account
+    Scenario: Free account member signs out
+      Given I am registered as free member account
         And I am logged in
       When I sign out
       Then I should see a signed out message

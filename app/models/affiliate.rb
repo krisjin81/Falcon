@@ -22,8 +22,21 @@
 #  updated_at             :datetime        not null
 #
 
-class User < ActiveRecord::Base
-  include STITypeCasting
+class Affiliate < User
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :trackable, :validatable
 
-  TYPES = [:account, :affiliate]
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+
+  # Overrides Affiliate string representation.
+  #
+  # @return [String] email.
+  #
+  def to_s
+    email
+  end
 end

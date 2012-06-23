@@ -2,19 +2,9 @@
   <div class="navbar-inner">
     <div class="container">
       <%= link_to t('application.title'), root_path, :class => 'brand' %>
-      <ul class="nav pull-right">
-        <% if current_account %>
-          <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
-            <i class="icon-user"></i> <%= current_account %> <b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu">
-            <%= link_to t('helpers.actions.change_password'), edit_account_registration_path %>
-            <%= link_to t('helpers.actions.sign_out'), destroy_account_session_path, :method => 'delete' %>
-          </ul>
-        <% else %>
-          <li><%= link_to t('helpers.actions.sign_in'), new_account_session_path %></li>
-        <% end %>
-      </ul>
+      <div class="nav pull-right">
+        <%= render("layouts/#{current_user_type}_user_menu") %>
+      </div>
     </div>
   </div>
 </div>

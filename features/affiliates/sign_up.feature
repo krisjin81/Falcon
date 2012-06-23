@@ -1,16 +1,16 @@
-@accounts
-Feature: Free account member sign up
+@affiliates
+Feature: Affiliate sign up
   In order to get access to protected sections of the site
-  As free account member
+  As an affiliate
   I want to be able to sign up
 
     Background:
-      Given I am not logged in
+      Given I am not logged in as affiliate
 
-    Scenario Outline: Free account member signs up with valid credentials
-      When I sign up with "<email>" and "<password>"
+    Scenario Outline: Affiliate signs up with valid credentials
+      When I sign up as affiliate with "<email>" and "<password>"
       Then I should see a "<message>"
-       And Free member account should be created for "<email>"
+       And Affiliate account should be created for "<email>"
 
       Scenarios: valid credentials
         | email                 | password  | message                         |
@@ -18,8 +18,8 @@ Feature: Free account member sign up
         | j_smith@mail.com      | qwerty    | confirmation link has been sent |
         | valid_email@mail.com  | 123qwe    | confirmation link has been sent |
 
-    Scenario Outline: Free account member signs up with invalid credentials
-      When I sign up with "<email>" and "<password>"
+    Scenario Outline: Affiliate signs up with invalid credentials
+      When I sign up as affiliate with "<email>" and "<password>"
       Then I should see a "<message>"
 
       Scenarios: invalid credentials

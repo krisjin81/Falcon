@@ -22,8 +22,21 @@
 #  updated_at             :datetime        not null
 #
 
-class User < ActiveRecord::Base
-  include STITypeCasting
+require 'spec_helper'
 
-  TYPES = [:account, :affiliate]
+describe Affiliate do
+  # Fix shoulda 'Can't find first Affiliate' issue
+  before(:each) { create(:affiliate) }
+
+  # Validation
+  it { should validate_presence_of(:email) }
+  it { should validate_uniqueness_of(:email) }
+  it { should allow_value("valid@email.com").for(:email) }
+  it { should_not allow_value("invalid_email.com").for(:email) }
+  it { should_not allow_value("invalid@email").for(:email) }
+
+  # Mass assignment
+  it { should allow_mass_assignment_of(:email) }
+  it { should allow_mass_assignment_of(:password) }
+  it { should allow_mass_assignment_of(:remember_me) }
 end
