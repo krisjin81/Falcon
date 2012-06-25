@@ -1,6 +1,6 @@
 Falcon::Application.routes.draw do
   devise_for :accounts, :path => "account", :controllers => { :registrations => "accounts/registrations" }
-  devise_for :affiliates, :path => "affiliate"
+  devise_for :affiliates, :path => "affiliate", :controllers => { :registrations => "affiliates/registrations" }
 
   namespace :accounts, :path => "account" do
     resource :profiles, :only => [:edit, :update]

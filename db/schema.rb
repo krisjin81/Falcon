@@ -10,7 +10,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120625144941) do
+ActiveRecord::Schema.define(:version => 20120625201012) do
+
+  create_table "business_profiles", :force => true do |t|
+    t.integer  "affiliate_id"
+    t.string   "business_name",      :limit => 50
+    t.integer  "business_type",      :limit => 1
+    t.integer  "style",              :limit => 1
+    t.integer  "audience",           :limit => 1
+    t.integer  "age_group",          :limit => 1
+    t.string   "contact_first_name", :limit => 50
+    t.string   "contact_last_name",  :limit => 50
+    t.string   "contact_email"
+    t.text     "about"
+    t.string   "website"
+    t.integer  "country_id"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
 
   create_table "countries", :force => true do |t|
     t.string "name", :limit => 50

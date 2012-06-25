@@ -15,5 +15,5 @@ class LanguageSettings < ActiveRecord::Base
   validates :user_id, :presence => true
   validates :locale, :presence => true, :length => { :maximum => 3 }
 
-  attr_accessible :locale
+  attr_protected :user, :user_id
 end

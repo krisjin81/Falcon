@@ -186,6 +186,7 @@ def sign_up(account)
   within("form#sign_up") do
     fill_in "account_email", :with => account.email
     fill_in "account_password", :with => account.password
+    fill_in "account_password_confirmation", :with => account.password
     select account.profile.country.name, :from => "account_profile_attributes_country_id"
     select account.profile.birth_date.year.to_s, :from => "account_profile_attributes_birth_date_1i"
     select I18n.t("date.month_names")[account.profile.birth_date.month], :from => "account_profile_attributes_birth_date_2i"

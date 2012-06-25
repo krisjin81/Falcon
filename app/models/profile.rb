@@ -26,5 +26,5 @@ class Profile < ActiveRecord::Base
   validates :country_id, :presence => true
   validates :gender, :inclusion => Gender.list, :allow_blank => true
 
-  attr_accessible :username, :email, :first_name, :last_name, :birth_date, :country_id, :gender
+  attr_protected :account, :account_id, :created_at, :updated_at
 end

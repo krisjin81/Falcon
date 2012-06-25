@@ -1,8 +1,4 @@
 en:
-  enumerations:
-    gender:
-      male: "Male"
-      female: "Female"
   activerecord:
     attributes:
       profile:

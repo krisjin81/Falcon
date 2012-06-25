@@ -1,0 +1,17 @@
+en:
+  enumerations:
+    age_group:
+      under_15: '15 under'
+      from_15_to_25: '15-25'
+      from_25_to_40: '25-40'
+      over_40: '40+'
+    audience:
+      male: 'Male'
+      female: 'Female'
+    business_type:
+      type1: 'Type1'
+      type2: 'Type2'
+      type3: 'Type3'
+    gender:
+      male: 'Male'
+      female: 'Female'
