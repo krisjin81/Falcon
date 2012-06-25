@@ -47,6 +47,6 @@ class Account < User
   # @return [String] email.
   #
   def to_s
-    email
+    (profile and profile.username) or email
   end
 end

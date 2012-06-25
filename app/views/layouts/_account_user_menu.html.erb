@@ -2,6 +2,8 @@
   <i class="icon-user"></i> <%= current_account %> <b class="caret"></b>
 </a>
 <ul class="dropdown-menu">
+  <%= link_to t('helpers.actions.edit_profile'), edit_accounts_profiles_path %>
+  <%= link_to t('helpers.actions.edit_language_settings'), edit_accounts_language_settings_path %>
   <%= link_to t('helpers.actions.change_password'), edit_account_registration_path %>
   <%= link_to t('helpers.actions.sign_out'), destroy_account_session_path, :method => 'delete' %>
 </ul>

@@ -11,7 +11,7 @@
 require 'spec_helper'
 
 describe Country do
-    # Fix shoulda 'Can't find first Country' issue
+  # Fix shoulda 'Can't find first Country' issue
   before(:each) { create(:country) }
 
   # Validation

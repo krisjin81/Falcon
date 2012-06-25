@@ -25,5 +25,7 @@
 class User < ActiveRecord::Base
   include STITypeCasting
 
+  has_one :language_settings
+
   TYPES = [:account, :affiliate]
 end

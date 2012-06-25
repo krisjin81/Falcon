@@ -36,4 +36,6 @@ Falcon::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.cache_store = :memory_store, { :size => 64.megabytes }
 end

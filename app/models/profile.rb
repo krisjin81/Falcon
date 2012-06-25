@@ -9,7 +9,7 @@
 #  last_name  :string(50)
 #  birth_date :date
 #  country_id :integer(4)
-#  gender     :integer(4)
+#  gender     :integer(1)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
@@ -26,5 +26,5 @@ class Profile < ActiveRecord::Base
   validates :country_id, :presence => true
   validates :gender, :inclusion => Gender.list, :allow_blank => true
 
-  attr_accessible :username, :first_name, :last_name, :birth_date, :country_id, :gender
+  attr_accessible :username, :email, :first_name, :last_name, :birth_date, :country_id, :gender
 end

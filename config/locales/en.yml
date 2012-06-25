@@ -22,8 +22,11 @@ en:
       forgot_your_password: "Forgot your password?"
       resend_confirmation_instruction: "Resent Confirmation"
       change_password: "Change Password"
+      edit_profile: "Edit Profile"
+      edit_language_settings: "Edit Language Settings"
       confirmation: "Are you sure?"
     recaptcha_error: "words is incorrect. Please try again."
+    please_select: "Please Select"
   flash:
     actions:
       create:
@@ -52,6 +55,13 @@ en:
     confirmations:
       new:
         title: "Resend confirmation instructions"
+    profiles:
+      edit:
+        title: "Edit Profile"
+        username_warning: "<strong>Warning!</strong> You can not change your username after created."
+    language_settings:
+      edit:
+        title: "Edit Language Settings"
   affiliates:
     sessions:
       new:

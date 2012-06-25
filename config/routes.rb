@@ -2,6 +2,11 @@ Falcon::Application.routes.draw do
   devise_for :accounts, :path => "account", :controllers => { :registrations => "accounts/registrations" }
   devise_for :affiliates, :path => "affiliate"
 
+  namespace :accounts, :path => "account" do
+    resource :profiles, :only => [:edit, :update]
+    resource :language_settings, :only => [:edit, :update]
+  end
+
   get "home/index"
 
   root :to => "home#index"

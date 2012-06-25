@@ -5,7 +5,7 @@
     <%= f.input :email, :input_html => { :class => 'input-xxlarge' } %>
     <%= f.input :password, :input_html => { :class => 'input-xxlarge' } %>
     <%= f.simple_fields_for :profile do |profile| %>
-      <%= profile.input :country_id, :input_html => { :class => 'input-xxlarge' }, :collection => Country.cached, :prompt => 'Please Select' %>
+      <%= profile.input :country_id, :input_html => { :class => 'input-xxlarge' }, :collection => Country.cached, :prompt => t('helpers.please_select') %>
       <%= profile.input :birth_date, :start_year => Date.today.year - 100, :end_year => Date.today.year %>
     <% end %>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120624161121) do
+ActiveRecord::Schema.define(:version => 20120625144941) do
 
   create_table "countries", :force => true do |t|
     t.string "name", :limit => 50
@@ -19,6 +19,11 @@ ActiveRecord::Schema.define(:version => 20120624161121) do
   end
 
   add_index "countries", ["name"], :name => "index_countries_on_name"
+
+  create_table "language_settings", :force => true do |t|
+    t.integer "user_id"
+    t.string  "locale",  :limit => 3
+  end
 
   create_table "profiles", :force => true do |t|
     t.integer  "account_id"
@@ -30,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20120624161121) do
     t.integer  "gender",     :limit => 1
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
+    t.string   "email"
   end
 
   add_index "profiles", ["account_id"], :name => "index_profiles_on_account_id"
