@@ -49,6 +49,11 @@ group :development, :test do
   gem 'letter_opener', '~> 0.0.2'
 end
 
+group :heroku do
+  gem 'pg'
+  gem 'thin'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
