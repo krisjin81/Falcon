@@ -43,7 +43,7 @@ class Account < User
 
   # Overrides Account string representation.
   #
-  # @return [String] email.
+  # @return [String] username or email.
   #
   def to_s
     (profile and profile.username) or email

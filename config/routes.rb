@@ -7,6 +7,11 @@ Falcon::Application.routes.draw do
     resource :language_settings, :only => [:edit, :update]
   end
 
+  namespace :affiliates, :path => "affiliate" do
+    resource :business_profiles, :only => [:edit, :update]
+    resource :language_settings, :only => [:edit, :update]
+  end
+
   get "home/index"
 
   root :to => "home#index"

@@ -1,0 +1,9 @@
+<%= simple_form_for(@language_settings, :url => affiliates_language_settings_path, :html => { :id => 'edit_language_settings', :method => :put }) do |f| %>
+  <legend><%= t('affiliates.language_settings.edit.title') %></legend>
+  <%= f.input :locale, :input_html => { :class => 'input-xxlarge' }, :collection => Locale.to_a, :prompt => t('helpers.please_select') %>
+
+  <div class="form-actions">
+    <%= f.submit t('helpers.actions.update'), :class => 'btn btn-primary' %>
+    <%= link_to t('helpers.actions.cancel'), root_path, :class => 'btn' %>
+  </div>
+<% end %>

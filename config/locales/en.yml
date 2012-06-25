@@ -69,6 +69,7 @@ en:
     registrations:
       new:
         title: "Sign up as Affiliate"
+        business_name_warning: "<strong>Warning!</strong> You can not change your business name after created."
     passwords:
       new:
         title: "Forgot your password?"
@@ -82,3 +83,10 @@ en:
     confirmations:
       new:
         title: "Resend confirmation instructions"
+    profiles:
+      edit:
+        title: "Edit Profile"
+        business_name_warning: "<strong>Warning!</strong> You can not change your business name after created."
+    language_settings:
+      edit:
+        title: "Edit Language Settings"

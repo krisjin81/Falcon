@@ -44,9 +44,9 @@ class Affiliate < User
 
   # Overrides Affiliate string representation.
   #
-  # @return [String] email.
+  # @return [String] business_name or email.
   #
   def to_s
-    email
+    (business_profile and business_profile.business_name) or email
   end
 end
