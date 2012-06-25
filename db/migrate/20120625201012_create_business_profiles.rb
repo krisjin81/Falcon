@@ -10,7 +10,7 @@ class CreateBusinessProfiles < ActiveRecord::Migration
       t.string :contact_first_name, :limit => 50
       t.string :contact_last_name, :limit => 50
       t.string :contact_email
-      t.text :about, :limit => 1000
+      t.text :about
       t.string :website
       t.integer :country_id
       t.timestamps
