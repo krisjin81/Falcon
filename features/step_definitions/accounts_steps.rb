@@ -16,13 +16,16 @@ Given /^I am logged in$/ do
   sign_in(@account.email, @account.password)
 end
 
-When /^I sign up with "([^"]*)" and "([^"]*)"$/ do |email, password|
+When /^I sign up with valid details"$/ do
+  @account = build(:account)
   visit new_account_registration_path
-  within("form#sign_up") do
-    fill_in "account_email", :with => email
-    fill_in "account_password", :with => password
-    click_button "Sign up"
-  end
+  sign_up(@account)
+end
+
+When /^I sign up with "([^"]*)" and "([^"]*)"$/ do |email, password|
+  @account = build(:account, :email => email, :password => password)
+  visit new_account_registration_path
+  sign_up(@account)
 end
 
 When /^I sign in with "([^"]*)" and "([^"]*)"$/ do |email, password|
@@ -174,6 +177,20 @@ def sign_in(email, password)
     fill_in "account_email", :with => email
     fill_in "account_password", :with => password
     click_button "Sign in"
+  end
+end
+
+def sign_up(account)
+  Account.any_instance.stub(:bypass_humanizer).and_return(:true)
+
+  within("form#sign_up") do
+    fill_in "account_email", :with => account.email
+    fill_in "account_password", :with => account.password
+    select account.profile.country.name, :from => "account_profile_attributes_country_id"
+    select account.profile.birth_date.year.to_s, :from => "account_profile_attributes_birth_date_1i"
+    select I18n.t("date.month_names")[account.profile.birth_date.month], :from => "account_profile_attributes_birth_date_2i"
+    select account.profile.birth_date.day.to_s, :from => "account_profile_attributes_birth_date_3i"
+    click_button "Sign up"
   end
 end
 

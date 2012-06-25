@@ -30,6 +30,8 @@ gem 'simple_form', '~> 2.0.2'
 gem 'inherited_resources', '~> 1.3.1'
 gem 'responders', '~> 0.9.1'
 gem 'enumerate_it', '~> 0.7.15'
+gem 'recaptcha', '~> 0.3.4', :require => 'recaptcha/rails'
+gem 'humanizer', '~> 2.4.3'
 
 group :development, :test do
   gem 'quiet_assets'

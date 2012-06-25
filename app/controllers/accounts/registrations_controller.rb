@@ -1,4 +1,5 @@
-class RegistrationsController < Devise::RegistrationsController
+class Accounts::RegistrationsController < Devise::RegistrationsController
+
   protected
 
   # Build a devise resource passing in the session. Useful to move

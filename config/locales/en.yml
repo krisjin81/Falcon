@@ -23,6 +23,7 @@ en:
       resend_confirmation_instruction: "Resent Confirmation"
       change_password: "Change Password"
       confirmation: "Are you sure?"
+    recaptcha_error: "words is incorrect. Please try again."
   flash:
     actions:
       create:

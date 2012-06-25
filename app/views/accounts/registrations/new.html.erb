@@ -9,6 +9,13 @@
       <%= profile.input :birth_date, :start_year => Date.today.year - 100, :end_year => Date.today.year %>
     <% end %>
 
+    <%= f.input :humanizer_answer, :input_html => { :class => 'input-xxlarge' }, :label =>  resource.humanizer_question %>
+    <%= f.hidden_field :humanizer_question_id %>
+
+    <% if resource.errors[:captcha].present? %>
+      <div class="alert alert-error"><%= f.full_error :captcha %></div>
+    <% end %>
+
     <div class="form-actions">
       <%= f.submit t('helpers.actions.sign_up'), :class => 'btn btn-primary' %>
       <div class="pull-right">

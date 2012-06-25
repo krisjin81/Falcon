@@ -6,5 +6,6 @@ FactoryGirl.define do
     password  { Forgery::Basic.password }
     confirmed_at { Time.now.utc }                 # skip confirmation
     association :profile, :factory => :profile, :strategy => :build
+    bypass_humanizer { true }
   end
 end

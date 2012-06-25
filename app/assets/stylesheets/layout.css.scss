@@ -46,3 +46,6 @@ footer {
     @include border-radius(5px);
     @include box-shadow(#ccc 0 0 25px);
 }
+
+/* ReCaptcha Iframe FIX */
+iframe {display:none !important;}
