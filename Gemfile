@@ -16,6 +16,7 @@ group :assets do
 
   gem 'compass-rails', '~> 1.0.1'
   gem 'bootstrap-sass', '~> 2.0.3.1'
+  gem 'jquery-ui-rails', '~> 1.0.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
