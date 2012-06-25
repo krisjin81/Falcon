@@ -1,28 +1,27 @@
-<div class="centred-block">
-  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :id => 'sign_up' }) do |f| %>
-    <legend><%= t('accounts.registrations.new.title') %></legend>
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :id => 'sign_up' }) do |f| %>
+  <legend><%= t('accounts.registrations.new.title') %></legend>
 
-    <%= f.input :email, :input_html => { :class => 'input-xxlarge' } %>
-    <%= f.input :password, :input_html => { :class => 'input-xxlarge' } %>
-    <%= f.simple_fields_for :profile do |profile| %>
-      <%= profile.input :country_id, :input_html => { :class => 'input-xxlarge' }, :collection => Country.cached, :prompt => t('helpers.please_select') %>
-      <%= profile.input :birth_date, :start_year => Date.today.year - 100, :end_year => Date.today.year %>
-    <% end %>
-
-    <%= f.input :humanizer_answer, :input_html => { :class => 'input-xxlarge' }, :label =>  resource.humanizer_question %>
-    <%= f.hidden_field :humanizer_question_id %>
-
-    <% if resource.errors[:captcha].present? %>
-      <div class="alert alert-error"><%= f.full_error :captcha %></div>
-    <% end %>
-
-    <div class="form-actions">
-      <%= f.submit t('helpers.actions.sign_up'), :class => 'btn btn-primary' %>
-      <div class="pull-right">
-        <%= link_to t('helpers.actions.sign_in'), new_session_path(resource_name), :class => 'btn' %>
-        <%= link_to t('helpers.actions.forgot_your_password'), new_password_path(resource_name), :class => 'btn' %>
-        <%= link_to t('helpers.actions.resend_confirmation_instruction'), new_confirmation_path(resource_name), :class => 'btn' %>
-      </div>
-    </div>
+  <%= f.input :email, :input_html => { :class => 'input-xxlarge' } %>
+  <%= f.input :password, :input_html => { :class => 'input-xxlarge' } %>
+  <%= f.input :password_confirmation, :input_html => { :class => 'input-xxlarge' } %>
+  <%= f.simple_fields_for :profile do |profile| %>
+    <%= profile.input :country_id, :input_html => { :class => 'input-xxlarge' }, :collection => Country.cached, :prompt => t('helpers.please_select') %>
+    <%= profile.input :birth_date, :start_year => Date.today.year - 100, :end_year => Date.today.year %>
   <% end %>
-</div>
+
+  <%= f.input :humanizer_answer, :input_html => { :class => 'input-xxlarge' }, :label =>  resource.humanizer_question %>
+  <%= f.hidden_field :humanizer_question_id %>
+
+  <% if resource.errors[:captcha].present? %>
+    <div class="alert alert-error"><%= f.full_error :captcha %></div>
+  <% end %>
+
+  <div class="form-actions">
+    <%= f.submit t('helpers.actions.sign_up'), :class => 'btn btn-primary' %>
+    <div class="pull-right">
+      <%= link_to t('helpers.actions.sign_in'), new_session_path(resource_name), :class => 'btn' %>
+      <%= link_to t('helpers.actions.forgot_your_password'), new_password_path(resource_name), :class => 'btn' %>
+      <%= link_to t('helpers.actions.resend_confirmation_instruction'), new_confirmation_path(resource_name), :class => 'btn' %>
+    </div>
+  </div>
+<% end %>
