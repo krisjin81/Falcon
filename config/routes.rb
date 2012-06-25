@@ -1,6 +1,6 @@
 Falcon::Application.routes.draw do
-  devise_for :accounts
-  devise_for :affiliates
+  devise_for :accounts, :path => "account", :controllers => { :registrations => "registrations" }
+  devise_for :affiliates, :path => "affiliate"
 
   get "home/index"
 

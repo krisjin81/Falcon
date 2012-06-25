@@ -4,14 +4,8 @@
  *= require home
  */
 
-@import "themes/united/united";
+@import "themes/cerulean/cerulean";
 @import "_bootstrap.scss";
 @import "compass/css3";
 @import "layout";
 @import "forms";
-
-#sign_up {
-  select.date {
-    width: 178px;
-  }
-}

@@ -64,5 +64,7 @@ module Falcon
     config.generators do |g|
       g.test_framework  :rspec, :fixture_replacement => :factory_girl
     end
+
+    config.autoload_paths << "#{Rails.root}/app/enumerations"
   end
 end

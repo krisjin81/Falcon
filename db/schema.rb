@@ -10,7 +10,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120623112845) do
+ActiveRecord::Schema.define(:version => 20120624161121) do
+
+  create_table "countries", :force => true do |t|
+    t.string "name", :limit => 50
+    t.string "iso2", :limit => 2
+    t.string "iso3", :limit => 3
+  end
+
+  add_index "countries", ["name"], :name => "index_countries_on_name"
+
+  create_table "profiles", :force => true do |t|
+    t.integer  "account_id"
+    t.string   "username",   :limit => 50
+    t.string   "first_name", :limit => 50
+    t.string   "last_name",  :limit => 50
+    t.date     "birth_date"
+    t.integer  "country_id"
+    t.integer  "gender",     :limit => 1
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  add_index "profiles", ["account_id"], :name => "index_profiles_on_account_id"
+  add_index "profiles", ["username"], :name => "index_profiles_on_username", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

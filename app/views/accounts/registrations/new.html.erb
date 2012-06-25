@@ -1,9 +1,13 @@
 <div class="centred-block">
-  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :id => 'sign_up' }, :wrapper => :light) do |f| %>
+  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :id => 'sign_up' }) do |f| %>
     <legend><%= t('accounts.registrations.new.title') %></legend>
 
-    <%= f.input :email, :input_html => { :class => 'input-xxlarge' }, :placeholder => User.human_attribute_name(:email) %>
-    <%= f.input :password, :input_html => { :class => 'input-xxlarge' }, :placeholder => User.human_attribute_name(:password) %>
+    <%= f.input :email, :input_html => { :class => 'input-xxlarge' } %>
+    <%= f.input :password, :input_html => { :class => 'input-xxlarge' } %>
+    <%= f.simple_fields_for :profile do |profile| %>
+      <%= profile.input :country_id, :input_html => { :class => 'input-xxlarge' }, :collection => Country.all, :prompt => 'Please Select' %>
+      <%= profile.input :birth_date, :start_year => Date.today.year - 100, :end_year => Date.today.year %>
+    <% end %>
 
     <div class="form-actions">
       <%= f.submit t('helpers.actions.sign_up'), :class => 'btn btn-primary' %>

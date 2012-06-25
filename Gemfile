@@ -16,6 +16,7 @@ group :assets do
 
   gem 'compass-rails', '~> 1.0.1'
   gem 'bootstrap-sass', '~> 2.0.3.1'
+  gem 'jquery-ui-rails', '~> 1.0.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -28,6 +29,7 @@ gem 'devise', '~> 2.1.2'
 gem 'simple_form', '~> 2.0.2'
 gem 'inherited_resources', '~> 1.3.1'
 gem 'responders', '~> 0.9.1'
+gem 'enumerate_it', '~> 0.7.15'
 
 group :development, :test do
   gem 'quiet_assets'

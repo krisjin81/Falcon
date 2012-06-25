@@ -1,0 +1,5 @@
+en:
+  enumerations:
+    gender:
+      male: "Male"
+      female: "Female"
