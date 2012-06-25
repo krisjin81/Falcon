@@ -39,4 +39,8 @@ describe Account do
   it { should allow_mass_assignment_of(:email) }
   it { should allow_mass_assignment_of(:password) }
   it { should allow_mass_assignment_of(:remember_me) }
+  it { should allow_mass_assignment_of(:profile_attributes) }
+  it { should_not allow_mass_assignment_of(:type) }
+  it { should_not allow_mass_assignment_of(:profile) }
+  it { should_not allow_mass_assignment_of(:profile_id) }
 end

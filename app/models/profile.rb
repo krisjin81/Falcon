@@ -19,7 +19,7 @@ class Profile < ActiveRecord::Base
   belongs_to :country
   has_enumeration_for :gender, :create_helpers => true
 
-  validates :username, :format => /^\w+$/, :allow_blank => true, :length => { :maximum => 50 }
+  validates :username, :format => /^\w+$/, :allow_blank => true, :length => { :maximum => 50 }, :uniqueness => true
   validates :first_name, :length => { :maximum => 50 }
   validates :last_name, :length => { :maximum => 50 }
   validates :birth_date, :presence => true

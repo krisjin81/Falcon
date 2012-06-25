@@ -5,5 +5,6 @@ FactoryGirl.define do
     email     { Forgery::Internet.email_address }
     password  { Forgery::Basic.password }
     confirmed_at { Time.now.utc }                 # skip confirmation
+    association :profile, :factory => :profile, :strategy => :build
   end
 end
