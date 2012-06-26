@@ -18,6 +18,7 @@ class Profile < ActiveRecord::Base
   belongs_to :account
   belongs_to :country
   has_enumeration_for :gender, :create_helpers => true
+  has_one :avatar, :as => :attachable
 
   validates :username, :format => /^\w+$/, :allow_blank => true, :length => { :maximum => 50 }, :uniqueness => true
   validates :first_name, :length => { :maximum => 50 }
@@ -27,4 +28,6 @@ class Profile < ActiveRecord::Base
   validates :gender, :inclusion => Gender.list, :allow_blank => true
 
   attr_protected :account, :account_id, :created_at, :updated_at
+
+  accepts_nested_attributes_for :avatar
 end

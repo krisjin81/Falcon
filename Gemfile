@@ -31,6 +31,7 @@ gem 'inherited_resources', '~> 1.3.1'
 gem 'responders', '~> 0.9.1'
 gem 'enumerate_it', '~> 0.7.15'
 gem 'ayah_integration', '~> 0.6.3'
+gem 'paperclip', '~> 2.7.0'
 
 group :development, :test do
   gem 'quiet_assets'

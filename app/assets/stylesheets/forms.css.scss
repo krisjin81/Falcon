@@ -1,3 +1,7 @@
 select.input-xxlarge {
   width: 540px;
 }
+
+input[type=file].input-xxlarge {
+  width: 450px;
+}

@@ -6,6 +6,7 @@ class Accounts::ProfilesController < ApplicationController
 
   def edit
     @profile = current_account.profile || current_account.build_profile
+    @profile.build_avatar unless @profile.avatar
     respond_with(@profile)
   end
 

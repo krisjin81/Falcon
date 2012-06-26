@@ -21,3 +21,6 @@
 .idea
 .rake_tasks~
 .rvmrc
+
+# Paperclip images.
+/public/system/*

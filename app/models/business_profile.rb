@@ -6,8 +6,6 @@
 #  affiliate_id       :integer(4)
 #  business_name      :string(50)
 #  business_type      :integer(1)
-#  audience           :integer(1)
-#  age_group          :integer(1)
 #  contact_first_name :string(50)
 #  contact_last_name  :string(50)
 #  contact_email      :string(255)
@@ -24,8 +22,11 @@ class BusinessProfile < ActiveRecord::Base
   has_and_belongs_to_many :business_styles
   has_and_belongs_to_many :audiences, :join_table => :business_profiles_audiences
   has_and_belongs_to_many :age_groups, :join_table => :business_profiles_age_groups
+  has_one :avatar, :as => :attachable
 
   attr_protected :affiliate, :affiliate_id, :created_at, :updated_at
+
+  accepts_nested_attributes_for :avatar
 
   has_enumeration_for :business_type
 

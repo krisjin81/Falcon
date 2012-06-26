@@ -6,6 +6,7 @@ class Affiliates::BusinessProfilesController < ApplicationController
 
   def edit
     @business_profile = current_affiliate.business_profile || current_affiliate.build_business_profile
+    @business_profile.build_avatar unless @business_profile.avatar
     respond_with(@business_profile)
   end
 

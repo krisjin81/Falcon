@@ -5,6 +5,12 @@ en:
         username: "Username"
         first_name: "First name"
         last_name: "Last name"
+      avatar:
+        image: "Avatar"
+      business_profile:
+        business_style_ids: "Styles"
+        audience_ids: "Audience"
+        age_group_ids: "Age Groups"
     errors:
       models:
         profile:

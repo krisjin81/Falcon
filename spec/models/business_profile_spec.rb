@@ -6,8 +6,6 @@
 #  affiliate_id       :integer(4)
 #  business_name      :string(50)
 #  business_type      :integer(1)
-#  audience           :integer(1)
-#  age_group          :integer(1)
 #  contact_first_name :string(50)
 #  contact_last_name  :string(50)
 #  contact_email      :string(255)
