@@ -1,9 +1,9 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :business_style do
+  factory :age_group do
     sequence :name do |n|
-       "Style #{n}"
+       "Age Group #{n}"
     end
   end
 end

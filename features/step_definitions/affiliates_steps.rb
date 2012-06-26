@@ -113,9 +113,15 @@ def affiliate_sign_up(affiliate)
     fill_in "affiliate_business_profile_attributes_business_name", :with => affiliate.business_profile.business_name
     fill_in "affiliate_business_profile_attributes_business_name", :with => affiliate.business_profile.business_name
     select affiliate.business_profile.business_type_humanize, :from => "affiliate_business_profile_attributes_business_type"
-    choose affiliate.business_profile.style_humanize
-    choose affiliate.business_profile.audience_humanize
-    choose affiliate.business_profile.age_group_humanize
+    affiliate.business_profile.business_styles.each do |business_style|
+      check business_style.name
+    end
+    affiliate.business_profile.audiences.each do |audience|
+      check audience.name
+    end
+    affiliate.business_profile.age_groups.each do |age_group|
+      check age_group.name
+    end
     fill_in "affiliate_business_profile_attributes_contact_first_name", :with => affiliate.business_profile.contact_first_name
     fill_in "affiliate_business_profile_attributes_contact_last_name", :with => affiliate.business_profile.contact_last_name
     fill_in "affiliate_business_profile_attributes_contact_email", :with => affiliate.business_profile.contact_email

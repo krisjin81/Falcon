@@ -22,17 +22,18 @@ class BusinessProfile < ActiveRecord::Base
   belongs_to :affiliate
   belongs_to :country
   has_and_belongs_to_many :business_styles
+  has_and_belongs_to_many :audiences, :join_table => :business_profiles_audiences
+  has_and_belongs_to_many :age_groups, :join_table => :business_profiles_age_groups
 
   attr_protected :affiliate, :affiliate_id, :created_at, :updated_at
 
   has_enumeration_for :business_type
-  has_enumeration_for :audience
-  has_enumeration_for :age_group
 
   validates :business_name, :presence => true, :length => { :maximum => 50 }, :uniqueness => true
   validates :business_type, :presence => true
-  validates :audience, :presence => true
-  validates :age_group, :presence => true
+  validates :business_style_ids, :presence => true
+  validates :audience_ids, :presence => true
+  validates :age_group_ids, :presence => true
   validates :contact_first_name, :presence => true, :length => { :maximum => 50 }
   validates :contact_last_name, :presence => true, :length => { :maximum => 50 }
   validates :contact_email, :presence => true, :length => { :maximum => 255 }

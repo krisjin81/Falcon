@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: business_styles
+# Table name: audiences
 #
 #  id         :integer(4)      not null, primary key
 #  name       :string(50)
@@ -8,8 +8,8 @@
 #  updated_at :datetime        not null
 #
 
-class BusinessStyle < ActiveRecord::Base
-  has_and_belongs_to_many :business_profiles
+class Audience < ActiveRecord::Base
+  has_and_belongs_to_many :business_profiles, :join_table => :business_profiles_audiences
 
   attr_accessible :name
 
@@ -17,7 +17,7 @@ class BusinessStyle < ActiveRecord::Base
   after_destroy :clear_cache
 
   class << self
-    # Gets all styles cached.
+    # Gets all audiences cached.
     #
     def cached
       Rails.cache.fetch(cache_key) do
@@ -25,7 +25,7 @@ class BusinessStyle < ActiveRecord::Base
       end
     end
 
-    # Clears styles cache.
+    # Clears audiences cache.
     #
     def clear_cache
       Rails.cache.delete(cache_key)
@@ -34,7 +34,7 @@ class BusinessStyle < ActiveRecord::Base
     private
 
     def cache_key
-      "styles"
+      "audiences"
     end
   end
 

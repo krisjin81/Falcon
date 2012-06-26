@@ -29,9 +29,9 @@ describe BusinessProfile do
   it { should validate_uniqueness_of(:business_name) }
   it { should ensure_length_of(:business_name).is_at_most(50) }
   it { should validate_presence_of(:business_type) }
-  it { should validate_presence_of(:style) }
-  it { should validate_presence_of(:audience) }
-  it { should validate_presence_of(:age_group) }
+  it { should validate_presence_of(:business_style_ids) }
+  it { should validate_presence_of(:audience_ids) }
+  it { should validate_presence_of(:age_group_ids) }
   it { should validate_presence_of(:contact_first_name) }
   it { should ensure_length_of(:contact_first_name).is_at_most(50) }
   it { should validate_presence_of(:contact_last_name) }

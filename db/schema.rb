@@ -10,14 +10,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120626075903) do
+ActiveRecord::Schema.define(:version => 20120626135102) do
+
+  create_table "age_groups", :force => true do |t|
+    t.string   "name",       :limit => 50
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  create_table "audiences", :force => true do |t|
+    t.string   "name",       :limit => 50
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
 
   create_table "business_profiles", :force => true do |t|
     t.integer  "affiliate_id"
     t.string   "business_name",      :limit => 50
     t.integer  "business_type",      :limit => 1
-    t.integer  "audience",           :limit => 1
-    t.integer  "age_group",          :limit => 1
     t.string   "contact_first_name", :limit => 50
     t.string   "contact_last_name",  :limit => 50
     t.string   "contact_email"
@@ -26,6 +36,16 @@ ActiveRecord::Schema.define(:version => 20120626075903) do
     t.integer  "country_id"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
+  end
+
+  create_table "business_profiles_age_groups", :force => true do |t|
+    t.integer "business_profile_id"
+    t.integer "age_group_id"
+  end
+
+  create_table "business_profiles_audiences", :force => true do |t|
+    t.integer "business_profile_id"
+    t.integer "audience_id"
   end
 
   create_table "business_profiles_business_styles", :force => true do |t|
@@ -62,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20120626075903) do
     t.integer  "gender",     :limit => 1
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
+    t.string   "email"
   end
 
   add_index "profiles", ["account_id"], :name => "index_profiles_on_account_id"

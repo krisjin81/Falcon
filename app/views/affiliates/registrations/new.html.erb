@@ -16,8 +16,8 @@
     </div>
     <%= profile.input :business_type, :collection => BusinessType.to_a, :prompt => t('helpers.please_select') %>
     <%= profile.input :business_style_ids, :collection => BusinessStyle.cached, :as => :check_boxes %>
-    <%= profile.input :audience, :collection => Audience.to_a, :as => :check_boxes %>
-    <%= profile.input :age_group, :collection => AgeGroup.to_a, :as => :check_boxes %>
+    <%= profile.input :audience_ids, :collection => Audience.cached, :as => :check_boxes %>
+    <%= profile.input :age_group_ids, :collection => AgeGroup.cached, :as => :check_boxes %>
     <%= profile.input :contact_first_name, :input_html => { :class => 'input-xxlarge' } %>
     <%= profile.input :contact_last_name, :input_html => { :class => 'input-xxlarge' } %>
     <%= profile.input :contact_email, :input_html => { :class => 'input-xxlarge' } %>
