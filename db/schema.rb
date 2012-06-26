@@ -10,13 +10,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120625201012) do
+ActiveRecord::Schema.define(:version => 20120626075903) do
 
   create_table "business_profiles", :force => true do |t|
     t.integer  "affiliate_id"
     t.string   "business_name",      :limit => 50
     t.integer  "business_type",      :limit => 1
-    t.integer  "style",              :limit => 1
     t.integer  "audience",           :limit => 1
     t.integer  "age_group",          :limit => 1
     t.string   "contact_first_name", :limit => 50
@@ -27,6 +26,17 @@ ActiveRecord::Schema.define(:version => 20120625201012) do
     t.integer  "country_id"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
+  end
+
+  create_table "business_profiles_business_styles", :force => true do |t|
+    t.integer "business_profile_id"
+    t.integer "business_style_id"
+  end
+
+  create_table "business_styles", :force => true do |t|
+    t.string   "name",       :limit => 50
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   create_table "countries", :force => true do |t|

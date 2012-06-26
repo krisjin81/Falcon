@@ -25,7 +25,7 @@ en:
       edit_profile: "Edit Profile"
       edit_language_settings: "Edit Language Settings"
       confirmation: "Are you sure?"
-    recaptcha_error: "words is incorrect. Please try again."
+    human_detector_error: "Sorry, look like you are robot."
     please_select: "Please Select"
   flash:
     actions:

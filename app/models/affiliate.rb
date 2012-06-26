@@ -36,10 +36,6 @@ class Affiliate < User
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable
 
-  include Humanizer
-
-  require_human_on :create, :unless => :bypass_humanizer
-
   attr_accessor :bypass_humanizer
 
   # Overrides Affiliate string representation.

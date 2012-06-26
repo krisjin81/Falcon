@@ -17,12 +17,9 @@ Given /^I am logged in as affiliate$/ do
 end
 
 When /^I sign up as affiliate with "([^"]*)" and "([^"]*)"$/ do |email, password|
+  @affiliate = build(:affiliate, :email => email, :password => password)
   visit new_affiliate_registration_path
-  within("form#sign_up") do
-    fill_in "affiliate_email", :with => email
-    fill_in "affiliate_password", :with => password
-    click_button "Sign up"
-  end
+  affiliate_sign_up(@affiliate)
 end
 
 When /^I sign in as affiliate with "([^"]*)" and "([^"]*)"$/ do |email, password|
@@ -104,6 +101,29 @@ end
 
 Then /^I sign in as affiliate with new password/ do
   affiliate_sign_in(@affiliate.email, @new_password)
+end
+
+def affiliate_sign_up(affiliate)
+  Affiliate.any_instance.stub(:bypass_humanizer).and_return(:true)
+
+  within("form#sign_up") do
+    fill_in "affiliate_email", :with => affiliate.email
+    fill_in "affiliate_password", :with => affiliate.password
+    fill_in "affiliate_password_confirmation", :with => affiliate.password
+    fill_in "affiliate_business_profile_attributes_business_name", :with => affiliate.business_profile.business_name
+    fill_in "affiliate_business_profile_attributes_business_name", :with => affiliate.business_profile.business_name
+    select affiliate.business_profile.business_type_humanize, :from => "affiliate_business_profile_attributes_business_type"
+    choose affiliate.business_profile.style_humanize
+    choose affiliate.business_profile.audience_humanize
+    choose affiliate.business_profile.age_group_humanize
+    fill_in "affiliate_business_profile_attributes_contact_first_name", :with => affiliate.business_profile.contact_first_name
+    fill_in "affiliate_business_profile_attributes_contact_last_name", :with => affiliate.business_profile.contact_last_name
+    fill_in "affiliate_business_profile_attributes_contact_email", :with => affiliate.business_profile.contact_email
+    fill_in "affiliate_business_profile_attributes_about", :with => affiliate.business_profile.about
+    fill_in "affiliate_business_profile_attributes_website", :with => affiliate.business_profile.website
+    select affiliate.business_profile.country.name, :from => "affiliate_business_profile_attributes_country_id"
+    click_button "Sign up"
+  end
 end
 
 def affiliate_sign_in(email, password)

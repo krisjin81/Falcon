@@ -6,7 +6,6 @@
 #  affiliate_id       :integer(4)
 #  business_name      :string(50)
 #  business_type      :integer(1)
-#  style              :integer(1)
 #  audience           :integer(1)
 #  age_group          :integer(1)
 #  contact_first_name :string(50)
@@ -22,17 +21,16 @@
 class BusinessProfile < ActiveRecord::Base
   belongs_to :affiliate
   belongs_to :country
+  has_and_belongs_to_many :business_styles
 
   attr_protected :affiliate, :affiliate_id, :created_at, :updated_at
 
   has_enumeration_for :business_type
-  has_enumeration_for :style
   has_enumeration_for :audience
   has_enumeration_for :age_group
 
   validates :business_name, :presence => true, :length => { :maximum => 50 }, :uniqueness => true
   validates :business_type, :presence => true
-  validates :style, :presence => true
   validates :audience, :presence => true
   validates :age_group, :presence => true
   validates :contact_first_name, :presence => true, :length => { :maximum => 50 }

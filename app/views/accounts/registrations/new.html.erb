@@ -1,6 +1,10 @@
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :id => 'sign_up' }) do |f| %>
   <legend><%= t('accounts.registrations.new.title') %></legend>
 
+  <% if resource.errors[:base].present? %>
+    <div class="alert alert-error"><%= f.error :base %></div>
+  <% end %>
+
   <%= f.input :email, :input_html => { :class => 'input-xxlarge' } %>
   <%= f.input :password, :input_html => { :class => 'input-xxlarge' } %>
   <%= f.input :password_confirmation, :input_html => { :class => 'input-xxlarge' } %>
@@ -9,12 +13,7 @@
     <%= profile.input :birth_date, :start_year => Date.today.year - 100, :end_year => Date.today.year %>
   <% end %>
 
-  <%= f.input :humanizer_answer, :input_html => { :class => 'input-xxlarge' }, :label =>  resource.humanizer_question %>
-  <%= f.hidden_field :humanizer_question_id %>
-
-  <% if resource.errors[:captcha].present? %>
-    <div class="alert alert-error"><%= f.full_error :captcha %></div>
-  <% end %>
+  <%=raw @humanizer.get_publisher_html unless session[:human] %>
 
   <div class="form-actions">
     <%= f.submit t('helpers.actions.sign_up'), :class => 'btn btn-primary' %>
