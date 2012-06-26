@@ -43,6 +43,10 @@ class Affiliate < User
   # @return [String] business_name or email.
   #
   def to_s
-    (business_profile and business_profile.business_name) or email
+    if business_profile and business_profile.business_name.present?
+      business_profile.business_name
+    else
+      email
+    end
   end
 end
