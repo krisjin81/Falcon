@@ -30,7 +30,7 @@ class BusinessProfile < ActiveRecord::Base
 
   has_enumeration_for :business_type
 
-  validates :business_name, :presence => true, :length => { :maximum => 50 }, :uniqueness => true
+  validates :business_name, :format => /^\w+$/, :presence => true, :length => { :maximum => 50 }, :uniqueness => true
   validates :business_type, :presence => true
   validates :business_style_ids, :presence => true
   validates :audience_ids, :presence => true
@@ -40,4 +40,12 @@ class BusinessProfile < ActiveRecord::Base
   validates :contact_email, :presence => true, :length => { :maximum => 255 }
   validates :about, :length => { :maximum => 1000 }, :allow_blank => true
   validates :website, :length => { :maximum => 255 }, :allow_blank => true
+
+  # Determines whether business name can be edited.
+  #
+  # @return [Boolean] true if business name is editable and false otherwise.
+  #
+  def business_name_editable?
+    business_name.blank? or invalid?(:business_name)
+  end
 end

@@ -30,4 +30,12 @@ class Profile < ActiveRecord::Base
   attr_protected :account, :account_id, :created_at, :updated_at
 
   accepts_nested_attributes_for :avatar
+
+  # Determines whether username can be edited.
+  #
+  # @return [Boolean] true if username is editable and false otherwise.
+  #
+  def username_editable?
+    username.blank? or invalid?(:username)
+  end
 end
