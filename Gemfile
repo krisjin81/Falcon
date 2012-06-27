@@ -49,6 +49,8 @@ group :development, :test do
   gem 'forgery', '~> 0.5.0'
   gem 'factory_girl_rails', '~> 1.7.0'
   gem 'letter_opener', '~> 0.0.2'
+  gem 'capistrano', '~> 2.12.0'
+  gem 'capistrano-ext', '~> 1.2.1'
 end
 
 group :heroku do
