@@ -1,0 +1,2 @@
+module Affiliate::LanguageSettingsHelper
+end

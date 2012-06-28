@@ -1,13 +1,14 @@
 Falcon::Application.routes.draw do
-  devise_for :accounts, :path => "account", :controllers => { :registrations => "accounts/registrations" }
-  devise_for :affiliates, :path => "affiliate", :controllers => { :registrations => "affiliates/registrations" }
+  devise_for :account, :controllers => { :registrations => "account/registrations" }
 
-  namespace :accounts, :path => "account" do
+  namespace :account do
     resource :profiles, :only => [:edit, :update]
     resource :language_settings, :only => [:edit, :update]
   end
 
-  namespace :affiliates, :path => "affiliate" do
+  devise_for :affiliate, :controllers => { :registrations => "affiliate/registrations" }
+
+  namespace :affiliate do
     resource :business_profiles, :only => [:edit, :update]
     resource :language_settings, :only => [:edit, :update]
   end

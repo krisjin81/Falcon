@@ -1,2 +1,0 @@
-module Affiliates::BusinessProfilesHelper
-end

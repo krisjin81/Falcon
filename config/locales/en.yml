@@ -35,7 +35,7 @@ en:
         notice: "%{resource_name} was deleted successfully."
       update:
         notice: "%{resource_name} was updated successfully."
-  accounts:
+  account:
     sessions:
       new:
         title: "Sign in"
@@ -62,7 +62,7 @@ en:
     language_settings:
       edit:
         title: "Edit Language Settings"
-  affiliates:
+  affiliate:
     sessions:
       new:
         title: "Sign in as Affiliate"
