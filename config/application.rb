@@ -59,7 +59,7 @@ module Falcon
     # Enable the asset pipeline
     config.assets.enabled = true
     config.assets.initialize_on_precompile = false
-    config.assets.precompile += %w( affiliate.css )
+    config.assets.precompile += %w( affiliate.css admin.css admin.js )
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

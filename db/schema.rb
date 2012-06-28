@@ -10,7 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120628123832) do
+ActiveRecord::Schema.define(:version => 20120628160717) do
+
+  create_table "admin_profiles", :force => true do |t|
+    t.integer  "admin_id"
+    t.string   "username",   :limit => 50
+    t.string   "first_name", :limit => 50
+    t.string   "last_name",  :limit => 50
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  add_index "admin_profiles", ["first_name"], :name => "index_admin_profiles_on_first_name"
+  add_index "admin_profiles", ["last_name"], :name => "index_admin_profiles_on_last_name"
+  add_index "admin_profiles", ["username"], :name => "index_admin_profiles_on_username"
 
   create_table "age_groups", :force => true do |t|
     t.string   "name",       :limit => 50
@@ -101,12 +114,12 @@ ActiveRecord::Schema.define(:version => 20120628123832) do
   add_index "profiles", ["username"], :name => "index_profiles_on_username", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                               :default => "", :null => false
+    t.string   "encrypted_password",                  :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",                       :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -116,8 +129,9 @@ ActiveRecord::Schema.define(:version => 20120628123832) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.string   "type"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                          :null => false
+    t.datetime "updated_at",                                          :null => false
+    t.integer  "admin_level",            :limit => 1
   end
 
   add_index "users", ["confirmed_at"], :name => "index_users_on_confirmed_at"

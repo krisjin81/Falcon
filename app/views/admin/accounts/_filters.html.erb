@@ -1,0 +1,24 @@
+<div class="accordion">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <%= link_to t('admin.filters.title'), '#filter', :class => 'accordion-toggle', 'data-toggle' => 'collapse' %>
+    </div>
+    <div class="accordion-body collapse <%= params[:q].present? ? 'in' : '' %>" id="filter">
+      <%= search_form_for @query, :url => collection_url, :builder => SimpleForm::FormBuilder, :wrapper => :light, :html => { :class => 'search-form' } do |f| %>
+        <%= hidden_field_tag(:sort_name, params[:sort_name]) if params[:sort_name] %>
+        <%= hidden_field_tag(:sort_dir, params[:sort_dir]) if params[:sort_dir] %>
+        <%= hidden_field_tag(:per_page, params[:per_page]) if params[:per_page] %>
+        <%= f.input :email_cont, :as => :string, :placeholder => t('admin.filters.email_contains') %>
+        <%= f.input :profile_username_cont, :placeholder => t('admin.filters.username_contains') %>
+        <%= f.input :profile_first_name_cont, :placeholder => t('admin.filters.first_name_contains') %>
+        <%= f.input :profile_last_name_cont, :placeholder => t('admin.filters.last_name_contains') %>
+        <%= f.input :profile_country_name_cont, :as => :string, :placeholder => t('admin.filters.country_contains') %>
+        <%= f.input :confirmed_at_not_null, :as => :boolean, :label => false, :inline_label => t('admin.filters.confirmed') %>
+        <div class="form-actions">
+          <%= f.submit t('helpers.actions.search'), :class => 'btn btn-primary' %>
+          <%= link_to t('helpers.actions.clear'), collection_url, :class => 'btn' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

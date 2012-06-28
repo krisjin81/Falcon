@@ -20,16 +20,27 @@
 #  type                   :string(255)
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
+#  admin_level            :integer(1)
 #
 
 class Admin < User
+  has_one :admin_profile, :dependent => :destroy
+
+  accepts_nested_attributes_for :admin_profile
+
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :admin_profile_attributes, :admin_level
+
+  validates :admin_level, :presence => true, :inclusion => AdminLevel.list
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
+
+  has_enumeration_for :admin_level, :create_helpers => true
+
+  scope :with_profile, includes(:admin_profile)
 
   self.per_page = 10
 

@@ -37,6 +37,7 @@ en:
     please_select: "Please Select"
     empty_list: "There are no items to display."
     items_per_page: "Items per Page:"
+    never: "never"
   flash:
     actions:
       create:
@@ -117,6 +118,7 @@ en:
     sections:
       accounts: "Accounts"
       profile: "Profile"
+      admins: "Admins"
     filters:
       title: "Filters"
       email_contains: "Email Contains"

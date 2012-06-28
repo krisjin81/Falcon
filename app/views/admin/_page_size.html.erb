@@ -5,6 +5,5 @@
     <%= hidden_field_tag(:q, params[:q]) if params[:q] %>
     <%= label_tag :per_page, t('helpers.items_per_page') %>
     <%= select_tag :per_page, options_for_select([10, 25, 50, 100], params[:per_page]) %>
-    <%= submit_tag t('helpers.actions.change') %>
   <% end %>
 </div>

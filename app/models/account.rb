@@ -20,6 +20,7 @@
 #  type                   :string(255)
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
+#  admin_level            :integer(1)
 #
 
 class Account < User
@@ -38,7 +39,6 @@ class Account < User
   attr_accessor :bypass_humanizer
 
   scope :with_profile, includes(:profile => [:country, :avatar])
-  scope :ascending_by_first_name, joins(:profile).order('profiles.first_name ASC')
 
   self.per_page = 10
 

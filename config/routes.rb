@@ -19,6 +19,7 @@ Falcon::Application.routes.draw do
     resource :profile, :only => [:edit, :update]
 
     resources :accounts
+    resources :admins
 
     root :to => "accounts#index"
   end

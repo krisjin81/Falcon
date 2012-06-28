@@ -3,7 +3,9 @@ class Admin::ProfilesController < Admin::BaseController
   responders :flash
 
   def edit
-    respond_with(@admin = current_admin)
+    @admin = current_admin
+    @admin.build_admin_profile unless @admin.admin_profile
+    respond_with(@admin)
   end
 
   def update
