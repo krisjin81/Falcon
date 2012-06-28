@@ -1,0 +1,28 @@
+<%= simple_form_for [:admin, resource], :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :email, :input_html => { :class => 'input-xxlarge' } %>
+  <%= f.input :password, :input_html => { :class => 'input-xxlarge' } %>
+  <%= f.input :password_confirmation, :input_html => { :class => 'input-xxlarge' } %>
+  <%= f.simple_fields_for :business_profile do |profile| %>
+    <%= profile.input :business_name, :input_html => { :class => 'input-xxlarge' } %>
+    <%= profile.simple_fields_for :avatar do |avatar| %>
+      <%= avatar.input :image do %>
+        <%= avatar.file_field :image, :class => 'input-xxlarge' %>
+        <%= image_tag resource.business_profile.avatar.image.url(:thumb) %>
+      <% end %>
+    <% end %>
+    <%= profile.input :business_type, :collection => BusinessType.to_a, :prompt => t('helpers.please_select') %>
+    <%= profile.input :business_style_ids, :collection => BusinessStyle.cached, :as => :check_boxes %>
+    <%= profile.input :audience_ids, :collection => Audience.cached, :as => :check_boxes %>
+    <%= profile.input :age_group_ids, :collection => AgeGroup.cached, :as => :check_boxes %>
+    <%= profile.input :contact_first_name, :input_html => { :class => 'input-xxlarge' } %>
+    <%= profile.input :contact_last_name, :input_html => { :class => 'input-xxlarge' } %>
+    <%= profile.input :contact_email, :input_html => { :class => 'input-xxlarge' } %>
+    <%= profile.input :about, :input_html => { :class => 'input-xxlarge', :rows => 5 } %>
+    <%= profile.input :website, :input_html => { :class => 'input-xxlarge' } %>
+    <%= profile.input :country_id, :input_html => { :class => 'input-xxlarge' }, :collection => Country.cached, :prompt => t('helpers.please_select') %>
+  <% end %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), collection_path, :class => 'btn' %>
+  </div>
+<% end %>

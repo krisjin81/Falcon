@@ -38,6 +38,8 @@ class Affiliate < User
 
   attr_accessor :bypass_humanizer
 
+  scope :with_profile, includes(:business_profile => [:country, :avatar])
+
   self.per_page = 10
 
   # Overrides Affiliate string representation.

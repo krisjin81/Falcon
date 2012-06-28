@@ -14,7 +14,7 @@
   <%= f.input :email do %>
     <%= text_field_tag :email, @business_profile.affiliate.email, :disabled => true, :class => 'disabled input-xxlarge' %>
   <% end %>
-  <%= f.input :business_type, :collection => BusinessType.to_a, :as => :radio_buttons %>
+  <%= f.input :business_type, :collection => BusinessType.to_a, :prompt => t('helpers.please_select') %>
   <%= f.input :business_style_ids, :collection => BusinessStyle.cached, :as => :check_boxes %>
   <%= f.input :audience_ids, :collection => Audience.cached, :as => :check_boxes %>
   <%= f.input :age_group_ids, :collection => AgeGroup.cached, :as => :check_boxes %>

@@ -29,6 +29,18 @@
   <strong><%= Profile.human_attribute_name(:birth_date) %>:</strong><br>
   <%= resource.profile.birth_date %>
 </p>
+<p>
+  <strong><%= Account.human_attribute_name(:last_sign_in_at) %>:</strong><br>
+  <%= resource.last_sign_in_at ? l(resource.last_sign_in_at) : t('helpers.never') %>
+</p>
+<p>
+  <strong><%= Account.human_attribute_name(:created_at) %>:</strong><br>
+  <%= resource.created_at %>
+</p>
+<p>
+  <strong><%= Account.human_attribute_name(:updated_at) %>:</strong><br>
+  <%= resource.updated_at %>
+</p>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")), collection_path, :class => 'btn'  %>

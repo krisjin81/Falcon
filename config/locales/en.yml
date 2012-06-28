@@ -119,6 +119,7 @@ en:
       accounts: "Accounts"
       profile: "Profile"
       admins: "Admins"
+      affiliates: "Affiliates"
     filters:
       title: "Filters"
       email_contains: "Email Contains"
@@ -126,4 +127,5 @@ en:
       first_name_contains: "First Name Contains"
       last_name_contains: "Last Name Contains"
       country_contains: "Country Contains"
+      business_name_contains: "Business Name Contains"
       confirmed: "Confirmed"

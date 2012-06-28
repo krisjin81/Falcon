@@ -1,0 +1,40 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= sortable_header(Affiliate.human_attribute_name(:id), :id) %></th>
+    <th><%= sortable_header(Affiliate.human_attribute_name(:email), :email) %></th>
+    <th><%= sortable_header(BusinessProfile.human_attribute_name(:business_name), :profile_username) %></th>
+    <th><%= sortable_header(BusinessProfile.human_attribute_name(:contact_first_name), :profile_first_name) %></th>
+    <th><%= sortable_header(BusinessProfile.human_attribute_name(:contact_last_name), :profile_last_name) %></th>
+    <th><%= sortable_header(BusinessProfile.human_attribute_name(:contact_email), :profile_last_name) %></th>
+    <th><%= sortable_header(Affiliate.human_attribute_name(:confirmed), :confirmed_at) %></th>
+    <th><%= sortable_header(Affiliate.human_attribute_name(:last_sign_in_at), :last_sign_in_at) %></th>
+    <th><%= sortable_header(BusinessProfile.human_attribute_name(:country), :profile_country_name) %></th>
+    <th><%= sortable_header(Affiliate.human_attribute_name(:created_at), :created_at) %></th>
+    <th><%= sortable_header(Affiliate.human_attribute_name(:updated_at), :updated_at) %></th>
+    <th><%=t '.actions', :default => t('helpers.actions.actions') %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% collection.each do |item| %>
+    <tr>
+      <td><%= link_to item.id, resource_path(item) %></td>
+      <td><%= item.email %></td>
+      <td><%= item.business_profile.username rescue '' %></td>
+      <td><%= item.business_profile.contact_first_name rescue '' %></td>
+      <td><%= item.business_profile.contact_last_name rescue '' %></td>
+      <td><%= item.business_profile.contact_email rescue '' %></td>
+      <td><%= item.confirmed? %></td>
+      <td><%= item.last_sign_in_at ? l(item.last_sign_in_at) : t('helpers.never') %></td>
+      <td><%= item.business_profile.country.name rescue '' %></td>
+      <td><%=l item.created_at %></td>
+      <td><%=l item.updated_at %></td>
+      <td>
+        <%= link_to t('.edit', :default => t('helpers.actions.edit')), edit_resource_path(item), :class => 'btn btn-mini' %>
+        <%= link_to t('.view', :default => t('helpers.actions.view')), resource_path(item), :class => 'btn btn-mini' %>
+        <%= link_to t('.destroy', :default => t('helpers.actions.destroy')), resource_path(item), :method => :delete, :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-mini btn-danger' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,69 @@
+<p>
+  <%= image_tag resource.business_profile.avatar.image.url(:thumb) %>
+</p>
+<p>
+  <strong><%= Affiliate.human_attribute_name(:email) %>:</strong><br>
+  <%= resource.email %>
+</p>
+<p>
+  <strong><%= BusinessProfile.human_attribute_name(:business_name) %>:</strong><br>
+  <%= resource.business_profile.business_name rescue '' %>
+</p>
+<p>
+  <strong><%= BusinessProfile.human_attribute_name(:business_type) %>:</strong><br>
+  <%= resource.business_profile.business_type_humanize rescue '' %>
+</p>
+<p>
+  <strong><%= BusinessProfile.human_attribute_name(:business_styles) %>:</strong><br>
+  <%= resource.business_profile.business_styles.map(&:name).join(',') rescue '' %>
+</p>
+<p>
+  <strong><%= BusinessProfile.human_attribute_name(:audiences) %>:</strong><br>
+  <%= resource.business_profile.audiences.map(&:name).join(',') rescue '' %>
+</p>
+<p>
+  <strong><%= BusinessProfile.human_attribute_name(:age_groups) %>:</strong><br>
+  <%= resource.business_profile.age_groups.map(&:name).join(',') rescue '' %>
+</p>
+<p>
+  <strong><%= BusinessProfile.human_attribute_name(:first_name) %>:</strong><br>
+  <%= resource.business_profile.contact_first_name rescue '' %>
+</p>
+<p>
+  <strong><%= BusinessProfile.human_attribute_name(:last_name) %>:</strong><br>
+  <%= resource.business_profile.contact_last_name rescue '' %>
+</p>
+<p>
+  <strong><%= BusinessProfile.human_attribute_name(:contact_email) %>:</strong><br>
+  <%= resource.business_profile.contact_email rescue '' %>
+</p>
+<p>
+  <strong><%= BusinessProfile.human_attribute_name(:about) %>:</strong><br>
+  <%= resource.business_profile.about rescue '' %>
+</p>
+<p>
+  <strong><%= BusinessProfile.human_attribute_name(:website) %>:</strong><br>
+  <%= resource.business_profile.website rescue '' %>
+</p>
+<p>
+  <strong><%= BusinessProfile.human_attribute_name(:country) %>:</strong><br>
+  <%= resource.business_profile.country.name rescue '' %>
+</p>
+<p>
+  <strong><%= Affiliate.human_attribute_name(:last_sign_in_at) %>:</strong><br>
+  <%= resource.last_sign_in_at ? l(resource.last_sign_in_at) : t('helpers.never') %>
+</p>
+<p>
+  <strong><%= Affiliate.human_attribute_name(:created_at) %>:</strong><br>
+  <%= resource.created_at %>
+</p>
+<p>
+  <strong><%= Affiliate.human_attribute_name(:updated_at) %>:</strong><br>
+  <%= resource.updated_at %>
+</p>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")), collection_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_resource_path, :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")), resource_path, :method => 'delete', :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-danger' %>
+</div>

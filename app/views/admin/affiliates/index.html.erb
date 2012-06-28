@@ -1,0 +1,14 @@
+<%= render :partial => 'filters' %>
+
+<div class="form-actions">
+  <%= link_to t('.new', :default => t('helpers.actions.new')), new_resource_path, :class => 'btn btn-primary' %>
+</div>
+
+<% if collection.present? %>
+  <%= render :partial => 'grid' %>
+<% else %>
+ <p><%= t('helpers.empty_list') %></p>
+<% end %>
+
+<%= render 'admin/page_size' %>
+<%= will_paginate(collection) %>

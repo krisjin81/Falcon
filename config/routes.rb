@@ -20,6 +20,7 @@ Falcon::Application.routes.draw do
 
     resources :accounts
     resources :admins
+    resources :affiliates
 
     root :to => "accounts#index"
   end
