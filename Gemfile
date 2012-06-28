@@ -37,6 +37,8 @@ gem 'will_paginate', '~> 3.0.3'
 gem 'bootstrap-will_paginate', '~> 0.0.7'
 gem 'has_scope', '~> 0.5.1'
 gem 'ransack', '~> 0.6.0'
+gem 'forgery', '~> 0.5.0'
+gem 'factory_girl_rails', '~> 1.7.0'
 
 group :development, :test do
   gem 'quiet_assets'
@@ -51,8 +53,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.10.1'
   gem 'shoulda', '~> 3.0.1'
   gem 'email_spec', '~> 1.2.1'
-  gem 'forgery', '~> 0.5.0'
-  gem 'factory_girl_rails', '~> 1.7.0'
   gem 'letter_opener', '~> 0.0.2'
   gem 'capistrano', '~> 2.12.0'
   gem 'capistrano-ext', '~> 1.2.1'
