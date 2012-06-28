@@ -1,4 +1,4 @@
-server "falcon", :app, :web, :db, :bg, :primary => true
+server "184.72.46.140", :app, :web, :db, :bg, :primary => true
 
 set :user, "deployer"
 set :use_sudo, false
