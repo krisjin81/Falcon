@@ -10,6 +10,7 @@ if defined?(Bundler)
 end
 
 require File.expand_path('lib/sti_type_casting.rb')
+Dir['lib/controllers/*.rb'].each {|file| require File.expand_path(file) }
 
 module Falcon
   class Application < Rails::Application

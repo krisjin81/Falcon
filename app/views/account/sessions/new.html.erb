@@ -2,8 +2,8 @@
   <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :id => 'sign_in' }, :wrapper => :light) do |f| %>
     <legend><%= t('account.sessions.new.title') %></legend>
 
-    <%= f.input :email, :input_html => { :class => 'input-xxlarge' }, :placeholder => User.human_attribute_name(:email) %>
-    <%= f.input :password, :input_html => { :class => 'input-xxlarge' }, :placeholder => User.human_attribute_name(:password) %>
+    <%= f.input :email, :input_html => { :class => 'input-xxlarge' }, :placeholder => Account.human_attribute_name(:email) %>
+    <%= f.input :password, :input_html => { :class => 'input-xxlarge' }, :placeholder => Account.human_attribute_name(:password) %>
 
     <% if devise_mapping.rememberable? -%>
       <%= f.input :remember_me, :as => :boolean, :label => false, :inline_label => true %>

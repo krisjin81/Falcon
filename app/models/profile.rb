@@ -31,11 +31,20 @@ class Profile < ActiveRecord::Base
 
   accepts_nested_attributes_for :avatar
 
+  NULL_ATTRS = %w( username )
+  before_save :nil_if_blank
+
   # Determines whether username can be edited.
   #
   # @return [Boolean] true if username is editable and false otherwise.
   #
   def username_editable?
     username.blank? or invalid?(:username)
+  end
+
+  private
+
+  def nil_if_blank
+    NULL_ATTRS.each { |attr| self[attr] = nil if self[attr].blank? }
   end
 end

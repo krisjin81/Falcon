@@ -2,7 +2,7 @@
   <%= simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, :id => 'confirm' }, :wrapper => :light) do |f| %>
     <legend><%= t('affiliate.confirmations.new.title') %></legend>
 
-    <%= f.input :email, :input_html => { :class => 'input-xxlarge' }, :placeholder => User.human_attribute_name(:email) %>
+    <%= f.input :email, :input_html => { :class => 'input-xxlarge' }, :placeholder => Affiliate.human_attribute_name(:email) %>
 
     <div class="form-actions">
       <%= f.submit t('helpers.actions.send'), :class => 'btn btn-primary' %>

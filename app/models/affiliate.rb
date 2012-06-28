@@ -28,8 +28,7 @@ class Affiliate < User
   accepts_nested_attributes_for :business_profile
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :business_profile_attributes,
-                  :humanizer_question_id, :humanizer_answer
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :business_profile_attributes
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -37,6 +36,8 @@ class Affiliate < User
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessor :bypass_humanizer
+
+  self.per_page = 10
 
   # Overrides Affiliate string representation.
   #

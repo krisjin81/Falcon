@@ -28,7 +28,7 @@ class Account < User
   accepts_nested_attributes_for :profile
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes, :humanizer_question_id, :humanizer_answer
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -36,6 +36,11 @@ class Account < User
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessor :bypass_humanizer
+
+  scope :with_profile, includes(:profile => [:country, :avatar])
+  scope :ascending_by_first_name, joins(:profile).order('profiles.first_name ASC')
+
+  self.per_page = 10
 
   # Overrides Account string representation.
   #

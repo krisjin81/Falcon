@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120626172938) do
+ActiveRecord::Schema.define(:version => 20120628123832) do
 
   create_table "age_groups", :force => true do |t|
     t.string   "name",       :limit => 50
@@ -96,6 +96,8 @@ ActiveRecord::Schema.define(:version => 20120626172938) do
   end
 
   add_index "profiles", ["account_id"], :name => "index_profiles_on_account_id"
+  add_index "profiles", ["first_name"], :name => "index_profiles_on_first_name"
+  add_index "profiles", ["last_name"], :name => "index_profiles_on_last_name"
   add_index "profiles", ["username"], :name => "index_profiles_on_username", :unique => true
 
   create_table "users", :force => true do |t|
@@ -118,7 +120,10 @@ ActiveRecord::Schema.define(:version => 20120626172938) do
     t.datetime "updated_at",                             :null => false
   end
 
+  add_index "users", ["confirmed_at"], :name => "index_users_on_confirmed_at"
+  add_index "users", ["created_at"], :name => "index_users_on_created_at"
   add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["last_sign_in_at"], :name => "index_users_on_last_sign_in_at"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

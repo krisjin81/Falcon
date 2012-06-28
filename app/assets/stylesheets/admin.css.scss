@@ -1,0 +1,24 @@
+/*
+ *= require_self
+ *= require jquery.ui.all
+ *= require home
+ */
+
+@import "_bootstrap.scss";
+@import "compass/css3";
+@import "layout";
+@import "forms";
+
+.search-form {
+  margin: 10px;
+}
+
+.pagination {
+  float: left;
+  margin-left: 10px;
+}
+
+.page-size {
+  float: left;
+  margin: 22px 0;
+}

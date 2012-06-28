@@ -33,6 +33,10 @@ gem 'responders', '~> 0.9.1'
 gem 'enumerate_it', '~> 0.7.15'
 gem 'ayah_integration', '~> 0.6.3'
 gem 'paperclip', '~> 2.7.0'
+gem 'will_paginate', '~> 3.0.3'
+gem 'bootstrap-will_paginate', '~> 0.0.7'
+gem 'has_scope', '~> 0.5.1'
+gem 'ransack', '~> 0.6.0'
 
 group :development, :test do
   gem 'quiet_assets'

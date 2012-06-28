@@ -1,9 +1,0 @@
-<a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
-  <i class="icon-user"></i> <%= current_account %> <b class="caret"></b>
-</a>
-<ul class="dropdown-menu">
-  <li><%= link_to t('helpers.actions.edit_profile'), edit_account_profiles_path %></li>
-  <li><%= link_to t('helpers.actions.edit_language_settings'), edit_account_language_settings_path %></li>
-  <li><%= link_to t('helpers.actions.change_password'), edit_account_registration_path %></li>
-  <li><%= link_to t('helpers.actions.sign_out'), destroy_account_session_path, :method => 'delete' %></li>
-</ul>

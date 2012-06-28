@@ -13,6 +13,16 @@ Falcon::Application.routes.draw do
     resource :language_settings, :only => [:edit, :update]
   end
 
+  devise_for :admin
+
+  namespace :admin do
+    resource :profile, :only => [:edit, :update]
+
+    resources :accounts
+
+    root :to => "accounts#index"
+  end
+
   get "home/index"
 
   root :to => "home#index"

@@ -4,10 +4,15 @@
 en:
   application:
     title: "Falcon"
+    admin_area: "Admin"
     copyright: "&copy; Falcon 2012"
   helpers:
     actions:
+      actions: "Actions"
+      new: "New"
       edit: "Edit"
+      view: "View"
+      destroy: "Destroy"
       create: "Create"
       update: "Update"
       delete: "Delete"
@@ -19,6 +24,9 @@ en:
       sign_up: "Sign up"
       send: "Send"
       test: "Test"
+      search: "Search"
+      clear: "Clear"
+      change: "Change"
       forgot_your_password: "Forgot your password?"
       resend_confirmation_instruction: "Resent Confirmation"
       change_password: "Change Password"
@@ -27,6 +35,8 @@ en:
       confirmation: "Are you sure?"
     human_detector_error: "Sorry, look like you are robot."
     please_select: "Please Select"
+    empty_list: "There are no items to display."
+    items_per_page: "Items per Page:"
   flash:
     actions:
       create:
@@ -90,3 +100,28 @@ en:
     language_settings:
       edit:
         title: "Edit Language Settings"
+  admin:
+    sessions:
+      new:
+        title: "Sign in as Admin"
+    passwords:
+      new:
+        title: "Forgot your password?"
+        description: "Send me reset instructions:"
+      edit:
+        title: "Change password"
+        new_password: "New Password"
+        title: "Change Password"
+        password_hint: "leave blank if you don't want to change it"
+        current_password_hint: "we need your current password to confirm your changes"
+    sections:
+      accounts: "Accounts"
+      profile: "Profile"
+    filters:
+      title: "Filters"
+      email_contains: "Email Contains"
+      username_contains: "Username Contains"
+      first_name_contains: "First Name Contains"
+      last_name_contains: "Last Name Contains"
+      country_contains: "Country Contains"
+      confirmed: "Confirmed"

@@ -5,14 +5,28 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :user_signed_in?, :current_user_type
 
+  # Overrides default devise behaviour to provide custom path after admin sign out.
+  #
+  # @param resource [String] resource name.
+  #
+  # @return [String] path to redirection after sign out.
+  #
+  def after_sign_out_path_for(resource)
+    if resource.to_sym == :admin
+      new_admin_session_path
+    else
+      super
+    end
+  end
+
   protected
 
   def layout_by_resource
     layouts = [:affiliate, :admin]
     if devise_controller? and layouts.include?(resource_name)
-      resource_name.to_s.pluralize
+      resource_name.to_s
     elsif user_signed_in? and layouts.include?(current_user_type)
-      current_user_type.to_s.pluralize
+      current_user_type.to_s
     else
       "application"
     end
