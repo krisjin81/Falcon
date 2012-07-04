@@ -21,6 +21,8 @@
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
 #  admin_level            :integer(1)
+#  external_user_id       :integer(8)
+#  provider               :string(20)
 #
 
 class Admin < User

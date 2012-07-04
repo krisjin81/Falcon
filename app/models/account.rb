@@ -21,6 +21,8 @@
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
 #  admin_level            :integer(1)
+#  external_user_id       :integer(8)
+#  provider               :string(20)
 #
 
 class Account < User
@@ -34,11 +36,14 @@ class Account < User
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable
 
   attr_accessor :bypass_humanizer
 
   scope :with_profile, includes(:profile => [:country, :avatar])
+  scope :from_facebook, where(:provider => SocialNetwork::FACEBOOK)
+  scope :by_facebook_id, lambda { |facebook_id| from_facebook.where(:external_user_id => facebook_id) }
 
   self.per_page = 10
 
@@ -51,6 +56,35 @@ class Account < User
       profile.username
     else
       email
+    end
+  end
+
+  # Determines whether password should be present. It can be blank if user sign up with oauth.
+  #
+  # @return [Boolean] true if when account password should be present and false otherwise.
+  #
+  def password_required?
+    self.provider.blank?
+  end
+
+  class << self
+    # Finds user by facebook token or creates a new one.
+    #
+    # @param access_token [OmniAuth::AuthHash] auth hash.
+    #
+    # @return [Account] account.
+    #
+    def find_for_facebook_oauth(access_token)
+      user_info = access_token.extra.raw_info
+      account = Account.by_facebook_id(user_info.id).first
+      if account.nil?
+        account = self.find_by_email(user_info.email) || Account.new(:email => user_info.email)
+        account.provider = access_token.provider
+        account.external_user_id = user_info.id
+        account.skip_confirmation!
+        account.save
+      end
+      account
     end
   end
 end

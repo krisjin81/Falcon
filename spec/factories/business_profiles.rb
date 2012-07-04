@@ -9,7 +9,7 @@ FactoryGirl.define do
     contact_email       { Forgery::Internet.email_address }
     about               { Forgery::LoremIpsum.sentences(5) }
     website             { "http://#{Forgery::Internet.domain_name}" }
-    association         :country, :factory => :country, :strategy => :create
+    country             { Country.random }
 
     ignore do
       business_styles_count 5
@@ -19,13 +19,13 @@ FactoryGirl.define do
 
     after_build do |business_profile, evaluator|
       evaluator.business_styles_count.times do
-        business_profile.business_styles << Factory.create(:business_style)
+        business_profile.business_styles << BusinessStyle.random
       end
       evaluator.audience_count.times do
-        business_profile.audiences << Factory.create(:audience)
+        business_profile.audiences << Audience.random
       end
       evaluator.age_group_count.times do
-        business_profile.age_groups << Factory.create(:age_group)
+        business_profile.age_groups << AgeGroup.random
       end
     end
   end

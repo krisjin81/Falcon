@@ -1,5 +1,5 @@
 Falcon::Application.routes.draw do
-  devise_for :account, :controllers => { :registrations => "account/registrations" }
+  devise_for :account, :controllers => { :registrations => "account/registrations", :omniauth_callbacks => "account/omniauth_callbacks" }
 
   namespace :account do
     resource :profiles, :only => [:edit, :update]

@@ -39,6 +39,10 @@ gem 'has_scope', '~> 0.5.1'
 gem 'ransack', '~> 0.6.0'
 gem 'forgery', '~> 0.5.0'
 gem 'factory_girl_rails', '~> 1.7.0'
+gem 'SystemTimer', '~> 1.2.3'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'quiet_assets'

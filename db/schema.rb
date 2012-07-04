@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120628160717) do
+ActiveRecord::Schema.define(:version => 20120704112024) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(:version => 20120628160717) do
     t.integer  "gender",     :limit => 1
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
+    t.string   "email"
   end
 
   add_index "profiles", ["account_id"], :name => "index_profiles_on_account_id"
@@ -114,12 +115,12 @@ ActiveRecord::Schema.define(:version => 20120628160717) do
   add_index "profiles", ["username"], :name => "index_profiles_on_username", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",                  :default => "", :null => false
+    t.string   "email",                                :default => "", :null => false
+    t.string   "encrypted_password",                   :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                       :default => 0
+    t.integer  "sign_in_count",                        :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -129,15 +130,18 @@ ActiveRecord::Schema.define(:version => 20120628160717) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.string   "type"
-    t.datetime "created_at",                                          :null => false
-    t.datetime "updated_at",                                          :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
     t.integer  "admin_level",            :limit => 1
+    t.integer  "external_user_id",       :limit => 8
+    t.string   "provider",               :limit => 20
   end
 
   add_index "users", ["confirmed_at"], :name => "index_users_on_confirmed_at"
   add_index "users", ["created_at"], :name => "index_users_on_created_at"
   add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["last_sign_in_at"], :name => "index_users_on_last_sign_in_at"
+  add_index "users", ["provider", "external_user_id"], :name => "index_users_on_provider_and_external_user_id"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

@@ -37,7 +37,7 @@ class BusinessProfile < ActiveRecord::Base
   validates :age_group_ids, :presence => true
   validates :contact_first_name, :presence => true, :length => { :maximum => 50 }
   validates :contact_last_name, :presence => true, :length => { :maximum => 50 }
-  validates :contact_email, :presence => true, :length => { :maximum => 255 }
+  validates :contact_email, :presence => true, :length => { :maximum => 255 }, :format => Devise.email_regexp
   validates :about, :length => { :maximum => 1000 }, :allow_blank => true
   validates :website, :length => { :maximum => 255 }, :allow_blank => true
 

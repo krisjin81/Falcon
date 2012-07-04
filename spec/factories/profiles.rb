@@ -7,6 +7,6 @@ FactoryGirl.define do
     gender      { Gender.list.sample }
     first_name  { male? ? Forgery::Name.male_first_name : Forgery::Name.female_first_name }
     last_name   { Forgery::Name.last_name }
-    association :country, :factory => :country, :strategy => :create
+    country     { Country.random }
   end
 end
