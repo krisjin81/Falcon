@@ -1,7 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    SystemTimer (1.2.3)
     actionmailer (3.2.5)
       actionpack (= 3.2.5)
       mail (~> 2.4.4)
@@ -297,7 +296,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  SystemTimer (~> 1.2.3)
   annotate (= 2.4.1.beta1)
   ayah_integration (~> 0.6.3)
   bootstrap-sass (~> 2.0.3.1)
