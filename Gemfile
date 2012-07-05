@@ -43,6 +43,8 @@ gem 'factory_girl_rails', '~> 1.7.0'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'ruby-openid'
+gem 'omniauth-openid'
 
 group :development, :test do
   gem 'quiet_assets'

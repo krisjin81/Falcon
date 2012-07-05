@@ -8,3 +8,13 @@
 @import "compass/css3";
 @import "layout";
 @import "forms";
+
+.social-media {
+  border-top: 1px solid #ddd;
+  padding-top: $baseLineHeight / 2;
+
+  a {
+    display: inline-block;
+    margin-left: 10px;
+  }
+}

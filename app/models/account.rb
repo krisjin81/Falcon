@@ -44,8 +44,12 @@ class Account < User
   scope :with_profile, includes(:profile => [:country, :avatar])
   scope :from_facebook, where(:provider => SocialNetwork::FACEBOOK)
   scope :from_twitter, where(:provider => SocialNetwork::TWITTER)
+  scope :from_google, where(:provider => SocialNetwork::GOOGLE)
   scope :by_facebook_id, lambda { |facebook_id| from_facebook.where(:external_user_id => facebook_id) }
+  scope :by_facebook_email, lambda { |email| from_facebook.where(:email => email) }
   scope :by_twitter_id, lambda { |twitter_id| from_twitter.where(:external_user_id => twitter_id) }
+  scope :by_twitter_email, lambda { |email| from_twitter.where(:email => email) }
+  scope :by_google_email, lambda { |email| from_google.where(:email => email) }
 
   self.per_page = 10
 
@@ -76,12 +80,15 @@ class Account < User
     #
     # @return [Account] account.
     #
-    def find_for_facebook_oauth(access_token)
+    def facebook_oauth(access_token)
       user_info = access_token.extra.raw_info
-      account = Account.by_facebook_id(user_info.id).first
-      if account.nil?
-        account = self.find_or_initialize_by_email(user_info.email)
-        account.provider = access_token.provider
+      external_user_id = user_info.id
+      email = user_info.email
+      account = self.by_facebook_id(external_user_id).first || self.by_facebook_email(email)
+      if account.blank?
+        account = self.new
+        account.email = email
+        account.provider = SocialNetwork::FACEBOOK
         account.external_user_id = user_info.id
         account.skip_confirmation!
         account.save
@@ -95,13 +102,36 @@ class Account < User
     #
     # @return [Account] account.
     #
-    def find_for_twitter_oauth(access_token)
+    def twitter_oauth(access_token)
       user_info = access_token.extra.raw_info
-      account = Account.by_twitter_id(user_info.id).first
-      if account.nil?
-        account = self.find_or_initialize_by_email("#{user_info.screen_name}@twitter.from")
-        account.provider = access_token.provider
+      external_user_id = user_info.id
+      email = "#{user_info.screen_name}@twitter.from"
+      account = self.by_twitter_id(external_user_id).first || self.by_twitter_email(email)
+      if account.blank?
+        account = self.new
+        account.email = email
+        account.provider = SocialNetwork::TWITTER
         account.external_user_id = user_info.id
+        account.skip_confirmation!
+        account.save
+      end
+      account
+    end
+
+    # Finds user by twitter token or creates a new one.
+    #
+    # @param access_token [OmniAuth::AuthHash] auth hash.
+    #
+    # @return [Account] account.
+    #
+    def google_oauth(access_token)
+      user_info = access_token.info
+      email = user_info.email
+      account = self.by_google_email(email).first
+      if account.blank?
+        account = self.new
+        account.email = email
+        account.provider = SocialNetwork::GOOGLE
         account.skip_confirmation!
         account.save
       end

@@ -23,4 +23,6 @@
       <%= link_to t('helpers.actions.resend_confirmation_instruction'), new_confirmation_path(resource_name), :class => 'btn' %>
     </div>
   </div>
+
+  <%= render :partial => 'account/shared/social_media_login' %>
 <% end %>

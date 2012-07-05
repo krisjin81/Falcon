@@ -19,6 +19,5 @@
     </div>
   <% end %>
 
-  <%= link_to(image_tag("facebook_icon.png"), account_omniauth_authorize_path(:facebook)) if OAUTH_CONFIG['facebook'] %>
-  <%= link_to(image_tag("twitter_icon.png"), account_omniauth_authorize_path(:twitter)) if OAUTH_CONFIG['twitter'] %>
+  <%= render :partial => 'account/shared/social_media_login' %>
 </div>
