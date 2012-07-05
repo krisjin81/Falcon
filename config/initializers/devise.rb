@@ -210,7 +210,8 @@ Devise.setup do |config|
   OAUTH_CONFIG_PATH = Rails.root.join("config", "oauth.yml")
   if File.exists?(OAUTH_CONFIG_PATH)
     OAUTH_CONFIG = YAML.load_file(OAUTH_CONFIG_PATH)[Rails.env]
-    config.omniauth :facebook, OAUTH_CONFIG['facebook']['app_id'], OAUTH_CONFIG['facebook']['app_secret'], OAUTH_CONFIG['facebook']['options']
+    config.omniauth(:facebook, OAUTH_CONFIG['facebook']['app_id'], OAUTH_CONFIG['facebook']['app_secret'], OAUTH_CONFIG['facebook']['options']) if OAUTH_CONFIG['facebook']
+    config.omniauth(:twitter, OAUTH_CONFIG['twitter']['consumer_key'], OAUTH_CONFIG['twitter']['consumer_secret']) if OAUTH_CONFIG['twitter']
   else
     Rails.logger.warn("Could not find oauth.yml in config directory.")
   end

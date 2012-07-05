@@ -42,6 +42,7 @@ gem 'factory_girl_rails', '~> 1.7.0'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 group :development, :test do
   gem 'quiet_assets'
@@ -59,6 +60,7 @@ group :development, :test do
   gem 'letter_opener', '~> 0.0.2'
   gem 'capistrano', '~> 2.12.0'
   gem 'capistrano-ext', '~> 1.2.1'
+  gem 'SystemTimer', '~> 1.2.3'
 end
 
 group :heroku do

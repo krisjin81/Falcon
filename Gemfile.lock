@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    SystemTimer (1.2.3)
     actionmailer (3.2.5)
       actionpack (= 3.2.5)
       mail (~> 2.4.4)
@@ -165,6 +166,7 @@ GEM
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     nokogiri (1.5.4)
+    oauth (0.4.6)
     oauth2 (0.6.1)
       faraday (~> 0.7)
       httpauth (~> 0.1)
@@ -174,9 +176,15 @@ GEM
       rack
     omniauth-facebook (1.3.0)
       omniauth-oauth2 (~> 1.0.2)
+    omniauth-oauth (1.0.1)
+      oauth
+      omniauth (~> 1.0)
     omniauth-oauth2 (1.0.2)
       oauth2 (~> 0.6.0)
       omniauth (~> 1.0)
+    omniauth-twitter (0.0.11)
+      multi_json (~> 1.3)
+      omniauth-oauth (~> 1.0)
     orm_adapter (0.3.0)
     paperclip (2.7.0)
       activerecord (>= 2.3.0)
@@ -296,6 +304,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  SystemTimer (~> 1.2.3)
   annotate (= 2.4.1.beta1)
   ayah_integration (~> 0.6.3)
   bootstrap-sass (~> 2.0.3.1)
@@ -322,6 +331,7 @@ DEPENDENCIES
   mysql2 (~> 0.3.11)
   omniauth
   omniauth-facebook
+  omniauth-twitter
   paperclip (~> 2.7.0)
   pg
   pry-rails

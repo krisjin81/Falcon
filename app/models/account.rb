@@ -43,7 +43,9 @@ class Account < User
 
   scope :with_profile, includes(:profile => [:country, :avatar])
   scope :from_facebook, where(:provider => SocialNetwork::FACEBOOK)
+  scope :from_twitter, where(:provider => SocialNetwork::TWITTER)
   scope :by_facebook_id, lambda { |facebook_id| from_facebook.where(:external_user_id => facebook_id) }
+  scope :by_twitter_id, lambda { |twitter_id| from_twitter.where(:external_user_id => twitter_id) }
 
   self.per_page = 10
 
@@ -78,7 +80,26 @@ class Account < User
       user_info = access_token.extra.raw_info
       account = Account.by_facebook_id(user_info.id).first
       if account.nil?
-        account = self.find_by_email(user_info.email) || Account.new(:email => user_info.email)
+        account = self.find_or_initialize_by_email(user_info.email)
+        account.provider = access_token.provider
+        account.external_user_id = user_info.id
+        account.skip_confirmation!
+        account.save
+      end
+      account
+    end
+
+    # Finds user by twitter token or creates a new one.
+    #
+    # @param access_token [OmniAuth::AuthHash] auth hash.
+    #
+    # @return [Account] account.
+    #
+    def find_for_twitter_oauth(access_token)
+      user_info = access_token.extra.raw_info
+      account = Account.by_twitter_id(user_info.id).first
+      if account.nil?
+        account = self.find_or_initialize_by_email("#{user_info.screen_name}@twitter.from")
         account.provider = access_token.provider
         account.external_user_id = user_info.id
         account.skip_confirmation!

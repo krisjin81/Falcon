@@ -5,14 +5,15 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= render 'layouts/twitter_init' %>
 </head>
 <body>
-  <%= render :partial => 'layouts/fb_init' %>
+  <%= render 'layouts/fb_init' %>
   <div id="wrapper">
     <%= render 'layouts/account_navigation' %>
     <div class="container">
       <div class="content">
-        <%= render :partial => 'layouts/messages' %>
+        <%= render 'layouts/messages' %>
         <%= yield %>
       </div>
     </div>

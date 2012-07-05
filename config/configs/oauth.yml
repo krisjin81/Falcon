@@ -5,6 +5,9 @@ development:
     options:
       scope: "email,user_likes,publish_stream"
       display: "page"
+  twitter:
+    consumer_key: "E6QDevheDnhauvjYEzCA"
+    consumer_secret: "j7LEqYDVyKiwdApm7TSJRL0VXqsrnm3zTE05BOZgI"
 
 staging: &staging
   facebook:
@@ -13,6 +16,9 @@ staging: &staging
     options:
       scope: "email,user_likes,publish_stream"
       display: "page"
+  twitter:
+    consumer_key: "Q1sF47wgPd3MMwTb50ob2A"
+    consumer_secret: "ua2q9nSacO48EL253ANkKCzVX0QEuUJZOVtTC0K5U"
 
 test:
   <<: *staging
