@@ -1,4 +1,4 @@
-<%= simple_form_for(@profile, :url => account_profiles_path, :html => { :id => 'edit_profile', :method => :put }) do |f| %>
+<%= simple_form_for(@profile, :url => account_profile_path, :html => { :id => 'edit_profile', :method => :put }) do |f| %>
   <legend><%= t('account.profiles.edit.title') %></legend>
   <%= f.input :username, :input_html => { :class => 'input-xxlarge' }, :disabled => !@profile.username_editable? %>
   <div class="alert">

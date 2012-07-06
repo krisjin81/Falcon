@@ -5,6 +5,7 @@
 ##= require bootstrap
 ##= require_tree ./accounts
 ##= require_tree ./affiliates
+##= require jquery-fileupload/basic
 
 $ ->
   $('.datepicker').datepicker()

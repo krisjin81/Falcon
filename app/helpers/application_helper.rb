@@ -5,25 +5,32 @@ module ApplicationHelper
     "jQuery('#messages').replaceWith('#{escape_javascript(render('layouts/messages'))}');".html_safe
   end
 
-  # Generate html markup for Facebook login button.
+  # Renders link with icon.
   #
-  # @param text [String] button text.
-  # @param options [Hash] additional options.
+  # @param text [String] link text.
+  # @param icon [String] icon name from bootstrap set.
+  # @param path [String] link path.
+  # @param options [Hash] additional options for link_to tag.
   #
   # @return [String] html markup.
   #
-  def fb_login_button(text, options = {})
-    link_to(text, account_omniauth_authorize_path(:facebook), { 'class' => 'fb-login', 'data-scope' => OAUTH_CONFIG['facebook']['options']['scope'] }.merge(options))
+  def link_to_with_icon(text, icon, path, options = {})
+    link_to("#{text} <i class=\"icon-#{icon}\"></i>".html_safe, path, options)
   end
 
-  # Generate html markup for Twitter login button.
+  # Renders link with pencil icon.
   #
-  # @param text [String] button text.
-  # @param options [Hash] additional options.
+  # @param text [String] link text.
+  # @param path [String] link path.
+  # @param options [Hash] additional options for link_to tag.
   #
   # @return [String] html markup.
   #
-  def twitter_login_button(text, options = {})
-    link_to(text, account_omniauth_authorize_path(:twitter), { 'class' => 'twitter-login' }.merge(options))
+  def edit_link_to(text, path, options = {})
+    link_to_with_icon(text, "pencil", path, options)
+  end
+
+  def text_or_blank(text)
+    text.present? ? text : '<span class="blank">(blank)</span>'.html_safe
   end
 end

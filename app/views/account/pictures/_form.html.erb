@@ -1,0 +1,16 @@
+<%= simple_form_for([:account, picture], :html => { :id => 'picture_form' }) do |f| %>
+  <legend>Enter Picture Details:</legend>
+  <div class="row">
+    <div class="span2">
+      <%= image_tag 'ajax-loader.gif', :alt => 'preview' %>
+    </div>
+    <div class="span9">
+      <%= f.input :title, :input_html => { :class => 'input-xxlarge' } %>
+      <%= f.input :dressing_tips, :input_html => { :class => 'input-xxlarge', :rows => 5 } %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit t('helpers.actions.update'), :class => 'btn btn-primary' %>
+    <%= link_to t('helpers.actions.cancel'), root_path, :class => 'btn cancel' %>
+  </div>
+<% end %>

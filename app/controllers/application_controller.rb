@@ -5,6 +5,20 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :user_signed_in?, :current_user_type
 
+  # Overrides default devise behaviour to redirect user to his profile.
+  #
+  # @param resource [String] resource name.
+  #
+  # @return [String] path to redirection after sign out.
+  #
+  def after_sign_in_path_for(resource)
+    case resource
+      when Account then account_profile_path
+    else
+      super
+    end
+  end
+
   # Overrides default devise behaviour to provide custom path after admin sign out.
   #
   # @param resource [String] resource name.

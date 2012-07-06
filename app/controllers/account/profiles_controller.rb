@@ -4,6 +4,17 @@ class Account::ProfilesController < ApplicationController
   respond_to :html
   responders :flash
 
+  def show
+    if params[:id]
+      @profile = Profile.by_unique_id(params[:id]).first
+      raise ActiveRecord::RecordNotFound.new("Could not found profile with username or id '#{params[:id]}'") unless @profile
+    else
+      @profile = current_account.profile || current_account.build_profile
+    end
+    @profile.build_avatar unless @profile.avatar
+    respond_with(@profile)
+  end
+
   def edit
     @profile = current_account.profile || current_account.build_profile
     @profile.build_avatar unless @profile.avatar

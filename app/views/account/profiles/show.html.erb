@@ -1,0 +1,65 @@
+<%= content_for :title do %>
+  <%= @profile.account %>
+<% end %>
+
+<div class="profile">
+  <div class="well">
+    <div class="row">
+      <div class="avatar">
+        <%= image_tag @profile.avatar.image.url(:thumb) %>
+        <%= edit_link_to('Edit Profile', edit_account_profile_path, :class => 'edit-profile') if is_current_profile?(@profile) %>
+      </div>
+      <div class="details">
+        <dl>
+          <dt><%= Profile.human_attribute_name(:username) %>:</dt>
+          <dd><%= edit_link_to(text_or_blank(@profile.username), edit_account_profile_path) if is_current_profile?(@profile) %></dd>
+        </dl>
+        <dl>
+          <dt><%= Profile.human_attribute_name(:status) %>:</dt>
+          <dd><%= edit_link_to(text_or_blank('Working'), '#') if is_current_profile?(@profile) %></dd>
+        </dl>
+      </div>
+      <div class="about">
+        Introduction about your self. <%= edit_link_to(''.html_safe, '#', :class => 'edit') if is_current_profile?(@profile) %>
+      </div>
+    </div>
+  </div>
+  <div class="well pictures">
+    <div class="upload">
+      <div class="drop-zone">
+        <span>Drop image here or click to Upload <%= image_tag('upload.png') %></span>
+      </div>
+      <%= file_field_tag :file, :class => 'hidden-file-upload', :id => 'first_upload' %>
+    </div>
+  </div>
+</div>
+
+<%= javascript_tag do %>
+  $(function() {
+    var picture_form = '<%= escape_javascript(render('account/pictures/form', :picture => Picture.new)).html_safe %>';
+    $('#first_upload').fileupload({
+      url: '<%= upload_account_pictures_path %>',
+      dataType: 'json',
+      dropZone: $('.drop-zone'),
+      limitMultiFileUploads: 1,
+      xhrFields: {
+          withCredentials: true
+      },
+      done: function (e, data) {
+        var file = JSON.parse(data.jqXHR.responseText);
+        var pictures = $(e.target).parents('.pictures');
+        var form = $(picture_form);
+        form.find('img').attr('src', file.preview_path);
+        form.find('.cancel').bind('click', function(e) {
+          e.preventDefault();
+          form.remove();
+          pictures.find('.upload').show();
+        });
+        pictures.find('.upload').hide();
+        pictures.append(form);
+      }
+    }).bind('fileuploadprogress', function (e, data) {
+      //console.log(arguments);
+    });
+  })
+<% end %>

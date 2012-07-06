@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120706090451) do
+ActiveRecord::Schema.define(:version => 20120706091957) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
@@ -94,6 +94,23 @@ ActiveRecord::Schema.define(:version => 20120706090451) do
   create_table "language_settings", :force => true do |t|
     t.integer "user_id"
     t.string  "locale",  :limit => 3
+  end
+
+  create_table "pictures", :force => true do |t|
+    t.string   "image_file_name"
+    t.integer  "image_file_size"
+    t.string   "image_content_type"
+    t.datetime "image_updated_at"
+    t.string   "attachable_type"
+    t.integer  "attachable_id"
+    t.string   "title"
+    t.text     "dressing_tips"
+    t.string   "brands"
+    t.string   "cost"
+    t.string   "where_to_buy"
+    t.integer  "gender",             :limit => 1
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "profiles", :force => true do |t|

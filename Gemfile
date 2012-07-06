@@ -18,6 +18,7 @@ group :assets do
   gem 'compass-rails', '~> 1.0.1'
   gem 'bootstrap-sass', '~> 2.0.3.1'
   gem 'jquery-ui-rails', '~> 1.0.0'
+  gem 'jquery-fileupload-rails', '~> 0.3.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -39,6 +40,7 @@ gem 'has_scope', '~> 0.5.1'
 gem 'ransack', '~> 0.6.0'
 gem 'forgery', '~> 0.5.0'
 gem 'factory_girl_rails', '~> 1.7.0'
+gem 'rmagick', '~> 2.13.1', :require => 'RMagick'
 
 gem 'omniauth'
 gem 'omniauth-facebook'

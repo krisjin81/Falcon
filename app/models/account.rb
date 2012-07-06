@@ -60,8 +60,8 @@ class Account < User
   # @return [String] username or email.
   #
   def to_s
-    if profile and profile.username.present?
-      profile.username
+    if profile and profile.to_s.present?
+      profile.to_s
     else
       email
     end

@@ -2,8 +2,14 @@ Falcon::Application.routes.draw do
   devise_for :account, :controllers => { :registrations => "account/registrations", :omniauth_callbacks => "account/omniauth_callbacks" }
 
   namespace :account do
-    resource :profiles, :only => [:edit, :update]
+    resource :profile, :only => [:show, :edit, :update]
     resource :language_settings, :only => [:edit, :update]
+    resource :pictures do
+      collection do
+        post :upload
+      end
+    end
+    get ":id" => "profiles#show", :as => :view_profile
   end
 
   devise_for :affiliate, :controllers => { :registrations => "affiliate/registrations" }
