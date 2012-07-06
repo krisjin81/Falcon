@@ -4,3 +4,10 @@ en:
       type1: 'Type1'
       type2: 'Type2'
       type3: 'Type3'
+    gender:
+      male: 'Male'
+      female: 'Female'
+    provider:
+      facebook: 'Facebook'
+      twitter: 'Twitter'
+      google: 'Google'

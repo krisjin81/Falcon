@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120704112024) do
+ActiveRecord::Schema.define(:version => 20120706090451) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
@@ -106,7 +106,6 @@ ActiveRecord::Schema.define(:version => 20120704112024) do
     t.integer  "gender",     :limit => 1
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
-    t.string   "email"
   end
 
   add_index "profiles", ["account_id"], :name => "index_profiles_on_account_id"
@@ -143,5 +142,11 @@ ActiveRecord::Schema.define(:version => 20120704112024) do
   add_index "users", ["last_sign_in_at"], :name => "index_users_on_last_sign_in_at"
   add_index "users", ["provider", "external_user_id"], :name => "index_users_on_provider_and_external_user_id"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["type", "confirmed_at"], :name => "index_users_on_type_and_confirmed_at"
+  add_index "users", ["type", "created_at"], :name => "index_users_on_type_and_created_at"
+  add_index "users", ["type", "email"], :name => "index_users_on_type_and_email"
+  add_index "users", ["type", "last_sign_in_at"], :name => "index_users_on_type_and_last_sign_in_at"
+  add_index "users", ["type", "provider", "email"], :name => "index_users_on_type_and_provider_and_email"
+  add_index "users", ["type", "provider", "id"], :name => "index_users_on_type_and_provider_and_id"
 
 end

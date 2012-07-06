@@ -41,10 +41,12 @@ class Account < User
 
   attr_accessor :bypass_humanizer
 
+  has_enumeration_for :provider, :create_helpers => true
+
   scope :with_profile, includes(:profile => [:country, :avatar])
-  scope :from_facebook, where(:provider => SocialNetwork::FACEBOOK)
-  scope :from_twitter, where(:provider => SocialNetwork::TWITTER)
-  scope :from_google, where(:provider => SocialNetwork::GOOGLE)
+  scope :from_facebook, where(:provider => Provider::FACEBOOK)
+  scope :from_twitter, where(:provider => Provider::TWITTER)
+  scope :from_google, where(:provider => Provider::GOOGLE)
   scope :by_facebook_id, lambda { |facebook_id| from_facebook.where(:external_user_id => facebook_id) }
   scope :by_facebook_email, lambda { |email| from_facebook.where(:email => email) }
   scope :by_twitter_id, lambda { |twitter_id| from_twitter.where(:external_user_id => twitter_id) }
@@ -88,7 +90,7 @@ class Account < User
       if account.blank?
         account = self.new
         account.email = email
-        account.provider = SocialNetwork::FACEBOOK
+        account.provider = Provider::FACEBOOK
         account.external_user_id = user_info.id
         account.skip_confirmation!
         account.build_profile :first_name => user_info.first_name, :last_name => user_info.last_name
@@ -115,7 +117,7 @@ class Account < User
       if account.blank?
         account = self.new
         account.email = email
-        account.provider = SocialNetwork::TWITTER
+        account.provider = Provider::TWITTER
         account.external_user_id = user_info.id
         account.skip_confirmation!
         if user_info.name
@@ -140,7 +142,7 @@ class Account < User
       if account.blank?
         account = self.new
         account.email = email
-        account.provider = SocialNetwork::GOOGLE
+        account.provider = Provider::GOOGLE
         account.skip_confirmation!
         account.build_profile :first_name => user_info.first_name, :last_name => user_info.last_name
         account.save

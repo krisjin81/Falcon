@@ -3,17 +3,17 @@ class Account::OmniauthCallbacksController < ApplicationController
 
   def facebook
     @account = Account.facebook_oauth(request.env["omniauth.auth"])
-    respond_with(@account, I18n.t('oauth_providers.facebook'))
+    respond_with(@account, Provider.translate(:facebook))
   end
 
   def twitter
     @account = Account.twitter_oauth(request.env["omniauth.auth"])
-    respond_with(@account, I18n.t('oauth_providers.twitter'))
+    respond_with(@account, Provider.translate(:twitter))
   end
 
   def google
     @account = Account.google_oauth(request.env["omniauth.auth"])
-    respond_with(@account, I18n.t('oauth_providers.google'))
+    respond_with(@account, Provider.translate(:google))
   end
 
   private
