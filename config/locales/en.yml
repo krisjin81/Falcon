@@ -46,10 +46,6 @@ en:
         notice: "%{resource_name} was deleted successfully."
       update:
         notice: "%{resource_name} was updated successfully."
-  oauth_providers:
-    facebook: "Facebook"
-    twitter: "Twitter"
-    google: "Google"
   account:
     sessions:
       new:
