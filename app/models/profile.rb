@@ -23,8 +23,6 @@ class Profile < ActiveRecord::Base
   validates :username, :format => /^\w+$/, :allow_blank => true, :length => { :maximum => 50 }, :uniqueness => true
   validates :first_name, :length => { :maximum => 50 }
   validates :last_name, :length => { :maximum => 50 }
-  validates :birth_date, :presence => true
-  validates :country_id, :presence => true
   validates :gender, :inclusion => Gender.list, :allow_blank => true
 
   attr_protected :account, :account_id, :created_at, :updated_at

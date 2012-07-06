@@ -91,6 +91,11 @@ class Account < User
         account.provider = SocialNetwork::FACEBOOK
         account.external_user_id = user_info.id
         account.skip_confirmation!
+        account.build_profile :first_name => user_info.first_name, :last_name => user_info.last_name
+        if user_info.gender.present?
+          gender = Gender.enumeration[user_info.gender.to_sym]
+          account.profile.gender = gender.first if gender
+        end
         account.save
       end
       account
@@ -105,7 +110,7 @@ class Account < User
     def twitter_oauth(access_token)
       user_info = access_token.extra.raw_info
       external_user_id = user_info.id
-      email = "#{user_info.screen_name}@twitter.from"
+      email = "#{user_info.screen_name}@twitter.com"
       account = self.by_twitter_id(external_user_id).first || self.by_twitter_email(email)
       if account.blank?
         account = self.new
@@ -113,6 +118,10 @@ class Account < User
         account.provider = SocialNetwork::TWITTER
         account.external_user_id = user_info.id
         account.skip_confirmation!
+        if user_info.name
+          first_name, last_name = user_info.name.split
+          account.build_profile :first_name => first_name, :last_name => last_name
+        end
         account.save
       end
       account
@@ -133,6 +142,7 @@ class Account < User
         account.email = email
         account.provider = SocialNetwork::GOOGLE
         account.skip_confirmation!
+        account.build_profile :first_name => user_info.first_name, :last_name => user_info.last_name
         account.save
       end
       account

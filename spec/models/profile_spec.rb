@@ -25,8 +25,6 @@ describe Profile do
   it { should ensure_length_of(:username).is_at_most(50) }
   it { should ensure_length_of(:first_name).is_at_most(50) }
   it { should ensure_length_of(:last_name).is_at_most(50) }
-  it { should validate_presence_of(:birth_date) }
-  it { should validate_presence_of(:country_id) }
 
   # Mass assignment
   it { should allow_mass_assignment_of(:username) }
