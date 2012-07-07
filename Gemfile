@@ -16,7 +16,8 @@ group :assets do
   gem 'therubyracer', '~> 0.10.1'
 
   gem 'compass-rails', '~> 1.0.1'
-  gem 'bootstrap-sass', '~> 2.0.3.1'
+  gem 'anjlab-bootstrap-rails', '~> 2.0.4.3', :require => 'bootstrap-rails'
+  gem 'font-awesome-sass-rails', '~> 2.0'
   gem 'jquery-ui-rails', '~> 1.0.0'
   gem 'jquery-fileupload-rails', '~> 0.3.0'
 

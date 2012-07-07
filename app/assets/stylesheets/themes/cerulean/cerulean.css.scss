@@ -6,7 +6,7 @@
 // IMPORTS
 // -----------------------------------------------------
 
-@import "bootstrap/mixins";
+@import "mixins";
 @import "themes/cerulean/variables";
 
 // TYPOGRAPHY
@@ -72,27 +72,27 @@ div.subnav {
 }
 
 .btn-primary {
-  @include buttonBackground(lighten($btnPrimaryBackground, 5%), $btnPrimaryBackground);
+  @include button-background(lighten($btnPrimaryBackground, 5%), $btnPrimaryBackground);
 }
 
 .btn-info {
-  @include buttonBackground(lighten($btnInfoBackground, 5%), $btnInfoBackground);
+  @include button-background(lighten($btnInfoBackground, 5%), $btnInfoBackground);
 }
 
 .btn-success {
-  @include buttonBackground(lighten($btnSuccessBackground, 5%), $btnSuccessBackground);
+  @include button-background(lighten($btnSuccessBackground, 5%), $btnSuccessBackground);
 }
 
 .btn-warning {
-  @include buttonBackground(lighten($btnWarningBackground, 5%), $btnWarningBackground);
+  @include button-background(lighten($btnWarningBackground, 5%), $btnWarningBackground);
 }
 
 .btn-danger {
-  @include buttonBackground(lighten($btnDangerBackground, 5%), $btnDangerBackground);
+  @include button-background(lighten($btnDangerBackground, 5%), $btnDangerBackground);
 }
 
 .btn-inverse {
-  @include buttonBackground(lighten($btnInverseBackground, 5%), $btnInverseBackground);
+  @include button-background(lighten($btnInverseBackground, 5%), $btnInverseBackground);
 }
 
 // ICONS

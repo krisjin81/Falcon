@@ -4,7 +4,8 @@
  */
 
 @import "themes/united/united";
-@import "_bootstrap.scss";
+@import "bootstrap";
+@import "font-awesome";
 @import "compass/css3";
 @import "layout";
 @import "forms";

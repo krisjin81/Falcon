@@ -6,7 +6,7 @@
 // IMPORTS
 // -----------------------------------------------------
 
-@import "bootstrap/mixins";
+@import "mixins";
 @import "themes/united/variables";
 
 // TYPOGRAPHY
@@ -71,11 +71,11 @@
 // -----------------------------------------------------
 
 .btn-primary {
-  @include buttonBackground(lighten($btnPrimaryBackground, 15%), $btnPrimaryBackground);
+  @include button-background(lighten($btnPrimaryBackground, 15%), $btnPrimaryBackground);
 }
 
 .btn-warning {
-  @include buttonBackground(lighten($yellow, 15%), $yellow);
+  @include button-background(lighten($yellow, 15%), $yellow);
 }
 
 // FORMS

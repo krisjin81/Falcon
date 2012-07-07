@@ -30,13 +30,15 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.2.8)
+    anjlab-bootstrap-rails (2.0.4.3)
+      railties (>= 3.0)
+      sass
     annotate (2.4.1.beta1)
     arel (3.0.2)
     ayah_integration (0.6.3)
       json
       rest-client
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.0.3.1)
     bootstrap-will_paginate (0.0.7)
       will_paginate
     builder (3.0.0)
@@ -113,6 +115,9 @@ GEM
       multipart-post (~> 1.1)
     fastthread (1.0.7)
     ffi (1.0.11)
+    font-awesome-sass-rails (2.0.0.0)
+      railties (>= 3.1.1)
+      sass-rails (>= 3.1.1)
     forgery (0.5.0)
     fssm (0.2.9)
     gem_plugin (0.2.3)
@@ -316,9 +321,9 @@ PLATFORMS
 
 DEPENDENCIES
   SystemTimer (~> 1.2.3)
+  anjlab-bootstrap-rails (~> 2.0.4.3)
   annotate (= 2.4.1.beta1)
   ayah_integration (~> 0.6.3)
-  bootstrap-sass (~> 2.0.3.1)
   bootstrap-will_paginate (~> 0.0.7)
   capistrano (~> 2.12.0)
   capistrano-ext (~> 1.2.1)
@@ -331,6 +336,7 @@ DEPENDENCIES
   email_spec (~> 1.2.1)
   enumerate_it (~> 0.7.15)
   factory_girl_rails (~> 1.7.0)
+  font-awesome-sass-rails (~> 2.0)
   forgery (~> 0.5.0)
   has_scope (~> 0.5.1)
   inherited_resources (~> 1.3.1)
