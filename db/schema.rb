@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120706091957) do
+ActiveRecord::Schema.define(:version => 20120707085345) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
@@ -38,14 +38,11 @@ ActiveRecord::Schema.define(:version => 20120706091957) do
   end
 
   create_table "avatars", :force => true do |t|
-    t.string   "image_file_name"
-    t.integer  "image_file_size"
-    t.string   "image_content_type"
-    t.datetime "image_updated_at"
     t.string   "attachable_type"
     t.integer  "attachable_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "image"
   end
 
   create_table "business_profiles", :force => true do |t|
@@ -97,10 +94,6 @@ ActiveRecord::Schema.define(:version => 20120706091957) do
   end
 
   create_table "pictures", :force => true do |t|
-    t.string   "image_file_name"
-    t.integer  "image_file_size"
-    t.string   "image_content_type"
-    t.datetime "image_updated_at"
     t.string   "attachable_type"
     t.integer  "attachable_id"
     t.string   "title"
@@ -108,9 +101,10 @@ ActiveRecord::Schema.define(:version => 20120706091957) do
     t.string   "brands"
     t.string   "cost"
     t.string   "where_to_buy"
-    t.integer  "gender",             :limit => 1
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.integer  "gender",          :limit => 1
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.string   "image"
   end
 
   create_table "profiles", :force => true do |t|
@@ -123,7 +117,6 @@ ActiveRecord::Schema.define(:version => 20120706091957) do
     t.integer  "gender",     :limit => 1
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
-    t.string   "email"
   end
 
   add_index "profiles", ["account_id"], :name => "index_profiles_on_account_id"

@@ -1,0 +1,9 @@
+$('.picture-form[data-id=<%= @picture.id %>]').remove();
+<% if @picture.valid? %>
+  <%= show_messages %>
+  $('#pictures').replaceWith('<%= escape_javascript(render('account/pictures/list', :pictures => @pictures)) %>');
+  $('#pictures').pictureList()
+<% else %>
+  $('.picture[data-id=<%= @picture.id %>]').after('<%= escape_javascript(render('account/pictures/form', :picture => @picture)) %>').hide();
+  $('.picture-form[data-id=<%= @picture.id %>]').pictureForm();
+<% end %>

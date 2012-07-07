@@ -1,0 +1,16 @@
+<div class="picture-details" data-id="<%= picture.id %>">
+  <div class="image">
+    <%= image_tag picture.image.url(:preview) %>
+  </div>
+  <div class="details">
+    <dl>
+      <dt><%= Picture.human_attribute_name(:title) %></dt>
+      <dd><%= picture.title %></dd>
+      <dt><%= Picture.human_attribute_name(:dressing_tips) %></dt>
+      <dd><%= picture.dressing_tips %></dd>
+    </dl>
+  </div>
+  <div class="actions">
+    <%= link_to_with_icon t('helpers.actions.close'), 'zoom-out', '#', :class => 'close-details' %>
+  </div>
+</div>

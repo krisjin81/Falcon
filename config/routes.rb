@@ -4,7 +4,7 @@ Falcon::Application.routes.draw do
   namespace :account do
     resource :profile, :only => [:show, :edit, :update]
     resource :language_settings, :only => [:edit, :update]
-    resource :pictures do
+    resources :pictures do
       collection do
         post :upload
       end

@@ -1,0 +1,8 @@
+<% if @picture.valid? %>
+  <%= show_messages %>
+  $('#pictures').replaceWith('<%= escape_javascript(render('account/pictures/list', :pictures => @pictures)) %>');
+  $('#pictures').pictureList()
+<% else %>
+  $('#pictures .new-picture').replaceWith('<%= escape_javascript(render('account/pictures/form', :picture => @picture)) %>');
+  $('#pictures .new-picture').pictureForm();
+<% end %>

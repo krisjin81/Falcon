@@ -8,7 +8,8 @@
   <%= f.simple_fields_for :avatar do |avatar| %>
     <%= avatar.input :image do %>
       <%= avatar.file_field :image, :class => 'input-xxlarge' %>
-      <%= image_tag @profile.avatar.image.url(:thumb) %>
+      <%= avatar.hidden_field :image_cache %>
+      <%= image_tag @profile.avatar.image_url(:thumb) %>
     <% end %>
   <% end %>
   <%= f.input :email do %>

@@ -2,7 +2,7 @@ module ApplicationHelper
   # Renders flash :notice and :error messages.
   #
   def show_messages
-    "jQuery('#messages').replaceWith('#{escape_javascript(render('layouts/messages'))}');".html_safe
+    "$('#messages').replaceWith('#{escape_javascript(render('layouts/messages'))}');".html_safe
   end
 
   # Renders link with icon.
@@ -30,7 +30,23 @@ module ApplicationHelper
     link_to_with_icon(text, "pencil", path, options)
   end
 
+  # Renders text specified or blank string.
+  #
+  # @param text [String] text to render.
+  #
+  # @return [String] text or blank string if text is empty.
+  #
   def text_or_blank(text)
     text.present? ? text : '<span class="blank">(blank)</span>'.html_safe
+  end
+
+  # Renders icon html tag.
+  #
+  # @param text [String] text to render.
+  #
+  # @return icon_name [String] bootstrap icon name.
+  #
+  def icon(icon_name)
+    "<i class=\"icon-#{icon_name}\"></i>".html_safe
   end
 end

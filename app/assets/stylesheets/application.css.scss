@@ -57,23 +57,107 @@
     }
   }
 
-  .pictures {
-    .drop-zone {
-      height: 200px;
-      border: 5px #aaa dashed;
-      margin: 20px;
-      text-align: center;
-      font-size: 30px;
-      line-height: 200px;
+  #pictures {
+    .header {
+      display: block;
+      width: 100%;
+      padding: 0;
+      margin-bottom: $baseLineHeight * 1.5;
+      font-size: $baseFontSize * 1.5;
+      line-height: $baseLineHeight * 2;
+      color: $grayDark;
+      border: 0;
+
+      a {
+        float: right;
+      }
     }
 
-    input.hidden-file-upload {
-      width: 100%;
-      height: 200px;
-      margin-top: -250px;
-      cursor: pointer;
-      @include opacity(0);
-      outline: none;
+    .upload {
+      .drop-zone {
+        height: 210px;
+        border: 5px #aaa dashed;
+        text-align: center;
+        line-height: 200px;
+        font-size: 30px;
+      }
+
+      input.hidden-file-upload {
+        width: 100%;
+        height: 210px;
+        margin-top: -250px;
+        cursor: pointer;
+        @include opacity(0);
+        outline: none;
+      }
+    }
+
+    .picture {
+      padding: 10px 0;
+      border-top: 1px solid #e5e5e5;
+      @include clearfix();
+
+      &:hover {
+        background: #eee;
+        cursor: pointer;
+      }
+
+      .actions {
+        float: left;
+        clear: both;
+        margin: 10px 20px 0;
+
+        a {
+          margin-right: 10px;
+        }
+      }
+
+      .image {
+        float:left;
+        margin: 0 20px;
+      }
+
+      .details {
+        float:left;
+        width: 500px;
+        margin: 0 20px;
+      }
+    }
+
+    .picture-form {
+      background: #eee;
+
+      .form {
+        padding: 0 20px;
+      }
+    }
+
+    .picture-details {
+      padding: 10px 0;
+      border-top: 1px solid #e5e5e5;
+      background: #eee;
+      @include clearfix();
+
+      .actions {
+        float: left;
+        clear: both;
+        margin: 10px 20px 0;
+
+        a {
+          margin-right: 10px;
+        }
+      }
+
+      .image {
+        float:left;
+        margin: 0 20px;
+      }
+
+      .details {
+        float:left;
+        width: 500px;
+        margin: 0 20px;
+      }
     }
   }
 }

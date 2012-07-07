@@ -24,42 +24,7 @@
       </div>
     </div>
   </div>
-  <div class="well pictures">
-    <div class="upload">
-      <div class="drop-zone">
-        <span>Drop image here or click to Upload <i class="icon-upload-alt"></i></span>
-      </div>
-      <%= file_field_tag :file, :class => 'hidden-file-upload', :id => 'first_upload' %>
-    </div>
+  <div class="well">
+    <%= render "account/pictures/list", :pictures => current_user.profile.pictures %>
   </div>
 </div>
-
-<%= javascript_tag do %>
-  $(function() {
-    var picture_form = '<%= escape_javascript(render('account/pictures/form', :picture => Picture.new)).html_safe %>';
-    $('#first_upload').fileupload({
-      url: '<%= upload_account_pictures_path %>',
-      dataType: 'json',
-      dropZone: $('.drop-zone'),
-      limitMultiFileUploads: 1,
-      xhrFields: {
-          withCredentials: true
-      },
-      done: function (e, data) {
-        var file = JSON.parse(data.jqXHR.responseText);
-        var pictures = $(e.target).parents('.pictures');
-        var form = $(picture_form);
-        form.find('img').attr('src', file.preview_path);
-        form.find('.cancel').bind('click', function(e) {
-          e.preventDefault();
-          form.remove();
-          pictures.find('.upload').show();
-        });
-        pictures.find('.upload').hide();
-        pictures.append(form);
-      }
-    }).bind('fileuploadprogress', function (e, data) {
-      //console.log(arguments);
-    });
-  })
-<% end %>

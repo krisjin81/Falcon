@@ -25,7 +25,7 @@ class Account::ProfilesController < ApplicationController
     @profile = current_account.profile || current_account.build_profile
     filter_username(@profile, params[:profile])
     @profile.update_attributes(params[:profile])
-    respond_with(@profile, :location => edit_account_profiles_path)
+    respond_with(@profile, :location => edit_account_profile_path)
   end
 
   private

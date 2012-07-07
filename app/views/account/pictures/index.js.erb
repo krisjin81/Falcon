@@ -1,0 +1,2 @@
+$('#pictures').replaceWith('<%= escape_javascript(render('account/pictures/list', :pictures => @pictures)) %>');
+$('#pictures').pictureList()

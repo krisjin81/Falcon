@@ -1,0 +1,18 @@
+<div class="picture" data-id="<%= picture.id %>">
+  <div class="image">
+    <%= image_tag picture.image.url(:thumb) %>
+  </div>
+  <div class="details">
+    <dl>
+      <dt><%= Picture.human_attribute_name(:title) %></dt>
+      <dd><%= picture.title %></dd>
+      <dt><%= Picture.human_attribute_name(:dressing_tips) %></dt>
+      <dd><%= picture.dressing_tips %></dd>
+    </dl>
+  </div>
+  <div class="actions">
+    <%= link_to_with_icon t('helpers.actions.details'), 'zoom-in', account_picture_path(picture), :class => 'full-details' %>
+    <%= link_to_with_icon t('helpers.actions.edit'), 'pencil', edit_account_picture_path(picture), :remote => true %>
+    <%= link_to_with_icon t('helpers.actions.delete'), 'trash', account_picture_path(picture), :method => :delete, :confirm => t('helpers.actions.confirmation'), :remote => true %>
+  </div>
+</div>

@@ -1,16 +1,21 @@
-<%= simple_form_for([:account, picture], :html => { :id => 'picture_form' }) do |f| %>
-  <legend>Enter Picture Details:</legend>
-  <div class="row">
-    <div class="span2">
-      <%= image_tag 'ajax-loader.gif', :alt => 'preview' %>
+<%= simple_form_for([:account, picture], :remote => true, :html => { :class => "picture-form #{picture.new_record? ? 'new-picture' : ''}", 'data-id' => picture.id }) do |f| %>
+  <div class="upload">
+    <div class="drop-zone">
+      <% if picture.image.present? %>
+        <%= image_tag picture.image.url(:preview), :alt => 'preview' %>
+        <%= f.hidden_field :image_cache %>
+      <% else %>
+        <span class="instructions">Drop image here or click to Upload <%= icon("upload-alt") %></span>
+      <% end %>
     </div>
-    <div class="span9">
-      <%= f.input :title, :input_html => { :class => 'input-xxlarge' } %>
-      <%= f.input :dressing_tips, :input_html => { :class => 'input-xxlarge', :rows => 5 } %>
-    </div>
+    <%= file_field_tag :file, :class => 'hidden-file-upload', :id => 'first_upload' %>
+  </div>
+  <div class="form">
+    <%= f.input :title, :input_html => { :class => 'input-xxlarge' } %>
+    <%= f.input :dressing_tips, :input_html => { :class => 'input-xxlarge', :rows => 5 } %>
   </div>
   <div class="form-actions">
-    <%= f.submit t('helpers.actions.update'), :class => 'btn btn-primary' %>
+    <%= f.submit :class => 'btn btn-primary' %>
     <%= link_to t('helpers.actions.cancel'), root_path, :class => 'btn cancel' %>
   </div>
 <% end %>
