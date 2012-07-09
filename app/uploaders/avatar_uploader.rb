@@ -19,7 +19,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def store_dir
-    "uploads/avatars/#{unique_id}"
+    "system/avatars/#{unique_id}"
   end
 
   def unique_id

@@ -23,7 +23,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   end
 
   def store_dir
-    "uploads/pictures/#{unique_id}"
+    "system/pictures/#{unique_id}"
   end
 
   def unique_id
