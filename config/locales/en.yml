@@ -35,6 +35,7 @@ en:
       change_password: "Change Password"
       edit_profile: "Edit Profile"
       edit_language_settings: "Edit Language Settings"
+      add_more_pictures: "Add More Pictures"
       confirmation: "Are you sure?"
     human_detector_error: "Sorry, look like you are robot."
     please_select: "Please Select"
@@ -76,6 +77,11 @@ en:
     language_settings:
       edit:
         title: "Edit Language Settings"
+    pictures:
+      form:
+        drop_zone_hint: "Drop image here or click to Upload"
+      list:
+        title: "Pictures"
   affiliate:
     sessions:
       new:

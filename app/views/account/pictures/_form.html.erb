@@ -5,7 +5,7 @@
         <%= image_tag picture.image.url(:preview), :alt => 'preview' %>
         <%= f.hidden_field :image_cache %>
       <% else %>
-        <span class="instructions">Drop image here or click to Upload <%= icon("upload-alt") %></span>
+        <span class="instructions"><%= t('account.pictures.form.drop_zone_hint') %> <%= icon("upload-alt") %></span>
       <% end %>
     </div>
     <%= file_field_tag :file, :class => 'hidden-file-upload', :id => 'first_upload' %>
