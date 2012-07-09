@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: business_styles
+# Table name: styles
 #
 #  id         :integer(4)      not null, primary key
 #  name       :string(50)
@@ -10,6 +10,6 @@
 
 require 'spec_helper'
 
-describe BusinessStyle do
+describe Style do
   pending "add some examples to (or delete) #{__FILE__}"
 end

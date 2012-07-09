@@ -48,6 +48,7 @@ gem 'js-routes', '~> 0.8.3'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2', '~> 0.1.11'
 gem 'ruby-openid'
 gem 'omniauth-openid'
 
@@ -58,6 +59,7 @@ group :development, :test do
   gem 'annotate', '= 2.4.1.beta1'
   gem 'ruby-debug-base', '=0.10.4'
   gem 'ruby-debug', '=0.10.4'
+  gem 'ruby18_source_location', '~> 0.2'
   gem 'cucumber-rails', '~> 1.3.0', :require => false
   gem 'capybara-webkit', '~> 0.11.0'
   gem 'database_cleaner', '~> 0.7.2'

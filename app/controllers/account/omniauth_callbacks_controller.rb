@@ -11,7 +11,7 @@ class Account::OmniauthCallbacksController < ApplicationController
     respond_with(@account, Provider.translate(:twitter))
   end
 
-  def google
+  def google_oauth2
     @account = Account.google_oauth(request.env["omniauth.auth"])
     respond_with(@account, Provider.translate(:google))
   end

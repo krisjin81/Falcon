@@ -18,18 +18,21 @@
 
 class Picture < ActiveRecord::Base
   belongs_to :attachable, :polymorphic => true
+  has_and_belongs_to_many :styles
+
+  has_enumeration_for :gender, :with => ClothingGender, :create_helpers => true
 
   attr_protected :created_at, :updated_at, :attachable_id, :attachable_type
 
   mount_uploader :image, PictureUploader
 
+  validates :attachable, :presence => true
   validates :image, :presence => true
-  validates :title, :presence => true
-  validates :dressing_tips, :presence => true
-
-  #has_attached_file :image, :styles => { :thumb => "100x100>", :preview => "200x200>" },
-  #                  :url => "/system/avatars/:id/:style/:filename",
-  #                  :default_url => "/missing.png"
-  #
-  #validates_attachment_size :image, :in => 0..20.megabytes
+  validates :title, :presence => true, :length => { :maximum => 255 }
+  validates :style_ids, :presence => true
+  validates :dressing_tips, :presence => true, :length => { :maximum => 1000 }
+  validates :brands, :length => { :maximum => 255 }, :allow_blank => true
+  validates :cost, :length => { :maximum => 255 }, :allow_blank => true
+  validates :where_to_buy, :length => { :maximum => 255 }, :allow_blank => true
+  validates :gender, :presence => true, :inclusion => ClothingGender.list
 end

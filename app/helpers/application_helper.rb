@@ -49,4 +49,14 @@ module ApplicationHelper
   def icon(icon_name)
     "<i class=\"icon-#{icon_name}\"></i>".html_safe
   end
+
+  # Renders coma separated list of names.
+  #
+  # @param collection [Enumerable] a list of items.
+  #
+  # @return [String] coma separated list of names or empty string if some error occurred when extracting names.
+  #
+  def names_list(collection)
+    collection.map(&:name).join(',') rescue ''
+  end
 end

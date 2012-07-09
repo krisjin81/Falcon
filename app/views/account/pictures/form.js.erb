@@ -1,0 +1,6 @@
+<%= show_messages %>
+$('#pictures .picture-form').remove();
+$('#pictures .picture').hide();
+$('#pictures a.new').hide();
+$('#pictures').append('<%= escape_javascript(render('account/pictures/form', :picture => @picture)) %>');
+$('#pictures .picture-form').pictureForm();

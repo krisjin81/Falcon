@@ -255,9 +255,9 @@ Country.create(:name => 'YEMEN', :iso2 => 'YE', :iso3 => 'YEM')
 Country.create(:name => 'ZAMBIA', :iso2 => 'ZM', :iso3 => 'ZMB')
 Country.create(:name => 'ZIMBABWE', :iso2 => 'ZW', :iso3 => 'ZWE')
 
-BusinessStyle.create(:name => 'Style 1')
-BusinessStyle.create(:name => 'Style 2')
-BusinessStyle.create(:name => 'Style 3')
+Style.create(:name => 'Style 1')
+Style.create(:name => 'Style 2')
+Style.create(:name => 'Style 3')
 
 Audience.create(:name => 'Male')
 Audience.create(:name => 'Female')

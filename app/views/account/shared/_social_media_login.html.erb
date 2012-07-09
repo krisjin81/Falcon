@@ -2,6 +2,6 @@
   <div class="social-media">
     <%= link_to(image_tag("icons/facebook.png"), account_omniauth_authorize_path(:facebook), :title => Provider.translate(:facebook)) if OAUTH_CONFIG['facebook'] %>
     <%= link_to(image_tag("icons/twitter.png"), account_omniauth_authorize_path(:twitter), :title => Provider.translate(:twitter)) if OAUTH_CONFIG['twitter'] %>
-    <%= link_to(image_tag("icons/google.png"), account_omniauth_authorize_path(:google), :title => Provider.translate(:google)) %>
+    <%= link_to(image_tag("icons/google.png"), account_omniauth_authorize_path(:google_oauth2), :title => Provider.translate(:google)) %>
   </div>
 <% end %>

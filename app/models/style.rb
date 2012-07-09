@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: business_styles
+# Table name: styles
 #
 #  id         :integer(4)      not null, primary key
 #  name       :string(50)
@@ -8,7 +8,7 @@
 #  updated_at :datetime        not null
 #
 
-class BusinessStyle < ActiveRecord::Base
+class Style < ActiveRecord::Base
   has_and_belongs_to_many :business_profiles
 
   attr_accessible :name

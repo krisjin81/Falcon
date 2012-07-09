@@ -113,8 +113,8 @@ def affiliate_sign_up(affiliate)
     fill_in "affiliate_business_profile_attributes_business_name", :with => affiliate.business_profile.business_name
     fill_in "affiliate_business_profile_attributes_business_name", :with => affiliate.business_profile.business_name
     select affiliate.business_profile.business_type_humanize, :from => "affiliate_business_profile_attributes_business_type"
-    affiliate.business_profile.business_styles.each do |business_style|
-      check business_style.name
+    affiliate.business_profile.styles.each do |style|
+      check style.name
     end
     affiliate.business_profile.audiences.each do |audience|
       check audience.name

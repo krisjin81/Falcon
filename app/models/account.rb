@@ -21,7 +21,7 @@
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
 #  admin_level            :integer(1)
-#  external_user_id       :integer(8)
+#  external_user_id       :string(50)
 #  provider               :string(20)
 #
 
@@ -51,6 +51,7 @@ class Account < User
   scope :by_facebook_email, lambda { |email| from_facebook.where(:email => email) }
   scope :by_twitter_id, lambda { |twitter_id| from_twitter.where(:external_user_id => twitter_id) }
   scope :by_twitter_email, lambda { |email| from_twitter.where(:email => email) }
+  scope :by_google_id, lambda { |google_id| from_google.where(:external_user_id => google_id) }
   scope :by_google_email, lambda { |email| from_google.where(:email => email) }
 
   self.per_page = 10
@@ -86,7 +87,7 @@ class Account < User
       user_info = access_token.extra.raw_info
       external_user_id = user_info.id
       email = user_info.email
-      account = self.by_facebook_id(external_user_id).first || self.by_facebook_email(email)
+      account = self.by_facebook_id(external_user_id).first || self.by_facebook_email(email).first
       if account.blank?
         account = self.new
         account.email = email
@@ -113,7 +114,7 @@ class Account < User
       user_info = access_token.extra.raw_info
       external_user_id = user_info.id
       email = "#{user_info.screen_name}@twitter.com"
-      account = self.by_twitter_id(external_user_id).first || self.by_twitter_email(email)
+      account = self.by_twitter_id(external_user_id).first || self.by_twitter_email(email).first
       if account.blank?
         account = self.new
         account.email = email
@@ -136,15 +137,21 @@ class Account < User
     # @return [Account] account.
     #
     def google_oauth(access_token)
-      user_info = access_token.info
+      user_info = access_token.extra.raw_info
+      external_user_id = user_info.id
       email = user_info.email
-      account = self.by_google_email(email).first
+      account = self.by_google_id(external_user_id).first || self.by_google_email(email).first
       if account.blank?
         account = self.new
         account.email = email
         account.provider = Provider::GOOGLE
+        account.external_user_id = user_info.id
         account.skip_confirmation!
-        account.build_profile :first_name => user_info.first_name, :last_name => user_info.last_name
+        account.build_profile :first_name => user_info.given_name, :last_name => user_info.family_name
+        if user_info.gender.present?
+          gender = Gender.enumeration[user_info.gender.to_sym]
+          account.profile.gender = gender.first if gender
+        end
         account.save
       end
       account

@@ -12,14 +12,14 @@ FactoryGirl.define do
     country             { Country.random }
 
     ignore do
-      business_styles_count 5
+      styles_count 5
       audience_count 1
       age_group_count 2
     end
 
     after_build do |business_profile, evaluator|
-      evaluator.business_styles_count.times do
-        business_profile.business_styles << BusinessStyle.random
+      evaluator.styles_count.times do
+        business_profile.styles << Style.random
       end
       evaluator.audience_count.times do
         business_profile.audiences << Audience.random

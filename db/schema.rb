@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120707085345) do
+ActiveRecord::Schema.define(:version => 20120709154347) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
@@ -69,15 +69,9 @@ ActiveRecord::Schema.define(:version => 20120707085345) do
     t.integer "audience_id"
   end
 
-  create_table "business_profiles_business_styles", :force => true do |t|
+  create_table "business_profiles_styles", :force => true do |t|
     t.integer "business_profile_id"
-    t.integer "business_style_id"
-  end
-
-  create_table "business_styles", :force => true do |t|
-    t.string   "name",       :limit => 50
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.integer "style_id"
   end
 
   create_table "countries", :force => true do |t|
@@ -107,6 +101,11 @@ ActiveRecord::Schema.define(:version => 20120707085345) do
     t.string   "image"
   end
 
+  create_table "pictures_styles", :force => true do |t|
+    t.integer "picture_id"
+    t.integer "style_id"
+  end
+
   create_table "profiles", :force => true do |t|
     t.integer  "account_id"
     t.string   "username",   :limit => 50
@@ -117,13 +116,18 @@ ActiveRecord::Schema.define(:version => 20120707085345) do
     t.integer  "gender",     :limit => 1
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
-    t.string   "email"
   end
 
   add_index "profiles", ["account_id"], :name => "index_profiles_on_account_id"
   add_index "profiles", ["first_name"], :name => "index_profiles_on_first_name"
   add_index "profiles", ["last_name"], :name => "index_profiles_on_last_name"
   add_index "profiles", ["username"], :name => "index_profiles_on_username", :unique => true
+
+  create_table "styles", :force => true do |t|
+    t.string   "name",       :limit => 50
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                :default => "", :null => false
@@ -144,7 +148,7 @@ ActiveRecord::Schema.define(:version => 20120707085345) do
     t.datetime "created_at",                                           :null => false
     t.datetime "updated_at",                                           :null => false
     t.integer  "admin_level",            :limit => 1
-    t.integer  "external_user_id",       :limit => 8
+    t.string   "external_user_id",       :limit => 50
     t.string   "provider",               :limit => 20
   end
 

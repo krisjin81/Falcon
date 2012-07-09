@@ -14,16 +14,16 @@
   <%= resource.business_profile.business_type_humanize rescue '' %>
 </p>
 <p>
-  <strong><%= BusinessProfile.human_attribute_name(:business_styles) %>:</strong><br>
-  <%= resource.business_profile.business_styles.map(&:name).join(',') rescue '' %>
+  <strong><%= BusinessProfile.human_attribute_name(:styles) %>:</strong><br>
+  <%= names_list(resource.business_profile.styles) %>
 </p>
 <p>
   <strong><%= BusinessProfile.human_attribute_name(:audiences) %>:</strong><br>
-  <%= resource.business_profile.audiences.map(&:name).join(',') rescue '' %>
+  <%= names_list(resource.audiences.styles) %>
 </p>
 <p>
   <strong><%= BusinessProfile.human_attribute_name(:age_groups) %>:</strong><br>
-  <%= resource.business_profile.age_groups.map(&:name).join(',') rescue '' %>
+  <%= names_list(resource.age_groups.styles) %>
 </p>
 <p>
   <strong><%= BusinessProfile.human_attribute_name(:first_name) %>:</strong><br>

@@ -8,9 +8,17 @@ en:
       avatar:
         image: "Avatar"
       business_profile:
-        business_style_ids: "Styles"
+        style_ids: "Styles"
         audience_ids: "Audience"
         age_group_ids: "Age Groups"
+      picture:
+        title: "Title"
+        style_ids: "Styles"
+        gender: "Gender"
+        dressing_tips: "Dressing Tips"
+        brands: "Brands"
+        cost: "Cost"
+        where_to_buy: "Where to Buy"
     errors:
       models:
         profile:

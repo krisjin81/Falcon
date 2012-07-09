@@ -2,38 +2,48 @@ class Account::PicturesController < ApplicationController
   before_filter :authenticate_account!
   before_filter :set_owner, :only => [:create]
 
-  respond_to :js
-  responders :flash
-
   def new
-    respond_with(@picture = Picture.new)
+    @picture = Picture.new
+    render :action => 'form'
   end
 
   def create
-    @picture = Picture.create(params[:picture])
-    @pictures = current_account.profile.pictures if @picture.valid?
-    respond_with(@picture)
+    @picture = Picture.new
+    if @picture.update_attributes(params[:picture])
+      @pictures = current_account.profile.pictures
+      flash.now[:notice] = I18n.t('flash.actions.create.notice', :resource_name => resource_name)
+      render :action => 'success'
+    else
+      render :action => 'failure'
+    end
   end
 
   def edit
-    respond_with(@picture = Picture.find(params[:id]))
+    @picture = Picture.find(params[:id])
+    render :action => 'form'
   end
 
   def update
     @picture = Picture.find(params[:id])
-    @picture.update_attributes(params[:picture])
-    @pictures = current_account.profile.pictures if @picture.valid?
-    respond_with(@picture)
+    if @picture.update_attributes(params[:picture])
+      @pictures = current_account.profile.pictures
+      flash.now[:notice] = I18n.t('flash.actions.update.notice', :resource_name => resource_name)
+      render :action => 'success'
+    else
+      render :action => 'failure'
+    end
   end
 
   def show
-    respond_with(@picture = Picture.find(params[:id]))
+    @picture = Picture.find(params[:id])
+    render :action => 'show'
   end
 
   def destroy
     @picture = Picture.find(params[:id])
     @picture.destroy
-    respond_with(@picture)
+    flash.now[:notice] = I18n.t('flash.actions.destroy.notice', :resource_name => resource_name)
+    render :action => 'destroy'
   end
 
   def upload
@@ -54,5 +64,9 @@ class Account::PicturesController < ApplicationController
 
   def set_owner
     params[:picture].merge!(:attachable => current_user.profile)
+  end
+
+  def resource_name
+    Picture.model_name.human
   end
 end

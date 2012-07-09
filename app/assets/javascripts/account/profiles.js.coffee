@@ -20,15 +20,12 @@ $ ->
             .append($('<input type="hidden" name="picture[image_cache]" value="' + file.cache_name + '" />'))
     form.find('.cancel').bind 'click', (e) ->
       e.preventDefault()
-      record_id = $(this).parents('.picture-form').data('id')
-      if record_id
-        $('.picture-form[data-id=' + record_id + ']').remove()
-        $('.picture[data-id=' + record_id + ']').show()
+      $(this).parents('.picture-form').remove()
+      if $('#pictures .picture').length > 0
+        $('#pictures .picture').show()
+        $('#pictures a.new').show();
       else
-        if form.parents('#pictures').find('.picture').length > 0
-          form.remove()
-        else
-          $.get(Routes.new_account_picture_path())
+        $.get(Routes.new_account_picture_path())
 
   $('.picture-form').pictureForm()
 
@@ -42,7 +39,8 @@ $ ->
   $.fn.pictureDetails = () ->
     $(this).find('a.close-details').bind 'click', (e) ->
       e.preventDefault()
-      $(this).parents('.picture-details').prev().show();
       $(this).parents('.picture-details').remove();
+      $('#pictures .picture').show();
+      $('#pictures a.new').show();
 
   $('.picture-details').pictureDetails()

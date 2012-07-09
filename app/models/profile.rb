@@ -19,9 +19,10 @@ class Profile < ActiveRecord::Base
 
   belongs_to :account
   belongs_to :country
-  has_enumeration_for :gender, :create_helpers => true
   has_one :avatar, :as => :attachable
   has_many :pictures, :as => :attachable
+
+  has_enumeration_for :gender, :create_helpers => true
 
   validates :username, :format => /^\w+$/, :allow_blank => true, :length => { :maximum => 50 }, :uniqueness => true
   validates :first_name, :length => { :maximum => 50 }

@@ -214,7 +214,7 @@ Devise.setup do |config|
     OAUTH_CONFIG = YAML.load_file(OAUTH_CONFIG_PATH)[Rails.env]
     config.omniauth(:facebook, OAUTH_CONFIG['facebook']['app_id'], OAUTH_CONFIG['facebook']['app_secret'], OAUTH_CONFIG['facebook']['options']) if OAUTH_CONFIG['facebook']
     config.omniauth(:twitter, OAUTH_CONFIG['twitter']['consumer_key'], OAUTH_CONFIG['twitter']['consumer_secret']) if OAUTH_CONFIG['twitter']
-    config.omniauth(:open_id, :store => OpenID::Store::Filesystem.new('/tmp'), :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id', :require => 'omniauth-openid')
+    config.omniauth(:google_oauth2, OAUTH_CONFIG['google']['client_id'], OAUTH_CONFIG['google']['client_secret'], OAUTH_CONFIG['google']['options']) if OAUTH_CONFIG['google']
   else
     Rails.logger.warn("Could not find oauth.yml in config directory.")
   end

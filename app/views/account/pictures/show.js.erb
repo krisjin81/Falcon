@@ -1,2 +1,5 @@
-$('.picture[data-id=<%= @picture.id %>]').after('<%= escape_javascript(render('account/pictures/details', :picture => @picture)) %>').hide();
-$('.picture-details').pictureDetails();
+<%= show_messages %>
+$('#pictures .picture').hide();
+$('#pictures a.new').hide();
+$('#pictures').append('<%= escape_javascript(render('account/pictures/details', :picture => @picture)) %>');
+$('#pictures .picture-details').pictureDetails();

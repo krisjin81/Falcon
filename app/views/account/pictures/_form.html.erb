@@ -1,4 +1,4 @@
-<%= simple_form_for([:account, picture], :remote => true, :html => { :class => "picture-form #{picture.new_record? ? 'new-picture' : ''}", 'data-id' => picture.id }) do |f| %>
+<%= simple_form_for([:account, picture], :remote => true, :html => { :class => 'picture-form' }) do |f| %>
   <div class="upload">
     <div class="drop-zone">
       <% if picture.image.present? %>
@@ -12,7 +12,12 @@
   </div>
   <div class="form">
     <%= f.input :title, :input_html => { :class => 'input-xxlarge' } %>
+    <%= f.input :style_ids, :collection => Style.cached, :as => :check_boxes %>
+    <%= f.input :gender, :collection => ClothingGender.to_a, :as => :radio_buttons %>
     <%= f.input :dressing_tips, :input_html => { :class => 'input-xxlarge', :rows => 5 } %>
+    <%= f.input :brands, :as => :text, :input_html => { :class => 'input-xxlarge', :rows => 3 } %>
+    <%= f.input :cost, :as => :text, :input_html => { :class => 'input-xxlarge', :rows => 3 } %>
+    <%= f.input :where_to_buy, :as => :text, :input_html => { :class => 'input-xxlarge', :rows => 3 } %>
   </div>
   <div class="form-actions">
     <%= f.submit :class => 'btn btn-primary' %>

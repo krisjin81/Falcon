@@ -16,10 +16,4 @@ class Avatar < ActiveRecord::Base
   attr_protected :created_at, :updated_at
 
   mount_uploader :image, AvatarUploader
-
-  #has_attached_file :image, :styles => { :thumb => "100x100>" },
-  #                  :url => "/system/avatars/:id/:style/:filename",
-  #                  :default_url => "/missing.png"
-  #
-  #validates_attachment_size :image, :in => 0..5.megabytes
 end
