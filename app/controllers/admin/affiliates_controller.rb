@@ -1,6 +1,6 @@
 class Admin::AffiliatesController < Admin::BaseController
   inherit_resources
-  navigation_section :affiliates
+  navigation_section :affiliate
   paginated
 
   before_filter :init_search_query
