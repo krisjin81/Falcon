@@ -15,6 +15,8 @@
 #
 
 class Profile < ActiveRecord::Base
+  DEFAULT_BIRTH_DATE = Date.new(1980, 1, 1)
+
   belongs_to :account
   belongs_to :country
   has_enumeration_for :gender, :create_helpers => true

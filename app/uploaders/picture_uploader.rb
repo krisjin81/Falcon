@@ -7,11 +7,11 @@ class PictureUploader < CarrierWave::Uploader::Base
   process :resize_to_fit => [800, 800]
 
   version :thumb do
-    process :resize_to_fill => [100,100]
+    process :resize_and_pad => [100,100]
   end
 
   version :preview do
-    process :resize_to_fill => [200,200]
+    process :resize_and_pad => [200,200]
   end
 
   def extension_white_list
@@ -28,6 +28,10 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   def unique_id
     @unique_id ||= (model and model.id) || "tmp/#{Time.now.strftime("%Y%m%d%H%M%S")}"
+  end
+
+  def filename
+    super.chomp(File.extname(super)) + '.png'
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
