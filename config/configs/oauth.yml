@@ -8,17 +8,29 @@ development:
   twitter:
     consumer_key: "E6QDevheDnhauvjYEzCA"
     consumer_secret: "j7LEqYDVyKiwdApm7TSJRL0VXqsrnm3zTE05BOZgI"
+  google:
+    client_id: "891067340249-rbkcgb35anof69qjb5ahjfv1kclhb41q.apps.googleusercontent.com"
+    client_secret: "IP2zTipdB07r3JkuWFld8GRO"
+    options:
+      scope: "userinfo.email,userinfo.profile"
+      approval_prompt: ""
 
 staging: &staging
   facebook:
-    app_id: "130087437131215"
-    app_secret: "bed94abc56a9175bd205c6155619a37c"
+    app_id: "378002625598685"
+    app_secret: "95717148fbfdeb0992dd1a5a0aaa105d"
     options:
       scope: "email,user_likes,publish_stream"
       display: "page"
   twitter:
     consumer_key: "Q1sF47wgPd3MMwTb50ob2A"
     consumer_secret: "ua2q9nSacO48EL253ANkKCzVX0QEuUJZOVtTC0K5U"
+  google:
+    client_id: "891067340249.apps.googleusercontent.com"
+    client_secret: "8TnxV2kVtrdpiSJRm-2u5IXO"
+    options:
+      scope: "userinfo.email,userinfo.profile"
+      approval_prompt: ""
 
 test:
   <<: *staging
