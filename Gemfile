@@ -25,7 +25,7 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'styx'
+  gem 'styx', '~> 0.1.2'
 end
 
 gem 'jquery-rails', '~> 2.0.2'

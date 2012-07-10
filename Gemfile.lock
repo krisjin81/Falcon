@@ -380,7 +380,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   shoulda (~> 3.0.1)
   simple_form (~> 2.0.2)
-  styx
+  styx (~> 0.1.2)
   therubyracer (~> 0.10.1)
   thin
   uglifier (>= 1.0.3)
