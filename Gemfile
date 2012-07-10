@@ -25,7 +25,6 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'styx', '~> 0.1.2'
 end
 
 gem 'jquery-rails', '~> 2.0.2'
@@ -45,6 +44,7 @@ gem 'factory_girl_rails', '~> 1.7.0'
 gem 'rmagick', '~> 2.13.1', :require => 'RMagick'
 gem 'carrierwave', '~> 0.6.2'
 gem 'js-routes', '~> 0.8.3'
+gem 'styx', '~> 0.1.2'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
