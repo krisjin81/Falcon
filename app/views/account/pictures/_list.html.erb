@@ -1,6 +1,6 @@
 <div id="pictures">
   <% if pictures.present? %>
-    <h2 class="header"><%= t('account.pictures.list.title') %>: <%= link_to t('helpers.actions.add_more_pictures'), new_account_picture_path, :class => 'btn btn-primary new', :remote => true %></h2>
+    <h2 class="header"><%= t('account.pictures.list.title') %>: <%= link_to t('helpers.actions.add_more_pictures'), "#!/pictures/new", :class => 'btn btn-primary new' %></h2>
     <% pictures.each do |picture| %>
       <%= render 'account/pictures/picture', :picture => picture %>
     <% end %>

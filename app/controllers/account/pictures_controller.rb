@@ -2,6 +2,10 @@ class Account::PicturesController < ApplicationController
   before_filter :authenticate_account!
   before_filter :set_owner, :only => [:create]
 
+  def index
+    @pictures = current_account.profile.pictures
+  end
+
   def new
     @picture = Picture.new
     render :action => 'form'
@@ -42,8 +46,9 @@ class Account::PicturesController < ApplicationController
   def destroy
     @picture = Picture.find(params[:id])
     @picture.destroy
+    @pictures = current_account.profile.pictures
     flash.now[:notice] = I18n.t('flash.actions.destroy.notice', :resource_name => resource_name)
-    render :action => 'destroy'
+    render :action => 'index'
   end
 
   def upload

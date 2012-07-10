@@ -4,6 +4,7 @@
   <title><%= content_for?(:title) ? "#{t('application.title')} :: #{yield(:title)}" : t('application.title') %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= styx_initialize %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/twitter_init' %>
 </head>

@@ -1,5 +1,3 @@
-<%= show_messages %>
 $('#pictures .picture').hide();
 $('#pictures a.new').hide();
 $('#pictures').append('<%= escape_javascript(render('account/pictures/details', :picture => @picture)) %>');
-$('#pictures .picture-details').pictureDetails();

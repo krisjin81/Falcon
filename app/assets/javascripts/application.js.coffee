@@ -1,4 +1,6 @@
 ##= require js-routes
+##= require path
+##= require styx
 ##= require jquery
 ##= require jquery_ujs
 ##= require jquery.ui.all

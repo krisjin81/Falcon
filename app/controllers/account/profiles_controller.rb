@@ -1,4 +1,6 @@
 class Account::ProfilesController < ApplicationController
+  include Styx::Initializer
+
   before_filter :authenticate_account!
 
   respond_to :html

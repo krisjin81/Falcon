@@ -11,8 +11,8 @@
     </dl>
   </div>
   <div class="actions">
-    <%= link_to_with_icon t('helpers.actions.details'), 'zoom-in', account_picture_path(picture), :class => 'full-details' %>
-    <%= link_to_with_icon t('helpers.actions.edit'), 'pencil', edit_account_picture_path(picture), :remote => true %>
+    <%= link_to_with_icon t('helpers.actions.details'), 'zoom-in', "#!/pictures/#{picture.id}" %>
+    <%= link_to_with_icon t('helpers.actions.edit'), 'pencil', "#!/pictures/#{picture.id}/edit" %>
     <%= link_to_with_icon t('helpers.actions.delete'), 'trash', account_picture_path(picture), :method => :delete, :confirm => t('helpers.actions.confirmation'), :remote => true %>
   </div>
 </div>
