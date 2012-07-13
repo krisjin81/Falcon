@@ -113,7 +113,7 @@
                 imageArea.find('input#picture_filter').val(filter_name)
 
     $ ->
-      if $('#pictures').is(':empty')
+      if $('#pictures').children().length == 0
         $('#pictures').block()
 
       $('.back').live 'click', (e) ->
