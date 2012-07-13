@@ -98,7 +98,7 @@ class Account::PicturesController < ApplicationController
 
   def normalize_path(path)
     full_path = File.expand_path(File.join(Rails.root, "public", path))
-    raise Exception.new("Permission denied.") unless full_path.start_with?(Rails.root)
+    raise Exception.new("Permission denied.") unless full_path.start_with?(Rails.root.to_s)
     full_path
   end
 end
