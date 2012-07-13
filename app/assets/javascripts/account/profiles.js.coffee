@@ -58,16 +58,17 @@
       form.find('input[type=file]').each () ->
         $(this).fileupload
           url: Routes.upload_account_pictures_path(),
-          formData: false,
           dataType: 'json',
           dropZone: $('.drop-zone'),
           limitMultiFileUploads: 1,
+          formData:
+            'authenticity_token': $('meta[name="csrf-token"]').attr('content')
           xhrFields:
             withCredentials: true
           send: (e, data) ->
             $(e.target).parents('.upload').block()
           done: (e, data) ->
-            file = JSON.parse(data.jqXHR.responseText)
+            file = data.result
             imageArea = $(e.target).parents('.upload').unblock()
             imageArea.find('.drop-zone').empty()
               .append(image_tag(file.preview_url, 'preview', 'preview'))

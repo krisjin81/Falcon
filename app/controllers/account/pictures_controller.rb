@@ -79,6 +79,7 @@ class Account::PicturesController < ApplicationController
     respond_to do |format|
       format.json { render :json => @result }
       format.xml { render :xml => @result }
+      format.html { render :layout => false }
     end
   end
 
