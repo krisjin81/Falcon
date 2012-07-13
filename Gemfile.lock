@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    SystemTimer (1.2.3)
     actionmailer (3.2.5)
       actionpack (= 3.2.5)
       mail (~> 2.4.4)
@@ -62,6 +63,7 @@ GEM
     carrierwave (0.6.2)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
+    cgi_multipart_eof_fix (2.5.0)
     childprocess (0.3.3)
       ffi (~> 1.0.6)
     chronic (0.6.7)
@@ -121,12 +123,14 @@ GEM
       railties (>= 3.0.0)
     faraday (0.8.1)
       multipart-post (~> 1.1)
+    fastthread (1.0.7)
     ffi (1.0.11)
     font-awesome-sass-rails (2.0.0.0)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
     forgery (0.5.0)
     fssm (0.2.9)
+    gem_plugin (0.2.3)
     gherkin (2.11.1)
       json (>= 1.4.6)
     has_scope (0.5.1)
@@ -160,12 +164,19 @@ GEM
     libv8 (3.3.10.4)
     libwebsocket (0.1.4)
       addressable
+    linecache (0.46)
+      rbx-require-relative (> 0.0.4)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     method_source (0.7.1)
     mime-types (1.19)
+    mongrel (1.1.5)
+      cgi_multipart_eof_fix (>= 2.4)
+      daemons (>= 1.0.3)
+      fastthread (>= 1.0.1)
+      gem_plugin (>= 0.2.3)
     multi_json (1.3.6)
     multipart-post (1.1.5)
     mysql2 (0.3.11)
@@ -247,6 +258,7 @@ GEM
       actionpack (~> 3.0)
       activerecord (~> 3.0)
       polyamorous (~> 0.5.0)
+    rbx-require-relative (0.0.9)
     rdoc (3.12)
       json (~> 1.4)
     responders (0.9.1)
@@ -267,7 +279,13 @@ GEM
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec (~> 2.10.0)
+    ruby-debug (0.10.4)
+      columnize (>= 0.1)
+      ruby-debug-base (~> 0.10.4.0)
+    ruby-debug-base (0.10.4)
+      linecache (>= 0.3)
     ruby-openid (2.2.0)
+    ruby18_source_location (0.2)
     rubyzip (0.9.9)
     sass (3.1.20)
     sass-rails (3.2.5)
@@ -321,6 +339,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  SystemTimer (~> 1.2.3)
   anjlab-bootstrap-rails (~> 2.0.4.3)
   annotate (= 2.4.1.beta1)
   ayah_integration (~> 0.6.3)
@@ -348,6 +367,7 @@ DEPENDENCIES
   js-routes (~> 0.8.3)
   json (~> 1.7.0)
   letter_opener (~> 0.0.2)
+  mongrel
   mysql2 (~> 0.3.11)
   omniauth
   omniauth-facebook
@@ -362,7 +382,10 @@ DEPENDENCIES
   responders (~> 0.9.1)
   rmagick (~> 2.13.1)
   rspec-rails (~> 2.10.1)
+  ruby-debug (= 0.10.4)
+  ruby-debug-base (= 0.10.4)
   ruby-openid
+  ruby18_source_location (~> 0.2)
   sass-rails (~> 3.2.3)
   shoulda (~> 3.0.1)
   simple_form (~> 2.0.2)

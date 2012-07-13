@@ -54,10 +54,14 @@ gem 'ruby-openid'
 gem 'omniauth-openid'
 
 group :development, :test do
+  gem 'mongrel', :platforms => :ruby_18
   gem 'quiet_assets'
   gem 'pry-rails'
   gem 'annotate', '= 2.4.1.beta1'
-  gem 'debugger', '=1.1.4'
+  gem 'debugger', '=1.1.4', :platforms => :ruby_19
+  gem 'ruby-debug-base', '=0.10.4', :platforms => :ruby_18
+  gem 'ruby-debug', '=0.10.4', :platforms => :ruby_18
+  gem 'ruby18_source_location', '~> 0.2', :platforms => :ruby_18
   gem 'cucumber-rails', '~> 1.3.0', :require => false
   gem 'capybara-webkit', '~> 0.11.0'
   gem 'database_cleaner', '~> 0.7.2'
@@ -67,6 +71,7 @@ group :development, :test do
   gem 'letter_opener', '~> 0.0.2'
   gem 'capistrano', '~> 2.12.0'
   gem 'capistrano-ext', '~> 1.2.1'
+  gem 'SystemTimer', '~> 1.2.3', :platforms => :ruby_18
 end
 
 group :heroku do

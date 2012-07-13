@@ -44,10 +44,6 @@
 
     Path.listen()
 
-    $('.back').live 'click', (e) ->
-      e.preventDefault()
-      history.back()
-
     $.fn.pictureForm = () ->
       image_tag = (src, alt, className) ->
         $('<img src="' + src + '" alt="' + alt + '" class="' + className + '" />')
@@ -115,3 +111,11 @@
                 imageArea.find('input#picture_remove_formatted_image').remove()
                 imageArea.find('.drop-zone').append(picture_hidden_field_tag('formatted_image_cache', data.cache_name))
                 imageArea.find('input#picture_filter').val(filter_name)
+
+    $ ->
+      if $('#pictures').is(':empty')
+        $('#pictures').block()
+
+      $('.back').live 'click', (e) ->
+        e.preventDefault()
+        history.back()
