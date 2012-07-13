@@ -5,6 +5,12 @@ module ApplicationHelper
     "$('#messages').replaceWith('#{escape_javascript(render('layouts/messages'))}');".html_safe
   end
 
+  # Clears flash :notice and :error messages.
+  #
+  def clear_messages
+    "$('#messages').empty();".html_safe
+  end
+
   # Renders link with icon.
   #
   # @param text [String] link text.

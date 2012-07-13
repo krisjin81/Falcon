@@ -10,8 +10,9 @@ if defined?(Bundler)
 end
 
 require File.expand_path('lib/sti_type_casting.rb')
-Dir['lib/controllers/*.rb'].each {|file| require File.expand_path(file) }
 Dir['lib/extensions/*.rb'].each {|file| require File.expand_path(file) }
+Dir['lib/controllers/*.rb'].each {|file| require File.expand_path(file) }
+Dir['lib/filters/*.rb'].each {|file| require File.expand_path(file) }
 
 module Falcon
   class Application < Rails::Application
@@ -21,6 +22,8 @@ module Falcon
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
+    config.autoload_paths << "#{Rails.root}/app/enumerations"
+    config.autoload_paths << "#{Rails.root}/app/uploaders"
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -68,8 +71,5 @@ module Falcon
     config.generators do |g|
       g.test_framework  :rspec, :fixture_replacement => :factory_girl
     end
-
-    config.autoload_paths << "#{Rails.root}/app/enumerations"
-    config.autoload_paths << "#{Rails.root}/app/uploaders"
   end
 end

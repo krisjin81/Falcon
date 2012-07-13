@@ -1,5 +1,5 @@
 class Admin::BaseController < ApplicationController
-  include Controllers::Pagination
+  include ::Controllers::Pagination
 
   layout 'admin'
 

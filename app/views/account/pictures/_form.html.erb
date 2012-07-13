@@ -1,15 +1,39 @@
-<%= simple_form_for([:account, picture], :remote => true, :html => { :class => 'picture-form' }) do |f| %>
+<%= simple_form_for([:account, picture], :remote => true, :html => { :class => 'picture-form', 'data-id' => picture.id }) do |f| %>
   <div class="upload">
     <div class="drop-zone">
       <% if picture.image.present? %>
-        <%= image_tag picture.image.url(:preview), :alt => 'preview' %>
-        <%= f.hidden_field :image_cache %>
+        <%= image_tag picture.image.url(:preview), :class => 'preview' %>
+
+        <% if picture.original_image.present? %>
+          <%= hidden_field_tag :original_image_url, picture.original_image.url %>
+          <%= hidden_field_tag :original_image_preview_url, picture.original_image.url(:preview) %>
+          <%= f.hidden_field :original_image_cache %>
+        <% end %>
+
+        <% if picture.formatted_image.present? %>
+          <%= f.hidden_field :formatted_image_cache %>
+        <% end %>
       <% else %>
         <span class="instructions"><%= t('account.pictures.form.drop_zone_hint') %> <%= icon("upload-alt") %></span>
       <% end %>
     </div>
     <%= file_field_tag :file, :class => 'hidden-file-upload', :id => 'first_upload' %>
+    <div class="filters <%= picture.image.blank? ? 'hidden' : '' %>">
+      <h3><%= t('account.pictures.form.filters_title') %>:</h3>
+      <div class="samples">
+        <%= link_to image_tag("filters/original.png"), "#original", :class => picture.filter.blank? ? 'original active' : 'original' %>
+        <% Filters::Base.subclasses.keys.each do |filter| %>
+          <%= link_to image_tag("filters/#{filter}.png"), "##{filter}", :class => filter.to_s == picture.filter ? 'active' : '' %>
+        <% end %>
+      </div>
+    </div>
+    <%= f.hidden_field :filter %>
   </div>
+
+  <% if picture.errors[:original_image].present? %>
+    <div class="alert alert-error"><%= f.full_error :original_image %></div>
+  <% end %>
+
   <div class="form">
     <%= f.input :title, :input_html => { :class => 'input-xxlarge' } %>
     <%= f.input :style_ids, :collection => Style.cached, :as => :check_boxes %>

@@ -1,6 +1,8 @@
 <div class="picture-details" data-id="<%= picture.id %>">
   <div class="image">
-    <%= image_tag picture.image.url(:preview) %>
+    <% if picture.image.present? %>
+      <%= image_tag picture.image.url(:preview) %>
+    <% end %>
   </div>
   <div class="details">
     <dl>
@@ -10,14 +12,22 @@
       <dd><%= names_list(picture.styles) %></dd>
       <dt><%= Picture.human_attribute_name(:gender) %></dt>
       <dd><%= picture.gender_humanize %></dd>
-      <dt><%= Picture.human_attribute_name(:brands) %></dt>
-      <dd><%= picture.brands %></dd>
-      <dt><%= Picture.human_attribute_name(:cost) %></dt>
-      <dd><%= picture.cost %></dd>
-      <dt><%= Picture.human_attribute_name(:dressing_tips) %></dt>
-      <dd><%= picture.dressing_tips %></dd>
-      <dt><%= Picture.human_attribute_name(:where_to_buy) %></dt>
-      <dd><%= picture.where_to_buy %></dd>
+      <% unless picture.brands.blank? %>
+        <dt><%= Picture.human_attribute_name(:brands) %></dt>
+        <dd><%= picture.brands %></dd>
+      <% end %>
+      <% unless picture.cost.blank? %>
+        <dt><%= Picture.human_attribute_name(:cost) %></dt>
+        <dd><%= picture.cost %></dd>
+      <% end %>
+      <% unless picture.dressing_tips.blank? %>
+        <dt><%= Picture.human_attribute_name(:dressing_tips) %></dt>
+        <dd><%= picture.dressing_tips %></dd>
+      <% end %>
+      <% unless picture.where_to_buy.blank? %>
+        <dt><%= Picture.human_attribute_name(:where_to_buy) %></dt>
+        <dd><%= picture.where_to_buy %></dd>
+      <% end %>
     </dl>
   </div>
   <div class="actions">

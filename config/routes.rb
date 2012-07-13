@@ -7,6 +7,7 @@ Falcon::Application.routes.draw do
     resources :pictures do
       collection do
         post :upload
+        post :apply_filter
       end
     end
     get ":id" => "profiles#show", :as => :view_profile

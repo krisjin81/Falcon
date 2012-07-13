@@ -17,8 +17,8 @@ development:
 
 staging: &staging
   facebook:
-    app_id: "378002625598685"
-    app_secret: "95717148fbfdeb0992dd1a5a0aaa105d"
+    app_id: "130087437131215"
+    app_secret: "bed94abc56a9175bd205c6155619a37c"
     options:
       scope: "email,user_likes,publish_stream"
       display: "page"

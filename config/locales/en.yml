@@ -80,6 +80,7 @@ en:
     pictures:
       form:
         drop_zone_hint: "Drop image here or click to Upload"
+        filters_title: "Apply Filter"
       list:
         title: "Pictures"
   affiliate:

@@ -15,15 +15,25 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-     "/missing.png"
+     "/avatar.png"
   end
 
   def store_dir
-    "system/avatars/#{unique_id}"
+    if model and model.id
+      "system/avatars/#{model.id}"
+    else
+      File.join(cache_dir, CarrierWave.generate_cache_id)
+    end
   end
 
-  def unique_id
-    @unique_id ||= (model and model.id) || "tmp/#{Time.now.strftime("%Y%m%d%H%M%S")}"
+  def cache_dir
+    "system/tmp"
+  end
+
+  def filename
+    if filename = super
+      filename.chomp(File.extname(filename)) + '.png'
+    end
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

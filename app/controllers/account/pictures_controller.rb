@@ -3,19 +3,19 @@ class Account::PicturesController < ApplicationController
   before_filter :set_owner, :only => [:create]
 
   def index
-    @pictures = current_account.profile.pictures
+    @pictures = resources.all
   end
 
   def new
-    @picture = Picture.new
+    @picture = resources.new
     render :action => 'form'
   end
 
   def create
-    @picture = Picture.new
+    @picture = resources.new
     if @picture.update_attributes(params[:picture])
-      @pictures = current_account.profile.pictures
-      flash.now[:notice] = I18n.t('flash.actions.create.notice', :resource_name => resource_name)
+      @pictures = resources.all
+      flash[:notice] = I18n.t('flash.actions.create.notice', :resource_name => resource_name)
       render :action => 'success'
     else
       render :action => 'failure'
@@ -23,15 +23,15 @@ class Account::PicturesController < ApplicationController
   end
 
   def edit
-    @picture = Picture.find(params[:id])
+    @picture = resources.find(params[:id])
     render :action => 'form'
   end
 
   def update
-    @picture = Picture.find(params[:id])
+    @picture = resources.find(params[:id])
     if @picture.update_attributes(params[:picture])
-      @pictures = current_account.profile.pictures
-      flash.now[:notice] = I18n.t('flash.actions.update.notice', :resource_name => resource_name)
+      @pictures = resources.all
+      flash[:notice] = I18n.t('flash.actions.update.notice', :resource_name => resource_name)
       render :action => 'success'
     else
       render :action => 'failure'
@@ -39,24 +39,41 @@ class Account::PicturesController < ApplicationController
   end
 
   def show
-    @picture = Picture.find(params[:id])
+    @picture = resources.find(params[:id])
     render :action => 'show'
   end
 
   def destroy
-    @picture = Picture.find(params[:id])
+    @picture = resources.find(params[:id])
     @picture.destroy
-    @pictures = current_account.profile.pictures
-    flash.now[:notice] = I18n.t('flash.actions.destroy.notice', :resource_name => resource_name)
+    @pictures = resources.all
+    flash[:notice] = I18n.t('flash.actions.destroy.notice', :resource_name => resource_name)
     render :action => 'index'
+  end
+
+  def apply_filter
+    filter = "Filters::#{params[:filter].camelize}".constantize.new
+    path = normalize_path(params[:path])
+    path = filter.apply(path)
+    uploader = PictureUploader.new
+    uploader.store!(File.open(path, 'r'))
+    uploader.cache_stored_file!
+    @result = { :success => true, :cache_name => uploader.cache_name, :url => uploader.url, :preview_url => uploader.url(:preview) }
+  rescue => exc
+    @result =  { :success => false, :message => exc.message }
+  ensure
+    respond_to do |format|
+      format.json { render :json => @result }
+      format.xml { render :xml => @result }
+    end
   end
 
   def upload
     uploader = PictureUploader.new
     uploader.store!(params[:file])
     uploader.cache_stored_file!
-    @result = { :success => true, :cache_name => uploader.cache_name, :preview_url => uploader.url(:preview) }
-  rescue CarrierWave::UploadError => exc
+    @result = { :success => true, :cache_name => uploader.cache_name, :url => uploader.url, :preview_url => uploader.url(:preview) }
+  rescue => exc
     @result =  { :success => false, :message => exc.message }
   ensure
     respond_to do |format|
@@ -67,11 +84,21 @@ class Account::PicturesController < ApplicationController
 
   private
 
+  def resources
+    current_user.profile.pictures
+  end
+
   def set_owner
     params[:picture].merge!(:attachable => current_user.profile)
   end
 
   def resource_name
     Picture.model_name.human
+  end
+
+  def normalize_path(path)
+    full_path = File.expand_path(File.join(Rails.root, "public", path))
+    raise Exception.new("Permission denied.") unless full_path.start_with?(Rails.root)
+    full_path
   end
 end

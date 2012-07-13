@@ -13,7 +13,9 @@
 #  gender          :integer(1)
 #  created_at      :datetime        not null
 #  updated_at      :datetime        not null
-#  image           :string(255)
+#  original_image  :string(255)
+#  filter          :string(20)
+#  formatted_image :string(255)
 #
 
 class Picture < ActiveRecord::Base
@@ -24,10 +26,11 @@ class Picture < ActiveRecord::Base
 
   attr_protected :created_at, :updated_at, :attachable_id, :attachable_type
 
-  mount_uploader :image, PictureUploader
+  mount_uploader :original_image, PictureUploader
+  mount_uploader :formatted_image, PictureUploader
 
   validates :attachable, :presence => true
-  validates :image, :presence => true
+  validates :original_image, :presence => true
   validates :title, :presence => true, :length => { :maximum => 255 }
   validates :style_ids, :presence => true
   validates :dressing_tips, :presence => true, :length => { :maximum => 1000 }
@@ -35,4 +38,18 @@ class Picture < ActiveRecord::Base
   validates :cost, :length => { :maximum => 255 }, :allow_blank => true
   validates :where_to_buy, :length => { :maximum => 255 }, :allow_blank => true
   validates :gender, :presence => true, :inclusion => ClothingGender.list
+
+  def image
+    if formatted_image.present?
+      formatted_image
+    else
+      original_image
+    end
+  end
+
+  def apply_filter(filter_name)
+    filter = "Filters::#{filter_name.camelize}".constantize.new
+    formatted_image_path = filter.apply(self.original_image.path)
+    self.formatted_image = File.open(formatted_image_path)
+  end
 end

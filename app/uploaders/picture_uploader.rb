@@ -19,15 +19,19 @@ class PictureUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-     "/missing.png"
+     "/200x200.png"
   end
 
   def store_dir
-    "system/pictures/#{unique_id}"
+    if model and model.id
+      "system/pictures/#{model.id}"
+    else
+      File.join(cache_dir, CarrierWave.generate_cache_id)
+    end
   end
 
-  def unique_id
-    @unique_id ||= (model and model.id) || "tmp/#{Time.now.strftime("%Y%m%d%H%M%S")}"
+  def cache_dir
+    "system/tmp"
   end
 
   def filename

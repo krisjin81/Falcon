@@ -19,6 +19,8 @@ en:
         brands: "Brands"
         cost: "Cost"
         where_to_buy: "Where to Buy"
+        original_image: "Image"
+        formatted_image: "Image"
     errors:
       models:
         profile:
