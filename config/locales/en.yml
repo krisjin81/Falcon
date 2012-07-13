@@ -33,6 +33,7 @@ en:
       forgot_your_password: "Forgot your password?"
       resend_confirmation_instruction: "Resent Confirmation"
       change_password: "Change Password"
+      profile: "Profile"
       edit_profile: "Edit Profile"
       edit_language_settings: "Edit Language Settings"
       add_more_pictures: "Add More Pictures"

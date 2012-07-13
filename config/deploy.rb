@@ -39,4 +39,19 @@ namespace :deploy do
   end
 end
 
+namespace :crontab do
+  desc "Update the crontab file"
+  task :update, :only => {:primary => true} do
+    run "if [[ -d #{current_path} ]]; then cd #{current_path} && RAILS_ENV=#{rails_env} whenever --set environment=#{rails_env} --update-crontab #{application}; fi"
+  end
+
+  desc "Clear application's crontab entries using Whenever"
+  task :clear, :only => {:primary => true} do
+    run "if [[ -d #{current_path} ]]; then cd #{current_path} && RAILS_ENV=#{rails_env} whenever --set environment=#{rails_env} --clear-crontab #{application}; fi"
+  end
+end
+
 after "deploy:finalize_update", :link_configs
+after "deploy:update_code", "crontab:clear" # Disable cron jobs at the beginning of a deployment.
+after "deploy:create_symlink", "crontab:update" # Write the new cron jobs near the end.
+after "deploy:rollback", "crontab:update" # If anything goes wrong, undo.

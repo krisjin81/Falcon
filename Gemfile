@@ -45,6 +45,7 @@ gem 'rmagick', '~> 2.13.1', :require => 'RMagick'
 gem 'carrierwave', '~> 0.6.2'
 gem 'js-routes', '~> 0.8.3'
 gem 'styx', '~> 0.1.2'
+gem 'whenever', '~> 0.7.3'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
