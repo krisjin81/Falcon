@@ -124,7 +124,7 @@ module Filters
     #
     def frame(image, frame)
       %x{ convert '#{image}' \
-          \\( '#{frame}' -resize #{@width}x#{@height}! -unsharp 1.5×1.0+1.5+0.02 \\) -flatten \
+          \\( '#{frame}' -resize #{@width}x#{@height}! -unsharp 1.5x1.0+1.5+0.02 \\) -flatten \
           '#{image}' }
       image
     end

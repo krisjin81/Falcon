@@ -34,7 +34,6 @@ gem 'inherited_resources', '~> 1.3.1'
 gem 'responders', '~> 0.9.1'
 gem 'enumerate_it', '~> 0.7.15'
 gem 'ayah_integration', '~> 0.6.3'
-#gem 'paperclip', '~> 2.7.0'
 gem 'will_paginate', '~> 3.0.3'
 gem 'bootstrap-will_paginate', '~> 0.0.7'
 gem 'has_scope', '~> 0.5.1'
@@ -56,12 +55,9 @@ gem 'omniauth-openid'
 
 group :development, :test do
   gem 'quiet_assets'
-  gem 'mongrel'
   gem 'pry-rails'
   gem 'annotate', '= 2.4.1.beta1'
-  gem 'ruby-debug-base', '=0.10.4'
-  gem 'ruby-debug', '=0.10.4'
-  gem 'ruby18_source_location', '~> 0.2'
+  gem 'debugger', '=1.1.4'
   gem 'cucumber-rails', '~> 1.3.0', :require => false
   gem 'capybara-webkit', '~> 0.11.0'
   gem 'database_cleaner', '~> 0.7.2'
@@ -71,7 +67,6 @@ group :development, :test do
   gem 'letter_opener', '~> 0.0.2'
   gem 'capistrano', '~> 2.12.0'
   gem 'capistrano-ext', '~> 1.2.1'
-  gem 'SystemTimer', '~> 1.2.3'
 end
 
 group :heroku do
