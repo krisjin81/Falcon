@@ -39,7 +39,7 @@ module Account::SocialMediasHelper
   def pinterest_share_button(picture, attributes = { :class => 'pinterest-share' })
     options = {
       :url => picture_url(picture),
-      :media => picture.image.url,
+      :media => URI.join(root_url, picture.image.url),
       :description => picture.dressing_tips
     }
     attributes[:target] = '_blank'
