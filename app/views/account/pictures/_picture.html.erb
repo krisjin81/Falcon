@@ -7,7 +7,7 @@
       <dt><%= Picture.human_attribute_name(:title) %></dt>
       <dd><%= picture.title %></dd>
       <dt><%= Picture.human_attribute_name(:dressing_tips) %></dt>
-      <dd><%= picture.dressing_tips %></dd>
+      <dd><%= truncate(picture.dressing_tips) %></dd>
     </dl>
   </div>
 
