@@ -17,7 +17,7 @@ module Filters
       %x{ convert #{image} \
           -contrast -modulate 100,150,100 -auto-gamma \
           #{image} }
-      frame(image, 'public/nashville.png')
+      image
     end
   end
 end

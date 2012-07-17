@@ -46,12 +46,18 @@ class Profile < ActiveRecord::Base
     username.blank? or invalid?(:username)
   end
 
+  # Gets profile full name.
+  #
+  def full_name
+    [first_name, last_name].join(" ")
+  end
+
   # Overrides Account string representation.
   #
   # @return [String] username or email.
   #
   def to_s
-    username
+    username || full_name
   end
 
   # Gets user unique identifier.

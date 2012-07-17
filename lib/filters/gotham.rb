@@ -15,7 +15,7 @@ module Filters
       %x{ convert #{image} \
           -modulate 120,10,100 -fill '#222b6d' -colorize 20 -gamma 0.5 -contrast -contrast \
           #{image} }
-      border(image, 'black', 20)
+      image
     end
   end
 end

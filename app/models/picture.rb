@@ -39,6 +39,10 @@ class Picture < ActiveRecord::Base
   validates :where_to_buy, :length => { :maximum => 255 }, :allow_blank => true
   validates :gender, :presence => true, :inclusion => ClothingGender.list
 
+  scope :latest, order('created_at DESC').limit(10)
+
+  # Gets formatted image if filter was applied or original image otherwise.
+  #
   def image
     if formatted_image.present?
       formatted_image
@@ -47,9 +51,13 @@ class Picture < ActiveRecord::Base
     end
   end
 
-  def apply_filter(filter_name)
-    filter = "Filters::#{filter_name.camelize}".constantize.new
-    formatted_image_path = filter.apply(self.original_image.path)
-    self.formatted_image = File.open(formatted_image_path)
+  # Determines whether specified account is owner of picture.
+  #
+  # @param account [Account] account to check.
+  #
+  # @return [Boolean] true if specified account is owner of image and false otherwise.
+  #
+  def is_owner?(account)
+    attachable == account.profile
   end
 end

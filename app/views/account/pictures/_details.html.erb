@@ -30,7 +30,12 @@
       <% end %>
     </dl>
   </div>
+
+  <%= render 'share', :picture => picture %>
+
   <div class="actions">
-    <%= link_to_with_icon t('helpers.actions.close'), 'zoom-out', '#', :class => 'back' %>
+    <%= link_to_with_icon t('helpers.actions.close'), 'zoom-out', '#!/index' %>
+    <%= link_to_with_icon(t('helpers.actions.edit'), 'pencil', "#!/pictures/#{picture.id}/edit") if picture.is_owner?(current_user) %>
+    <%= link_to_with_icon(t('helpers.actions.delete'), 'trash', account_profile_picture_path(picture), :method => :delete, :confirm => t('helpers.actions.confirmation'), :remote => true) if picture.is_owner?(current_user) %>
   </div>
 </div>

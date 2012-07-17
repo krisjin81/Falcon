@@ -12,11 +12,23 @@
       <div class="details">
         <dl>
           <dt><%= Profile.human_attribute_name(:username) %>:</dt>
-          <dd><%= edit_link_to(text_or_blank(@profile.username), edit_account_profile_path) if is_current_profile?(@profile) %></dd>
+          <dd>
+            <% if is_current_profile?(@profile) %>
+              <%= edit_link_to(text_or_blank(@profile.username), edit_account_profile_path) %>
+            <% else %>
+              <%= text_or_blank(@profile.username) %>
+            <% end %>
+          </dd>
         </dl>
         <dl>
           <dt><%= Profile.human_attribute_name(:status) %>:</dt>
-          <dd><%= edit_link_to(text_or_blank('Working'), '#') if is_current_profile?(@profile) %></dd>
+          <dd>
+            <% if is_current_profile?(@profile) %>
+              <%= edit_link_to(text_or_blank('Working'), '#') if is_current_profile?(@profile) %>
+            <% else %>
+              <%= text_or_blank('Working') %>
+            <% end %>
+          </dd>
         </dl>
       </div>
       <div class="about">

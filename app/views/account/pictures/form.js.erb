@@ -1,6 +1,7 @@
 <%= clear_messages %>
 $('#pictures .picture-form').remove();
+$('#pictures .picture-details').remove();
 $('#pictures .picture').hide();
 $('#pictures a.new').hide();
-$('#pictures').append('<%= escape_javascript(render('account/pictures/form', :picture => @picture)) %>');
+$('#pictures').append('<%= escape_javascript(render('account/pictures/form', :picture => @picture).html_safe) %>');
 $('#pictures .picture-form').pictureForm();

@@ -3,9 +3,9 @@
 
 en:
   application:
-    title: "Falcon"
+    title: "Fashion Invited"
     admin_area: "Admin"
-    copyright: "&copy; Falcon 2012"
+    copyright: "&copy; Fashion Invited 2012"
   helpers:
     actions:
       actions: "Actions"
@@ -51,6 +51,11 @@ en:
         notice: "%{resource_name} was deleted successfully."
       update:
         notice: "%{resource_name} was updated successfully."
+  social_media:
+    share_on_twitter: "Share on Twitter."
+    tweet_template: "Hey! Check out %{url}."
+    facebook_caption: "Fashion Invited"
+    share_on_pinterest: "Share on Pinterest."
   account:
     sessions:
       new:

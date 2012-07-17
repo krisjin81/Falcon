@@ -1,6 +1,5 @@
 class Account::PicturesController < ApplicationController
   before_filter :authenticate_account!
-  before_filter :set_owner, :only => [:create]
 
   def index
     @pictures = resources.all
@@ -85,12 +84,26 @@ class Account::PicturesController < ApplicationController
 
   private
 
-  def resources
-    current_user.profile.pictures
+  def load_profile
+    @profile ||= if params[:profile_id]
+      Profile.by_unique_id(params[:profile_id]).first.tap do |profile|
+        raise ActiveRecord::RecordNotFound.new("Could not found profile with username or id '#{params[:profile_id]}'") unless profile
+      end
+    else
+      current_account.profile || current_account.build_profile
+    end
   end
 
-  def set_owner
-    params[:picture].merge!(:attachable => current_user.profile)
+  def resources
+    if ["index", "show"].include? params[:action]
+      load_profile.pictures
+    else
+      current_account.profile.pictures
+    end
+  end
+
+  def current_account_pictures
+    current_account.profile.pictures
   end
 
   def resource_name

@@ -20,3 +20,33 @@
     margin-left: 10px;
   }
 }
+
+#latest_pictures {
+  .picture {
+    float: left;
+    width: 215px;
+    margin: 10px;
+    background: #ddd;
+    text-align: center;
+    @include border-radius(5px);
+
+    &.first {
+      margin-left: 0;
+    }
+
+    img {
+      border: 1px solid #aaa;
+      background: #fff;
+    }
+
+    .title {
+      text-align: center;
+      margin: 5px 0;
+    }
+
+    .author {
+      text-align: center;
+      margin: 5px 0;
+    }
+  }
+}

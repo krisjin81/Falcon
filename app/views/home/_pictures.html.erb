@@ -1,0 +1,11 @@
+<div id="latest_pictures">
+  <% if pictures.present? %>
+    <% pictures.each_with_index do |picture, i| %>
+      <div class="picture <%= (i % 4 == 0) ? 'first' : '' %>">
+        <%= render 'picture', :picture => picture %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= t('helpers.empty_list') %>
+  <% end %>
+</div>

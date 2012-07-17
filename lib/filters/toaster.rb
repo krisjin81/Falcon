@@ -16,8 +16,7 @@ module Filters
           -modulate 150,80,100 -gamma 1.2 -contrast -contrast \
           #{image} }
       image = vignette(image, 'none', '#CDC1C5')
-      image = vignette(image, '#FF9966', 'none')
-      border(image, 'white', 20)
+      vignette(image, '#FF9966', 'none')
     end
   end
 end

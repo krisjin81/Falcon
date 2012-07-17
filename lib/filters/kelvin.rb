@@ -16,7 +16,7 @@ module Filters
           \\( -size #{@width}x#{@height} -fill 'rgba(255,153,0,0.5)' -draw 'rectangle 0,0 #{@width},#{@height}' \\) \
           -compose multiply \
           #{image} }
-      frame(image, 'public/kelvin.png')
+      image
     end
   end
 end

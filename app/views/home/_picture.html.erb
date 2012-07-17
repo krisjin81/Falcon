@@ -1,0 +1,9 @@
+<div class="title">
+  <h3><%= link_to picture.title, picture_url(picture) %></h3>
+</div>
+<div class="image">
+  <%= link_to image_tag(picture.image.url(:preview)), picture_url(picture) %>
+</div>
+<div class="author">
+  by <%= link_to picture.attachable, account_view_url(:profile_id => picture.attachable.unique_id) %>
+</div>

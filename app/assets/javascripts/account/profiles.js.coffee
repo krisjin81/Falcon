@@ -5,7 +5,7 @@
       $('#pictures').block()
     )
     .to(() ->
-      $.get(Routes.account_pictures_path(), () ->
+      $.get(Routes.account_view_pictures_path(data.profile_id), () ->
         $('#pictures').unblock()
       )
     )
@@ -15,7 +15,7 @@
       $('#pictures').block()
     )
     .to(() ->
-      $.get(Routes.new_account_picture_path(), () ->
+      $.get(Routes.new_account_profile_picture_path(), () ->
         $('#pictures').unblock()
       )
     )
@@ -25,7 +25,7 @@
       $('#pictures').block()
     )
     .to(() ->
-      $.get(Routes.account_picture_path(this.params['id']), () ->
+      $.get(Routes.account_view_picture_path(data.profile_id, this.params['id']), () ->
         $('#pictures').unblock()
       )
     )
@@ -35,7 +35,7 @@
       $('#pictures').block()
     )
     .to(() ->
-      $.get(Routes.edit_account_picture_path(this.params['id']), () ->
+      $.get(Routes.edit_account_profile_picture_path(this.params['id']), () ->
         $('#pictures').unblock()
       )
     )
@@ -57,7 +57,7 @@
       form = $(this)
       form.find('input[type=file]').each () ->
         $(this).fileupload
-          url: Routes.upload_account_pictures_path(),
+          url: Routes.upload_account_profile_pictures_path(),
           dataType: 'json',
           dropZone: $('.drop-zone'),
           limitMultiFileUploads: 1,
@@ -76,9 +76,9 @@
               .append(hidden_field_tag('original_image_url', file.url))
               .append(hidden_field_tag('original_image_preview_url', file.preview_url))
             imageArea.find('.filters').removeClass('hidden')
-      form.find('.cancel').bind 'click', (e) ->
-        e.preventDefault()
-        history.back()
+            imageArea.find('.filters a').removeClass('active')
+            imageArea.find('.filters a.original').addClass('active')
+            imageArea.find('input#picture_filter').val("")
 
       form.find('.filters a').bind 'click', (e) ->
         e.preventDefault()
@@ -100,7 +100,7 @@
           picture_id = form.data('id')
           imageArea = form.find('.upload').block()
           $.ajax
-            url: Routes.apply_filter_account_pictures_path()
+            url: Routes.apply_filter_account_profile_pictures_path()
             type: 'POST'
             data: { 'filter': filter_name, 'path': imageArea.find("input#original_image_url").val() }
             complete: () ->
@@ -112,11 +112,3 @@
                 imageArea.find('input#picture_remove_formatted_image').remove()
                 imageArea.find('.drop-zone').append(picture_hidden_field_tag('formatted_image_cache', data.cache_name))
                 imageArea.find('input#picture_filter').val(filter_name)
-
-    $ ->
-      if $('#pictures').children().length == 0
-        $('#pictures').block()
-
-      $('.back').live 'click', (e) ->
-        e.preventDefault()
-        history.back()
