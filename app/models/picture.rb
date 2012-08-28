@@ -21,6 +21,7 @@
 class Picture < ActiveRecord::Base
   belongs_to :attachable, :polymorphic => true
   has_and_belongs_to_many :styles
+  has_many :comments, :as => :commentable
 
   has_enumeration_for :gender, :with => ClothingGender, :create_helpers => true
 
@@ -59,5 +60,13 @@ class Picture < ActiveRecord::Base
   #
   def is_owner?(account)
     attachable == account.profile
+  end
+
+  # Overrides Picture string representation.
+  #
+  # @return [String] username or email.
+  #
+  def to_s
+    title
   end
 end

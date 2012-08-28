@@ -65,4 +65,12 @@ module ApplicationHelper
   def names_list(collection)
     collection.map(&:name).join(',') rescue ''
   end
+
+  def comments_path(picture)
+    if params[:profile_id]
+
+    else
+
+    end
+  end
 end

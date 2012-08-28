@@ -38,6 +38,7 @@ en:
       edit_language_settings: "Edit Language Settings"
       add_more_pictures: "Add More Pictures"
       confirmation: "Are you sure?"
+      comment: "Comment"
     human_detector_error: "Sorry, look like you are robot."
     please_select: "Please Select"
     empty_list: "There are no items to display."
@@ -89,6 +90,9 @@ en:
         filters_title: "Apply Filter"
       list:
         title: "Pictures"
+    comments:
+      no_comments: "There is no comments for %{commentable}. Be the first."
+      author_title_format: "%{author} %{time} ago"
   affiliate:
     sessions:
       new:

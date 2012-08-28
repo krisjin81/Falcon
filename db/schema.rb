@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120711173123) do
+ActiveRecord::Schema.define(:version => 20120827193419) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
@@ -72,6 +72,15 @@ ActiveRecord::Schema.define(:version => 20120711173123) do
   create_table "business_profiles_styles", :force => true do |t|
     t.integer "business_profile_id"
     t.integer "style_id"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.string   "body",             :limit => 1000
+    t.integer  "author_id"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   create_table "countries", :force => true do |t|

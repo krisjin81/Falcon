@@ -1,4 +1,4 @@
-<%= simple_form_for([:account, :profile, picture], :remote => true, :html => { :class => 'picture-form', 'data-id' => picture.id }) do |f| %>
+<%= simple_form_for([:account, picture], :remote => true, :html => { :class => 'picture-form', 'data-id' => picture.id }) do |f| %>
   <div class="upload">
     <div class="drop-zone">
       <% if picture.image.present? %>

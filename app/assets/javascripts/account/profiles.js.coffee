@@ -15,7 +15,7 @@
       $('#pictures').block()
     )
     .to(() ->
-      $.get(Routes.new_account_profile_picture_path(), () ->
+      $.get(Routes.new_account_picture_path(), () ->
         $('#pictures').unblock()
       )
     )
@@ -35,7 +35,7 @@
       $('#pictures').block()
     )
     .to(() ->
-      $.get(Routes.edit_account_profile_picture_path(this.params['id']), () ->
+      $.get(Routes.edit_account_picture_path(this.params['id']), () ->
         $('#pictures').unblock()
       )
     )
@@ -57,7 +57,7 @@
       form = $(this)
       form.find('input[type=file]').each () ->
         $(this).fileupload
-          url: Routes.upload_account_profile_pictures_path(),
+          url: Routes.upload_account_pictures_path(),
           dataType: 'json',
           dropZone: $('.drop-zone'),
           limitMultiFileUploads: 1,
@@ -100,7 +100,7 @@
           picture_id = form.data('id')
           imageArea = form.find('.upload').block()
           $.ajax
-            url: Routes.apply_filter_account_profile_pictures_path()
+            url: Routes.apply_filter_account_pictures_path()
             type: 'POST'
             data: { 'filter': filter_name, 'path': imageArea.find("input#original_image_url").val() }
             complete: () ->
