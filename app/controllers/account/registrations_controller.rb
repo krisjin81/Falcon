@@ -22,6 +22,7 @@ class Account::RegistrationsController < Devise::RegistrationsController
   def build_resource(hash=nil)
     super.tap do |resource|
       resource.build_profile unless resource.profile
+      resource.profile.build_avatar unless resource.profile.avatar
     end
   end
 
