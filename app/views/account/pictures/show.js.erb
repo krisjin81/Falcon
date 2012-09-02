@@ -1,4 +1,4 @@
 <%= clear_messages %>
 $('#pictures .picture').hide();
 $('#pictures a.new').hide();
-$('#pictures').append('<%= escape_javascript(render('account/pictures/details', :picture => @picture)) %>');
+$('#pictures').append('<%= escape_javascript(render('account/pictures/details', :picture => @picture, :like => @like, :likes_count => @likes_count)) %>');

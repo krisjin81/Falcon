@@ -22,6 +22,7 @@ class Profile < ActiveRecord::Base
   has_one :avatar, :as => :attachable
   has_many :pictures, :as => :attachable
   has_many :comments, :foreign_key => :author_id
+  has_many :likes
 
   has_enumeration_for :gender, :create_helpers => true
 

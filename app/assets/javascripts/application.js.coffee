@@ -53,3 +53,6 @@ $ ->
   $('.share .pinterest-share').live 'click', (e) ->
     e.preventDefault()
     window.popup($(this).attr('href'), $(this).attr('title'), 600, 300)
+
+  $('a[disabled=disabled]').live 'click', (e) ->
+    e.preventDefault()

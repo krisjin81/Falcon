@@ -22,6 +22,7 @@ class Picture < ActiveRecord::Base
   belongs_to :attachable, :polymorphic => true
   has_and_belongs_to_many :styles
   has_many :comments, :as => :commentable
+  has_many :likes, :as => :likeable
 
   has_enumeration_for :gender, :with => ClothingGender, :create_helpers => true
 

@@ -1,6 +1,6 @@
 <%= show_messages %>
 <% if @pictures.present? %>
-  $('#pictures').replaceWith('<%= escape_javascript(render('account/pictures/list', :pictures => @pictures)) %>');
+  $('#pictures').replaceWith('<%= escape_javascript(render('account/pictures/list', :pictures => @pictures, :likes => @likes, :likes_count => @likes_count)) %>');
 <% else %>
   window.location = "#!/pictures/new";
 <% end %>

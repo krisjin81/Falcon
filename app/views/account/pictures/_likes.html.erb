@@ -1,0 +1,6 @@
+<div class="likes" id="<%= likes_dom_id(likeable) %>">
+  <%= link_to icon_with_title('thumbs-up', 'Like'), account_picture_likes_path(likeable), :remote => true, :method => :post, :class => 'btn', :disabled => like.present? %>
+  <% if likes_count %>
+    <span class="badge"><%= likes_count %></span>
+  <% end %>
+</div>

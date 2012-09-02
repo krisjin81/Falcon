@@ -93,6 +93,9 @@ en:
     comments:
       no_comments: "There is no comments for %{commentable}. Be the first."
       author_title_format: "%{author} %{time} ago"
+    likes:
+      success: "You like has been saved successfully."
+      error: "Some error was occurred."
   affiliate:
     sessions:
       new:

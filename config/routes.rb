@@ -7,6 +7,7 @@ Falcon::Application.routes.draw do
 
     resources :pictures do
       resources :comments
+      resources :likes, :only => [:create]
 
       collection do
         post :upload

@@ -3,6 +3,8 @@ class Account::PicturesController < ApplicationController
 
   def index
     @pictures = resources.all
+    @likes = Like.liked_by(current_user.profile, @pictures)
+    @likes_count = Like.count_on(@pictures)
   end
 
   def new
@@ -39,6 +41,8 @@ class Account::PicturesController < ApplicationController
 
   def show
     @picture = resources.find(params[:id])
+    @like = Like.liked_by(current_user.profile, @picture)
+    @likes_count = Like.count_on(@picture)
     render :action => 'show'
   end
 

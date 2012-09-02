@@ -1,0 +1,2 @@
+$('#<%= likes_dom_id(@picture) %>').replaceWith('<%= escape_javascript(render('account/pictures/likes', :likeable => @picture, :likes_count => @likes_count, :like => true)) %>');
+$('#messages').replaceWith('<%= escape_javascript(render('layouts/messages')) %>');

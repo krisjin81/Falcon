@@ -56,6 +56,17 @@ module ApplicationHelper
     "<i class=\"icon-#{icon_name}\"></i>".html_safe
   end
 
+  # Renders icon html tag with title.
+  #
+  # @param text [String] text to render.
+  # @param title [String] title to render.
+  #
+  # @return icon_name [String] bootstrap icon name.
+  #
+  def icon_with_title(icon_name, title)
+    "<i class=\"icon-#{icon_name}\"></i> #{title}".html_safe
+  end
+
   # Renders coma separated list of names.
   #
   # @param collection [Enumerable] a list of items.

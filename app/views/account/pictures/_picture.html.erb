@@ -12,6 +12,7 @@
   </div>
 
   <%= render 'share', :picture => picture %>
+  <%= render 'likes', :likeable => picture, :likes_count => likes_count, :like => like %>
 
   <div class="actions">
     <%= link_to_with_icon(t('helpers.actions.details'), 'zoom-in', "#!/pictures/#{picture.id}") %>
