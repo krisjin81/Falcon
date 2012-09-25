@@ -17,3 +17,15 @@ rake db:create
 rake db:migrate
 rails s
 ```
+
+## Dev box setup
+
+```
+sudo apt-get install mysql-server libmysqlclient16-dev mysql-client
+libmysql-ruby libmysqlclient-dev libqt4-dev libqtwebkit-dev
+imagemagick libmagickwand-dev
+
+bundle install
+bundle package
+```
+( the last step vendorizes the Ruby gems )
