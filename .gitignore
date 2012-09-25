@@ -20,7 +20,6 @@
 .DS_Store
 .idea
 .rake_tasks~
-.rvmrc
 
 # Paperclip images.
 /public/system/*
