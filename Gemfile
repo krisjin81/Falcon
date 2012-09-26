@@ -66,7 +66,7 @@ group :development, :test do
   gem 'capybara-webkit', '~> 0.11.0'
   gem 'database_cleaner', '~> 0.7.2'
   gem 'rspec-rails', '~> 2.10.1'
-  gem 'shoulda', '~> 3.0.1'
+  gem 'shoulda-matchers', '~> 1.0.0'
   gem 'email_spec', '~> 1.2.1'
   gem 'letter_opener', '~> 0.0.2'
   gem 'capistrano', '~> 2.12.0'
@@ -93,3 +93,4 @@ end
 
 # To use debugger
 # gem 'ruby-debug'
+
