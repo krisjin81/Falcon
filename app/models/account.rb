@@ -31,7 +31,7 @@ class Account < User
   accepts_nested_attributes_for :profile
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes,:username
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

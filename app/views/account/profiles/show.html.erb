@@ -11,14 +11,8 @@
       </div>
       <div class="details">
         <dl>
-          <dt><%= Profile.human_attribute_name(:username) %>:</dt>
-          <dd>
-            <% if is_current_profile?(@profile) %>
-              <%= edit_link_to(text_or_blank(@profile.username), edit_account_profile_path) %>
-            <% else %>
-              <%= text_or_blank(@profile.username) %>
-            <% end %>
-          </dd>
+          <dt><%= Account.human_attribute_name(:username)
+          %>: <%= @profile.account.username %> </dt>
         </dl>
         <dl>
           <dt><%= Profile.human_attribute_name(:status) %>:</dt>
