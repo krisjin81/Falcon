@@ -72,6 +72,8 @@ group :development, :test do
   gem 'capistrano', '~> 2.12.0'
   gem 'capistrano-ext', '~> 1.2.1'
   gem 'SystemTimer', '~> 1.2.3', :platforms => :ruby_18
+  gem 'spork'
+  gem 'guard-rspec'
 end
 
 group :heroku do
@@ -93,4 +95,9 @@ end
 
 # To use debugger
 # gem 'ruby-debug'
-
+# Test gems on Linux
+group :test do
+  gem 'capybara', '1.1.2'
+  gem 'rb-inotify', '0.8.8'
+  gem 'libnotify', '0.5.9'
+end
