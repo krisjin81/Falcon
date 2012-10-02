@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120902142304) do
+ActiveRecord::Schema.define(:version => 20121002160622) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
@@ -154,7 +154,6 @@ ActiveRecord::Schema.define(:version => 20120902142304) do
   create_table "users", :force => true do |t|
     t.string   "email",                                :default => "", :null => false
     t.string   "encrypted_password",                   :default => "", :null => false
-    t.string   "username",                                             :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -173,6 +172,7 @@ ActiveRecord::Schema.define(:version => 20120902142304) do
     t.integer  "admin_level",            :limit => 1
     t.string   "external_user_id",       :limit => 50
     t.string   "provider",               :limit => 20
+    t.string   "username"
   end
 
   add_index "users", ["confirmed_at"], :name => "index_users_on_confirmed_at"
