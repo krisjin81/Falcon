@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121002160622) do
+ActiveRecord::Schema.define(:version => 20121003063344) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
@@ -187,5 +187,6 @@ ActiveRecord::Schema.define(:version => 20121002160622) do
   add_index "users", ["type", "last_sign_in_at"], :name => "index_users_on_type_and_last_sign_in_at"
   add_index "users", ["type", "provider", "email"], :name => "index_users_on_type_and_provider_and_email"
   add_index "users", ["type", "provider", "id"], :name => "index_users_on_type_and_provider_and_id"
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
 end

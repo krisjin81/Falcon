@@ -32,6 +32,8 @@ class Account < User
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes,:username
+  validates_presence_of :username
+  validates_uniqueness_of :username
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

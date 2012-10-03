@@ -1,6 +1,9 @@
+# -*- coding: utf-8 -*-
 <%= simple_form_for(@profile, :url => account_profile_path, :html => { :id => 'edit_profile', :method => :put }) do |f| %>
   <legend><%= t('account.profiles.edit.title') %></legend>
-  <%= f.input :username, :input_html => { :class => 'input-xxlarge' }, :disabled => !@profile.username_editable? %>
+<%= Account.human_attribute_name(:username) %>:
+<br/>
+<%= @profile.account.username %>
   <div class="alert">
     <button class="close" data-dismiss="alert">×</button>
     <%=raw t('account.profiles.edit.username_warning') %>
