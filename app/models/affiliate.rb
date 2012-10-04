@@ -24,6 +24,8 @@
 #  external_user_id       :string(50)
 #  provider               :string(20)
 #  username               :string(255)
+#  free_member_level      :string(255)
+#  affiliate_member_level :string(255)
 #
 
 class Affiliate < User
