@@ -23,6 +23,7 @@
 #  admin_level            :integer(1)
 #  external_user_id       :string(50)
 #  provider               :string(20)
+#  username               :string(255)
 #
 
 class User < ActiveRecord::Base
