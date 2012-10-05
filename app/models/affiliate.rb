@@ -34,7 +34,7 @@ class Affiliate < User
   accepts_nested_attributes_for :business_profile
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :business_profile_attributes
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :business_profile_attributes, :affiliate_member_level
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
