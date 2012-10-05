@@ -9,9 +9,15 @@ class Account::ProfilesController < ApplicationController
   def show
     @profile = load_profile
     @profile.build_avatar unless @profile.avatar
-
+    @micropost = @profile.account.microposts.build(params[:micropost])
     styx_initialize_with :profile_id => @profile.unique_id
-    respond_with(@profile)
+     if @micropost.save
+      flash[:success] = "Micropost created!"
+       redirect_to root_url
+     end
+
+
+    #respond_with(@profile)
   end
 
   def edit
