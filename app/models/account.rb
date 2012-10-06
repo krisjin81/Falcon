@@ -62,12 +62,6 @@ class Account < User
   before_save :assign_free_member_level
   before_save :assign_affiliate_member_level
 
-#  validates_inclusion_of :free_member_level,
- # :in => ['New member', 'Regular member','Loyal member','Style Star','Model/Artist'], :allow_blank => false
-
-  #validates_inclusion_of :affiliate_member_level,
-  #:in => [ 'Stylists Image consultants','Designer and Label','Store and Shop'], :allow_blank => true
-
   self.per_page = 10
 
   # Overrides Account string representation.
