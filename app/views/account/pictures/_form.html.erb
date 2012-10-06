@@ -36,7 +36,7 @@
 
   <div class="form">
     <%= f.input :title, :input_html => { :class => 'input-xxlarge' } %>
-    <%= f.input :style_ids, :collection => Style.cached, :as => :check_boxes %>
+    <%= f.input :style_ids, :collection => ['S1','S2','S3'], :as => :check_boxes %>
     <%= f.input :gender, :collection => ClothingGender.to_a, :as => :radio_buttons %>
     <%= f.input :dressing_tips, :input_html => { :class => 'input-xxlarge', :rows => 5 } %>
     <%= f.input :brands, :as => :text, :input_html => { :class => 'input-xxlarge', :rows => 3 } %>
