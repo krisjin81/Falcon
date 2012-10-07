@@ -8,3 +8,14 @@ class Micropost < ActiveRecord::Base
 
   default_scope order: 'microposts.created_at DESC'
 end
+# == Schema Information
+#
+# Table name: microposts
+#
+#  id         :integer(4)      not null, primary key
+#  content    :string(255)
+#  user_id    :integer(4)
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+

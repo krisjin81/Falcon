@@ -20,7 +20,7 @@
 #  type                   :string(255)
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
-#  admin_level            :integer(1)
+#  admin_level            :string(255)
 #  external_user_id       :string(50)
 #  provider               :string(20)
 #  username               :string(255)
@@ -30,20 +30,12 @@
 
 class Account < User
   has_one :profile, :dependent => :destroy
-
   accepts_nested_attributes_for :profile
-
-  # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes,:username
   validates_presence_of :username
   validates_uniqueness_of :username
-
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
-
   attr_accessor :bypass_humanizer
 
   has_enumeration_for :provider, :create_helpers => true

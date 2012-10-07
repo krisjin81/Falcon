@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121005130704) do
+ActiveRecord::Schema.define(:version => 20121007090825) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
@@ -178,7 +178,7 @@ ActiveRecord::Schema.define(:version => 20121005130704) do
     t.string   "type"
     t.datetime "created_at",                                           :null => false
     t.datetime "updated_at",                                           :null => false
-    t.integer  "admin_level",            :limit => 1
+    t.string   "admin_level"
     t.string   "external_user_id",       :limit => 50
     t.string   "provider",               :limit => 20
     t.string   "username"

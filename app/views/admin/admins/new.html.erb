@@ -1,1 +1,5 @@
-<%= render :partial => 'form' %>
+<% if current_admin.is_view_only? %>
+       <h3> Sorry you are a view only admin, you can list user settings but not modify them </h3>
+<% else %>
+  <%= render :partial => 'form' %>
+<% end %>

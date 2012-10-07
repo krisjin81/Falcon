@@ -20,7 +20,7 @@
 #  type                   :string(255)
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
-#  admin_level            :integer(1)
+#  admin_level            :string(255)
 #  external_user_id       :string(50)
 #  provider               :string(20)
 #  username               :string(255)
@@ -31,5 +31,15 @@
 require 'spec_helper'
 
 describe Admin do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should be possible to create admin with valid admin level" do
+    view_only_admin = Admin.create(:email => "view@gmail.com", :password=>"hello12345", :admin_level => "User Admin" )
+    view_only_admin.save!
+
+    view_only_admin.should be_valid
+  end
+
+  it "Should not be able to create admin with invalid admin level" do
+    invalid_admin = Admin.create(:email => "something@foo.com", :password => "hello12345", :admin_level => "foobar" )
+    invalid_admin.should_not be_valid
+  end
 end

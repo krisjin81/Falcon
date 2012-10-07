@@ -30,9 +30,11 @@
       <td><%=l item.created_at %></td>
       <td><%=l item.updated_at %></td>
       <td>
-        <%= link_to t('.edit', :default => t('helpers.actions.edit')), edit_resource_path(item), :class => 'btn btn-mini' %>
         <%= link_to t('.view', :default => t('helpers.actions.view')), resource_path(item), :class => 'btn btn-mini' %>
-        <%= link_to t('.destroy', :default => t('helpers.actions.destroy')), resource_path(item), :method => :delete, :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-mini btn-danger' %>
+        <% if !current_admin.is_view_only? %>
+           <%= link_to t('.edit', :default => t('helpers.actions.edit')),edit_resource_path(item), :class => 'btn btn-mini' %>
+           <%= link_to t('.destroy', :default => t('helpers.actions.destroy')), resource_path(item), :method => :delete, :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-mini btn-danger' %>
+        <% end %>
       </td>
     </tr>
   <% end %>
