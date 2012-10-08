@@ -12,7 +12,6 @@
 # It's strongly recommended to check this file into your version control system.
 
 ActiveRecord::Schema.define(:version => 20121007090825) do
-
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
     t.string   "username",   :limit => 50

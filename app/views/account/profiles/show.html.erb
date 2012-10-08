@@ -37,28 +37,4 @@
     <div id="pictures">
     </div>
   </div>
-  <div class="well">
-      <section>
-        <%= form_for(@micropost) do |f| %>
-        <h3> Write your blog! </h3>
-        <div>
-          <%= f.text_area :content, placeholder: "Compose new Blog post..." %>
-        </div>
-        <%= f.submit "Post", class: "btn btn-large btn-primary" %>
-        <% end %>
-      </section>
-  </div>
-  <div class="well">
-    <% if @profile.account.microposts.any? %>
-      <h3>My Blog posts! (<%= @profile.account.microposts.count %>)</h3>
-      <ol class="microposts">
-        <% @profile.account.microposts.each do |post| %>
-        <li>
-          <%= post.content %>
-        </li>
-        <% end %>
-
-      </ol>
-    <% end %>
-  </div>
 </div>

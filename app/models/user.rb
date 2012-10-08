@@ -32,7 +32,6 @@ class User < ActiveRecord::Base
   include STITypeCasting
 
   has_one :language_settings
-  has_many :microposts, :dependent => :destroy
 
   TYPES = [:account, :affiliate]
 end
