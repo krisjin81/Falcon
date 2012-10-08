@@ -116,13 +116,6 @@ ActiveRecord::Schema.define(:version => 20121008115138) do
 
   add_index "likes", ["profile_id", "likeable_type", "likeable_id"], :name => "index_likes_on_profile_id_and_likeable_type_and_likeable_id"
 
-  create_table "microposts", :force => true do |t|
-    t.string   "content"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "pictures", :force => true do |t|
     t.string   "attachable_type"
     t.integer  "attachable_id"
