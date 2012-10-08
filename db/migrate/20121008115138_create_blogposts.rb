@@ -1,7 +1,7 @@
 class CreateBlogposts < ActiveRecord::Migration
   def change
     create_table :blogposts do |t|
-      t.string   :content
+      t.string   :content, :null => false
       t.integer  :account_id
 
       t.timestamps
