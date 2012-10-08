@@ -9,6 +9,6 @@ class BlogpostsController < InheritedResources::Base
     if @blogpost.save
       flash[:success] = "Blog Post created!"
     end
-      redirect_to account_blogposts_path
+      redirect_to account_profile_path
   end
 end
