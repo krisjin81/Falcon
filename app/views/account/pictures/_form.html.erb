@@ -9,7 +9,6 @@
           <%= hidden_field_tag :original_image_preview_url, picture.original_image.url(:preview) %>
           <%= f.hidden_field :original_image_cache %>
         <% end %>
-
         <% if picture.formatted_image.present? %>
           <%= f.hidden_field :formatted_image_cache %>
         <% end %>
@@ -36,7 +35,7 @@
 
   <div class="form">
     <%= f.input :title, :input_html => { :class => 'input-xxlarge' } %>
-    <%= f.input :style_ids, :collection => ['S1','S2','S3'], :as => :check_boxes %>
+    <%= f.input :style, :collection => ['S1','S2','S3'], :as => :check_boxes %>
     <%= f.input :gender, :collection => ClothingGender.to_a, :as => :radio_buttons %>
     <%= f.input :dressing_tips, :input_html => { :class => 'input-xxlarge', :rows => 5 } %>
     <%= f.input :brands, :as => :text, :input_html => { :class => 'input-xxlarge', :rows => 3 } %>

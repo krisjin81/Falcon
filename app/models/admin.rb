@@ -20,7 +20,7 @@
 #  type                   :string(255)
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
-#  admin_level            :integer(1)
+#  admin_level            :string(255)
 #  external_user_id       :string(50)
 #  provider               :string(20)
 #  username               :string(255)

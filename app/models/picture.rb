@@ -16,6 +16,7 @@
 #  original_image  :string(255)
 #  filter          :string(20)
 #  formatted_image :string(255)
+#  style           :string(255)
 #
 
 class Picture < ActiveRecord::Base
@@ -34,7 +35,6 @@ class Picture < ActiveRecord::Base
   validates :attachable, :presence => true
   validates :original_image, :presence => true
   validates :title, :presence => true, :length => { :maximum => 255 }
-  validates :style_ids, :presence => true
   validates :dressing_tips, :presence => true, :length => { :maximum => 1000 }
   validates :brands, :length => { :maximum => 255 }, :allow_blank => true
   validates :cost, :length => { :maximum => 255 }, :allow_blank => true

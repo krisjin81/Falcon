@@ -11,7 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121007090825) do
+ActiveRecord::Schema.define(:version => 20121008044336) do
+
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
     t.string   "username",   :limit => 50
@@ -129,6 +130,7 @@ ActiveRecord::Schema.define(:version => 20121007090825) do
     t.string   "original_image"
     t.string   "filter",          :limit => 20
     t.string   "formatted_image"
+    t.string   "style"
   end
 
   create_table "pictures_styles", :force => true do |t|

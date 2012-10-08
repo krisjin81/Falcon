@@ -16,6 +16,7 @@
 #  original_image  :string(255)
 #  filter          :string(20)
 #  formatted_image :string(255)
+#  style           :string(255)
 #
 
 require 'spec_helper'
