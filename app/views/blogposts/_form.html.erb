@@ -1,0 +1,8 @@
+<%= form_for(@blogpost) do |f| %>
+<h3> Write your blog! </h3>
+<div>
+  <%= f.text_area :content, placeholder: "Compose new Blog post..." %>
+</div>
+<%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>
+

@@ -18,7 +18,7 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string(255)
 #  type                   :string(255)
-#  created_at             :datetime        not null
+#  created_at             :date'time        not null
 #  updated_at             :datetime        not null
 #  admin_level            :string(255)
 #  external_user_id       :string(50)
@@ -32,6 +32,5 @@ class User < ActiveRecord::Base
   include STITypeCasting
 
   has_one :language_settings
-
   TYPES = [:account, :affiliate]
 end

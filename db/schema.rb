@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121008044336) do
+ActiveRecord::Schema.define(:version => 20121008115138) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(:version => 20121008044336) do
     t.datetime "updated_at",      :null => false
     t.string   "image"
   end
+
+  create_table "blogposts", :force => true do |t|
+    t.string   "content"
+    t.integer  "account_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "blogposts", ["account_id", "created_at"], :name => "index_blogposts_on_account_id_and_created_at"
 
   create_table "business_profiles", :force => true do |t|
     t.integer  "affiliate_id"
@@ -113,8 +122,6 @@ ActiveRecord::Schema.define(:version => 20121008044336) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
 
   create_table "pictures", :force => true do |t|
     t.string   "attachable_type"

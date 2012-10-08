@@ -1,9 +1,11 @@
 Falcon::Application.routes.draw do
   devise_for :account, :controllers => { :registrations => "account/registrations", :omniauth_callbacks => "account/omniauth_callbacks" }
+  resources :blogposts
 
   namespace :account do
     resource :profile, :only => [:show, :edit, :update]
     resource :language_settings, :only => [:edit, :update]
+    resources :blogposts
 
     resources :pictures do
       resources :comments
