@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121008115138) do
+ActiveRecord::Schema.define(:version => 20121009115705) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
@@ -131,6 +131,9 @@ ActiveRecord::Schema.define(:version => 20121008115138) do
     t.string   "filter",          :limit => 20
     t.string   "formatted_image"
     t.string   "style"
+    t.boolean  "s1"
+    t.boolean  "s2"
+    t.boolean  "s3"
   end
 
   create_table "pictures_styles", :force => true do |t|
