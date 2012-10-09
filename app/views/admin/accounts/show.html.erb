@@ -6,8 +6,12 @@
   <%= resource.email %>
 </p>
 <p>
-  <strong><%= Profile.human_attribute_name(:username) %>:</strong><br>
-  <%= resource.profile.username %>
+  <strong><%= Account.human_attribute_name(:username) %>:</strong><br>
+  <%= resource.username %>
+</p>
+<p>
+  <strong><%= Account.human_attribute_name(:free_member_level) %>:</strong><br>
+  <%= resource.free_member_level %>
 </p>
 <p>
   <strong><%= Profile.human_attribute_name(:first_name) %>:</strong><br>

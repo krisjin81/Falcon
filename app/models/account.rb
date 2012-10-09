@@ -33,7 +33,7 @@ class Account < User
   has_many :blogposts, dependent: :destroy
 
   accepts_nested_attributes_for :profile
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes,:username
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes,:username, :free_member_level, :affiliate_member_level
   validates_presence_of :username
   validates_uniqueness_of :username
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable,
@@ -53,8 +53,7 @@ class Account < User
   scope :by_google_id, lambda { |google_id| from_google.where(:external_user_id => google_id) }
   scope :by_google_email, lambda { |email| from_google.where(:email => email) }
 
-  before_save :assign_free_member_level
-  before_save :assign_affiliate_member_level
+  FREE_MEMBER_LEVELS=['New Member','Regular Member','Loyal Member','Style Star','Model/Artist']
 
   self.per_page = 10
 
@@ -158,15 +157,6 @@ class Account < User
       end
       account
     end
-  end
-
-  private
-  def assign_free_member_level
-    self.free_member_level = "New Member"
-  end
-
-  def assign_affiliate_member_level
-    self.affiliate_member_level = ""
   end
 
 end

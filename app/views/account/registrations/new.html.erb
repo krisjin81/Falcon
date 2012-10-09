@@ -17,6 +17,7 @@
     <%= profile.input :birth_date, :start_year => Date.today.year - 100, :end_year => Date.today.year, :default => Profile::DEFAULT_BIRTH_DATE %>
   <% end %>
 
+
   <%=raw @humanizer.get_publisher_html unless session[:human] %>
 
   <div class="form-actions">
