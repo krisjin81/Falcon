@@ -20,7 +20,7 @@
     <tr>
       <td><%= link_to item.id, resource_path(item) %></td>
       <td><%= item.email %></td>
-      <td><%= item.business_profile.username rescue '' %></td>
+      <td><%= item.business_profile.business_name rescue '' %></td>
       <td><%= item.business_profile.contact_first_name rescue '' %></td>
       <td><%= item.business_profile.contact_last_name rescue '' %></td>
       <td><%= item.business_profile.contact_email rescue '' %></td>

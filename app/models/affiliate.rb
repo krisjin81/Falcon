@@ -36,6 +36,9 @@ class Affiliate < User
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :business_profile_attributes, :affiliate_member_level
 
+  AFFILIATE_MEMBER_LEVELS = ['Stylists and Image Consultants','Designer and Label','Store and Shop']
+  validates :affiliate_member_level, :presence => true, :inclusion => AFFILIATE_MEMBER_LEVELS
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -44,6 +47,8 @@ class Affiliate < User
   attr_accessor :bypass_humanizer
 
   scope :with_profile, includes(:business_profile => [:country, :avatar])
+
+
 
   self.per_page = 10
 

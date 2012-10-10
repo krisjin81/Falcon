@@ -32,9 +32,6 @@ class BusinessProfile < ActiveRecord::Base
 
   validates :business_name, :format => /^\w+$/, :presence => true, :length => { :maximum => 50 }, :uniqueness => true
   validates :business_type, :presence => true
-  validates :style_ids, :presence => true
-  validates :audience_ids, :presence => true
-  validates :age_group_ids, :presence => true
   validates :contact_first_name, :presence => true, :length => { :maximum => 50 }
   validates :contact_last_name, :presence => true, :length => { :maximum => 50 }
   validates :contact_email, :presence => true, :length => { :maximum => 255 }, :format => Devise.email_regexp
