@@ -34,6 +34,7 @@ class Admin < User
   attr_accessible :email, :password, :password_confirmation, :remember_me, :admin_profile_attributes, :admin_level
 
   levels_hsh = { :view => "View-Only Admin", :user => "User Admin", :site => "Site Admin" , :super => "Super Admin" }
+  UI_ADMIN_LEVELS = ["View-Only Admin", "User Admin", "Site Admin" ]
 
   validates :admin_level, :presence => true, :inclusion => levels_hsh.values
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
@@ -51,6 +52,11 @@ class Admin < User
   def is_site_admin?
     self.admin_level == "Site Admin"
   end
+
+  def is_user_admin?
+    self.admin_level == "User Admin"
+  end
+
 end
 
 ## To create admins from the rake console, use the following;
