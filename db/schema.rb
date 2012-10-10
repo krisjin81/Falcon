@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009115705) do
+ActiveRecord::Schema.define(:version => 20121010132633) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
@@ -188,6 +188,7 @@ ActiveRecord::Schema.define(:version => 20121009115705) do
     t.string   "username"
     t.string   "free_member_level"
     t.string   "affiliate_member_level"
+    t.boolean  "active"
   end
 
   add_index "users", ["confirmed_at"], :name => "index_users_on_confirmed_at"

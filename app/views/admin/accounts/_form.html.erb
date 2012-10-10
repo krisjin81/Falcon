@@ -19,7 +19,13 @@
     <%= profile.input :birth_date, :start_year => Date.today.year - 100, :end_year => Date.today.year, :default => Profile::DEFAULT_BIRTH_DATE %>
   <% end %>
   <%= f.input :free_member_level, :collection =>
-  Account::FREE_MEMBER_LEVELS, :prompt =>  t('helpers.please_select') %>
+  Account::FREE_MEMBER_LEVELS, :prompt =>  t('helpers.please_select')
+    %>
+  <div class ="alert alert-error">
+  Account status: Active/Inactive
+  <%= f.radio_button :active, true  %>
+  <%= f.radio_button :active, false %>
+  </div>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")), collection_path, :class => 'btn' %>

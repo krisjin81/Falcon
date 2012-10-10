@@ -4,7 +4,8 @@
     <th><%= sortable_header(Account.human_attribute_name(:id), :id) %></th>
     <th><%= sortable_header(Account.human_attribute_name(:email), :email) %></th>
     <th><%= sortable_header(Account.human_attribute_name(:username),:username) %></th>
-     <th><%= sortable_header(Account.human_attribute_name(:free_member_level), :free_member_level) %></th>
+    <th><%= sortable_header(Account.human_attribute_name(:active),:active) %></th>
+    <th><%= sortable_header(Account.human_attribute_name(:free_member_level), :free_member_level) %></th>
     <th><%= sortable_header(Profile.human_attribute_name(:first_name), :profile_first_name) %></th>
     <th><%= sortable_header(Profile.human_attribute_name(:last_name), :profile_last_name) %></th>
     <th><%= sortable_header(Account.human_attribute_name(:confirmed), :confirmed_at) %></th>
@@ -22,6 +23,7 @@
       <td><%= link_to item.id, resource_path(item) %></td>
       <td><%= item.email %></td>
       <td><%= item.username rescue '' %></td>
+      <td><%= item.is_account_active? %></td>
       <td><%= item.free_member_level rescue '' %></td>
       <td><%= item.profile.first_name rescue '' %></td>
       <td><%= item.profile.last_name rescue '' %></td>

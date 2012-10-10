@@ -33,7 +33,7 @@ class Account < User
   has_many :blogposts, dependent: :destroy
 
   accepts_nested_attributes_for :profile
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes,:username, :free_member_level, :affiliate_member_level
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes,:username, :free_member_level, :affiliate_member_level, :active
   validates_presence_of :username
   FREE_MEMBER_LEVELS=['New Member','Regular Member','Loyal Member','Style Star','Model/Artist']
   validates :free_member_level, :presence=> true, :inclusion => FREE_MEMBER_LEVELS
@@ -59,6 +59,12 @@ class Account < User
 
   self.per_page = 10
 
+  def is_account_active?
+    return true if ( self.active == nil || self.active == true )
+    return false
+  end
+
+
   # Overrides Account string representation.
   #
   # @return [String] username or email.
@@ -78,6 +84,13 @@ class Account < User
   def password_required?
     self.provider.blank?
   end
+
+   def active_for_authentication?
+      # Comment out the below debug statement to view the properties of the returned self model values.
+      # logger.debug self.to_yaml
+
+      super && is_account_active?
+    end
 
   class << self
     # Finds user by facebook token or creates a new one.
@@ -160,5 +173,6 @@ class Account < User
       account
     end
   end
+
 
 end
