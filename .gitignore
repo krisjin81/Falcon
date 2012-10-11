@@ -24,3 +24,5 @@
 # Paperclip images.
 /public/system/*
 /public/uploads/*
+
+TAGS

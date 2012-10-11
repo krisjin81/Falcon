@@ -11,6 +11,9 @@
   <%= f.input :password, :input_html => { :class => 'input-xxlarge' } %>
   <%= f.input :password_confirmation, :input_html => { :class =>
   'input-xxlarge' } %>
+  <i> You can only sign up as 'New Member'</i>
+  <%= f.input :free_member_level, :collection =>
+         Account::SIGNUP_MEMBER_LEVELS, :prompt =>  t('helpers.please_select') %>
 
   <%= f.simple_fields_for :profile do |profile| %>
     <%= profile.input :country_id, :input_html => { :class => 'input-xxlarge' }, :collection => Country.cached, :prompt => t('helpers.please_select') %>

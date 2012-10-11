@@ -36,6 +36,7 @@ class Account < User
   attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes,:username, :free_member_level, :affiliate_member_level, :active
   validates_presence_of :username
   FREE_MEMBER_LEVELS=['New Member','Regular Member','Loyal Member','Style Star','Model/Artist']
+  SIGNUP_MEMBER_LEVELS=['New Member'] #this array contains the member levels that a user can choose while signing up
   validates :free_member_level, :presence=> true, :inclusion => FREE_MEMBER_LEVELS
   validates_uniqueness_of :username
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable,
