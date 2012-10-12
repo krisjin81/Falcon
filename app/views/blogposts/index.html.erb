@@ -1,14 +1,18 @@
 <h2>Blog Posts ( <%= @blogposts.count %> )</h2>
 
 <ol class="blogposts">
-<% @blogposts.each do |blogpost| %>
-<li>
-  <span class="content"><%= blogpost.content %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(blogpost.created_at) %> ago.
-  </span>
-</li>
-<% end %>
+  <% @blogposts.each do |blogpost| %>
+    <li>
+      <span class="content"><%= blogpost.content %></span>
+      <span class="timestamp">
+        Posted <%= time_ago_in_words(blogpost.created_at) %> ago.
+      </span>
+      <td><%= link_to 'Edit', edit_blogpost_path(blogpost), :class =>
+      'btn btn-primary' %></td>
+      <td><%= link_to 'Destroy', blogpost, confirm: 'Are you sure?',
+              method: :delete , :class => 'btn btn-danger'%></td>
+    </li>
+  <% end %>
 </ol>
 <br />
 
