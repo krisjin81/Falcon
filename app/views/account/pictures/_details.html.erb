@@ -12,6 +12,8 @@
       <dd><%= names_list(picture.styles) %></dd>
       <dt><%= Picture.human_attribute_name(:gender) %></dt>
       <dd><%= picture.gender_humanize %></dd>
+      <dt><%= Picture.human_attribute_name(:showcases) %></dt>
+      <dd><%= render 'showcases_for_this_picture', :picture => picture %></dd>
       <% unless picture.brands.blank? %>
         <dt><%= Picture.human_attribute_name(:brands) %></dt>
         <dd><%= picture.brands %></dd>

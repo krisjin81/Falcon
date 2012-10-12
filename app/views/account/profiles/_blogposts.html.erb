@@ -1,0 +1,19 @@
+<div class="well">
+  <h2>My Blog Posts</h2>
+  <% if @profile.account.blogposts.any? %>
+    <ol class="blogposts">
+      <% @profile.account.blogposts.each do |blogpost| %>
+        <li>
+          <span class="content"><%= blogpost.content %></span>
+          <span class="timestamp">
+            Posted <%= time_ago_in_words(blogpost.created_at) %> ago.
+          </span>
+        </li>
+      <% end %>
+    </ol>
+    <br />
+  <% end %>
+  <%= link_to 'New Blogpost', new_blogpost_path, class: "btn
+                                                                 btn-large
+                                                                 btn-primary" %>
+</div>

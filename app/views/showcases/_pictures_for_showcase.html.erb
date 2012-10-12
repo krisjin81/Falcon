@@ -1,0 +1,16 @@
+
+<% unless showcase.pictures.blank? %>
+  <% showcase.pictures.each do |picture| %>
+    <div class="image">
+      <% if picture.image.present? %>
+        <%= image_tag picture.image.url(:preview) %>
+      <% end %>
+    </div>
+    <div class="details">
+      <dl>
+        <dt><%= Picture.human_attribute_name(:title) %></dt>
+        <dd><%= picture.title %></dd>
+      </dl>
+    </div>
+  <% end %>
+<% end %>

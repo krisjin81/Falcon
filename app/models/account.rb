@@ -30,7 +30,8 @@
 
 class Account < User
   has_one :profile, :dependent => :destroy
-  has_many :blogposts, dependent: :destroy
+  has_many :blogposts, :dependent => :destroy
+  has_many :showcases, :dependent => :destroy
 
   accepts_nested_attributes_for :profile
   attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes,:username, :free_member_level, :affiliate_member_level, :active

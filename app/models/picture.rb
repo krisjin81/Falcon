@@ -24,10 +24,13 @@ class Picture < ActiveRecord::Base
   has_and_belongs_to_many :styles
   has_many :comments, :as => :commentable
   has_many :likes, :as => :likeable
+  has_and_belongs_to_many :showcases
+  attr_accessible :showcase_ids
+  accepts_nested_attributes_for :showcases
 
   has_enumeration_for :gender, :with => ClothingGender, :create_helpers => true
 
-  attr_protected :created_at, :updated_at, :attachable_id, :attachable_type
+#  attr_protected :created_at, :updated_at, :attachable_id, :attachable_type
 
   mount_uploader :original_image, PictureUploader
   mount_uploader :formatted_image, PictureUploader

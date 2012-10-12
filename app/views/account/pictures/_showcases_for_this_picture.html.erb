@@ -1,0 +1,7 @@
+<% unless picture.showcases.blank? %>
+  <% picture.showcases.each do |showcase| %>
+    <ol>
+      <li><%= showcase.name %></li>
+    </ol>
+  <% end %>
+<% end %>

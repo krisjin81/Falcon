@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121010132633) do
+ActiveRecord::Schema.define(:version => 20121012132346) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
@@ -101,6 +101,12 @@ ActiveRecord::Schema.define(:version => 20121010132633) do
 
   add_index "countries", ["name"], :name => "index_countries_on_name"
 
+  create_table "jairams", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "language_settings", :force => true do |t|
     t.integer "user_id"
     t.string  "locale",  :limit => 3
@@ -136,6 +142,11 @@ ActiveRecord::Schema.define(:version => 20121010132633) do
     t.boolean  "s3"
   end
 
+  create_table "pictures_showcases", :id => false, :force => true do |t|
+    t.integer "picture_id"
+    t.integer "showcase_id"
+  end
+
   create_table "pictures_styles", :force => true do |t|
     t.integer "picture_id"
     t.integer "style_id"
@@ -157,6 +168,17 @@ ActiveRecord::Schema.define(:version => 20121010132633) do
   add_index "profiles", ["first_name"], :name => "index_profiles_on_first_name"
   add_index "profiles", ["last_name"], :name => "index_profiles_on_last_name"
   add_index "profiles", ["username"], :name => "index_profiles_on_username", :unique => true
+
+  create_table "showcases", :force => true do |t|
+    t.string   "name",                               :null => false
+    t.string   "content"
+    t.boolean  "publicly_visible", :default => true, :null => false
+    t.integer  "account_id"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+  end
+
+  add_index "showcases", ["account_id", "created_at"], :name => "index_showcases_on_account_id_and_created_at"
 
   create_table "styles", :force => true do |t|
     t.string   "name",       :limit => 50

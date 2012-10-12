@@ -1,0 +1,35 @@
+<%= simple_form_for(@showcase) do |f| %>
+  <%= f.error_notification %>
+  <div class="well">
+    <h4> Edit Showcase details</h4>
+    <div class="form-inputs">
+      <%= f.input :name %>
+      <%= f.input :content %>
+      <%= f.input :publicly_visible %>
+    </div>
+  </div>
+
+  <div class="well">
+    <h4> Add/remove pictures from the showcase </h4>
+    <ol>
+      <% Picture.all.each do |picture| %>
+
+        <li>
+          <b><%= Picture.human_attribute_name(:title) %></b>: <i><%=picture.title%></i>
+            <div class="image">
+              <% if picture.image.present? %>
+                <%= image_tag picture.image.url(:preview) %>
+              <% end %>
+            </div>
+            Include in Showcase?
+            <%= check_box_tag 'picture_ids[]', picture.id,
+               @showcase.pictures.include?(picture), :name =>
+                 'showcase[picture_ids][]' %>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit , :class=>'btn btn-primary' %>
+  </div>
+<% end %>

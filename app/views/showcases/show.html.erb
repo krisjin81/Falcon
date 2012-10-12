@@ -1,0 +1,30 @@
+<h1>Showcase: <%= @showcase.name %> </h1>
+<i> This is a placeholder view, the cover flow UI will come here </i>
+<div class="well">
+  <h2> Pictures: </h2>
+  <% if @showcase.pictures.empty? %>
+    <h5> There are currently no pictures in this showcase </h5>
+  <% end %>
+  <% @showcase.pictures.each do |picture| %>
+    <ol>
+      <li>
+
+        <div class="details">
+          <b><%= Picture.human_attribute_name(:title) %></b>: <i><%= picture.title %></i>
+        </div>
+        <div class="image">
+          <% if picture.image.present? %>
+            <%= image_tag picture.image.url(:preview) %>
+          <% end %>
+        </div>
+      </li>
+    </ol>
+  <% end %>
+  <%= link_to "Edit this showcase", edit_showcase_path,
+      :class=>"btn btn-danger" %>
+
+</div>
+
+
+<%= link_to "Manage Showcases", showcases_path, :class => "btn btn-primary"%>
+<%= link_to "View your profile", account_profile_path, :class => "btn btn-primary"%>
