@@ -12,7 +12,7 @@
   <div class="well">
     <h4> Add/remove pictures from the showcase </h4>
     <ol>
-      <% Picture.all.each do |picture| %>
+      <% current_account.pictures.all.each do |picture| %>
 
         <li>
           <b><%= Picture.human_attribute_name(:title) %></b>: <i><%=picture.title%></i>
