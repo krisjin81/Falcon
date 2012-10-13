@@ -5,10 +5,10 @@
   <% if @showcase.pictures.empty? %>
     <h5> There are currently no pictures in this showcase </h5>
   <% end %>
-  <% @showcase.pictures.each do |picture| %>
-    <ol>
-      <li>
+  <ol>
+    <% @showcase.pictures.each do |picture| %>
 
+      <li>
         <div class="details">
           <b><%= Picture.human_attribute_name(:title) %></b>: <i><%= picture.title %></i>
         </div>
@@ -18,11 +18,10 @@
           <% end %>
         </div>
       </li>
-    </ol>
-  <% end %>
+    <% end %>
+  </ol>
   <%= link_to "Edit this showcase", edit_showcase_path,
       :class=>"btn btn-danger" %>
-
 </div>
 
 
