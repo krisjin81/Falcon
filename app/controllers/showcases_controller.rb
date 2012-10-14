@@ -26,7 +26,7 @@ class ShowcasesController < InheritedResources::Base
 
   def show
     @showcase = Showcase.find_by_id(params[:id])
-    if @showcase.id != current_account.id
+    if @showcase.account.id != current_account.id
       redirect_to account_profile_path
     end
     @showcase
