@@ -25,6 +25,12 @@ describe Showcase do
   end
 
   it "Should not be possible to delete the default showcase" do
+    acc = Account.new(:email => "foo@gmail.com", :username => "foobar" , :password=> "foobar12345",:free_member_level=>'New Member')
+    acc.save!
+    acc.should be_valid
+    def_showcase = acc.default_showcase
+    def_showcase.delete
+    acc.has_default_showcase?.should be_true
   end
 
 end
