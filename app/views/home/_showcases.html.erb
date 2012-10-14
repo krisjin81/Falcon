@@ -1,0 +1,22 @@
+<div class="well">
+  <% showcases.each do |showcase| %>
+    <h3>Showcase: <%= showcase.name %> </h3>
+    <div class="well">
+      <h2> Pictures: </h2>
+      <ol>
+        <% showcase.pictures.each do |picture| %>
+          <li>
+            <div class="details">
+              <b><%= Picture.human_attribute_name(:title) %></b>: <i><%= picture.title %></i>
+            </div>
+            <div class="image">
+              <% if picture.image.present? %>
+                <%= image_tag picture.image.url(:preview) %>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+</div>
+<% end %>>

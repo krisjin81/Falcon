@@ -1,4 +1,5 @@
 class ShowcasesController < InheritedResources::Base
+  before_filter :authenticate_account!
   def index
     @showcases = current_account.showcases || current_account.build_showcases
   end
@@ -22,4 +23,13 @@ class ShowcasesController < InheritedResources::Base
       flash[:error] = "Sorry showcase could not be update"
     end
   end
+
+  def show
+    @showcase = Showcase.find_by_id(params[:id])
+    if @showcase.id != current_account.id
+      redirect_to account_profile_path
+    end
+    @showcase
+  end
+
 end
