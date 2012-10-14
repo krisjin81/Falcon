@@ -20,7 +20,11 @@
     </ol>
     <br />
   <% end %>
-  <%= link_to 'New Showcase', new_showcase_path, class: "btn
+
+  <% if current_account.can_create_additional_showcases? %>
+    <%= link_to 'New Showcase', new_showcase_path, class: "btn
                                                                  btn-large
                                                                  btn-primary" %>
+  <% end %>
+
 </div>

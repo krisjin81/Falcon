@@ -31,5 +31,4 @@ class ShowcasesController < InheritedResources::Base
     end
     @showcase
   end
-
 end
