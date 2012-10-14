@@ -41,8 +41,10 @@ class Account < User
   validates :free_member_level, :presence=> true, :inclusion => FREE_MEMBER_LEVELS
   validates_uniqueness_of :username
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable
+  :omniauthable
   attr_accessor :bypass_humanizer
+  before_save :create_default_showcase_if_none_exists
+  validate :has_exactly_one_default_showcase
 
   has_enumeration_for :provider, :create_helpers => true
 
@@ -66,7 +68,6 @@ class Account < User
     return false
   end
 
-
   # Overrides Account string representation.
   #
   # @return [String] username or email.
@@ -87,12 +88,16 @@ class Account < User
     self.provider.blank?
   end
 
-   def active_for_authentication?
-      # Comment out the below debug statement to view the properties of the returned self model values.
-      # logger.debug self.to_yaml
+  def has_default_showcase?
+    number_of_default_showcases == 1
+  end
 
-      super && is_account_active?
-    end
+  def active_for_authentication?
+    # Comment out the below debug statement to view the properties of the returned self model values.
+    # logger.debug self.to_yaml
+
+    super && is_account_active?
+  end
 
   class << self
     # Finds user by facebook token or creates a new one.
@@ -176,5 +181,40 @@ class Account < User
     end
   end
 
+  def default_showcase
+    if has_default_showcase?
+      self.showcases.each do |showcase|
+        if showcase.default == true
+          return showcase
+        end
+      end
+    else
+      nil
+    end
+  end
+
+
+  def create_default_showcase_if_none_exists
+    if !has_default_showcase?
+      showcase = Showcase.new(:name => "#{self.username}'s Showcase" , :publicly_visible => true, :default=>true )
+      showcase.save!
+      self.showcases << showcase
+    end
+  end
+
+
+  def has_exactly_one_default_showcase
+    errors.add(:showcases, "there cannot be more than one default showcase!") if number_of_default_showcases > 1
+  end
+
+  def number_of_default_showcases
+    default_showcases = []
+    self.showcases.each do |showcase|
+      if showcase.default == true
+        default_showcases << showcase
+      end
+    end
+    default_showcases.count
+  end
 
 end
