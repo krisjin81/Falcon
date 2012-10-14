@@ -13,17 +13,6 @@ class ShowcasesController < InheritedResources::Base
     redirect_to account_profile_path
   end
 
-  def update
-    @showcase = Showcase.find_by_id(params[:id])
-    params[:showcase][:picture_ids] = [] unless params[:showcase][:picture_ids]
-    @showcase.update_attributes(params[:showcase])
-    if @showcase.save
-      redirect_to showcase_path
-    else
-      flash[:error] = "Sorry showcase could not be update"
-    end
-  end
-
   def show
     @showcase = Showcase.find_by_id(params[:id])
     if @showcase.account.id != current_account.id

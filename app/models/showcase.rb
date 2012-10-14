@@ -4,7 +4,6 @@ class Showcase < ActiveRecord::Base
   has_and_belongs_to_many :pictures
   attr_accessible :picture_ids
   validates :name, :presence => true
-  validates_presence_of :publicly_visible
   default_scope order: 'showcases.created_at DESC'
   before_destroy :check_if_default_showcase_is_being_destroyed
 
