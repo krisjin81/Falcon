@@ -26,3 +26,7 @@
 /public/uploads/*
 
 TAGS
+
+#ignore org mode and generated files
+doc/*.org
+doc/*.html
