@@ -5,6 +5,7 @@ class ShowcasesController < InheritedResources::Base
 
   def create
     @showcase = current_account.showcases.build(params[:showcase])
+    params[:showcase][:default] == false unless params[:showcase][:default]
     if @showcase.save
       flash[:success] = "Showcase created!"
     end

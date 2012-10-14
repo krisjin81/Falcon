@@ -33,4 +33,29 @@ describe Showcase do
     acc.has_default_showcase?.should be_true
   end
 
+  it "Should be possible to create new showcases if the user is S or M level" do
+    acc = Account.new(:email => "foo@gmail.com", :username => "foobar" , :password=> "foobar12345",:free_member_level=>'Style Star')
+    acc.save!
+    acc.should be_valid
+    acc.showcases << acc.showcases.create!(:name => "foobar", :publicly_visible => true, :default => false)
+    acc.save!
+    acc.should  be_valid
+    acc.can_create_additional_showcases?.should be_true
+    acc.showcases.count.should == 2
+  end
+
+  it "should not be possible to create new showcases if user is anything other than S or M level" do
+    acc = Account.new(:email => "foo@gmail.com", :username => "foobar" , :password=> "foobar12345",:free_member_level=>'New Member')
+    acc.save!
+    acc.should be_valid
+    acc.can_create_additional_showcases?.should be_false
+#    acc.showcases << acc.showcases.create!(:name => "foobar", :publicly_visible => true, :default => false)
+ #   acc.save!
+ #   acc.should_not be_valid
+  end
+
+
+
+
+
 end

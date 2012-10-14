@@ -3,7 +3,11 @@
 <ol class="showcases">
   <% @showcases.each do |showcase| %>
     <li>
-      <span class="content"><h3><%=link_to showcase.name, showcase %></h3></span>
+      <span class="content"><h3><%=link_to showcase.name, showcase
+                                   %></h3></span>
+      <% if showcase.default? %>
+        <i> This is the default showcase </i>
+      <% end %>
       <span class="content"><b>Description: </b><%= showcase.content %></span>
       <span class="timestamp">
         Posted <%= time_ago_in_words(showcase.created_at) %> ago.
@@ -12,14 +16,20 @@
       <h3> Showcase actions: </h3>
       <td><%= link_to 'Edit', edit_showcase_path(showcase), :class =>
                 'btn btn-primary' %></td>
-      <td><%= link_to 'Destroy', showcase, confirm: 'Are you sure?',
-              method: :delete , :class => 'btn btn-danger'%></td>
+      <% if !showcase.default? %>
+        <td><%= link_to 'Destroy', showcase, confirm: 'Are you sure?',
+                method: :delete , :class => 'btn btn-danger'%></td>
+      <% end %>
+
     </li>
   <% end %>
 </ol>
 <br />
 
-<%= link_to 'New Showcase', new_showcase_path, class: "btn
+<% if current_account.can_create_additional_showcases? %>
+  <%= link_to 'New Showcase', new_showcase_path, class: "btn
                                                                  btn-large
                                                                  btn-primary" %>
+
+<% end %>
 

@@ -92,6 +92,20 @@ class Account < User
     number_of_default_showcases == 1
   end
 
+  def can_create_additional_showcases?
+    ( self.free_member_level == 'Style Star' || self.free_member_level == 'Model/Artist' )
+  end
+
+  def non_default_showcases
+    non_default_showcases = []
+    self.showcases.each do |showcase|
+      if !showcase.default?
+        non_default_showcases << showcase
+      end
+    end
+      non_default_showcases
+  end
+
   def active_for_authentication?
     # Comment out the below debug statement to view the properties of the returned self model values.
     # logger.debug self.to_yaml
