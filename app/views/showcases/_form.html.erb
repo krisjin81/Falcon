@@ -5,7 +5,14 @@
     <div class="form-inputs">
       <%= f.input :name %>
       <%= f.input :content %>
-      <%= f.input :publicly_visible %>
+
+      <% if @showcase.default? %>
+        <%= f.check_box :publicly_visible,:checked => true, :disabled => true %><i>Default showcase is always public</i>
+      <% else %>
+        <%= f.input :publicly_visible %>
+      <% end %>
+
+
     </div>
   </div>
 
@@ -16,15 +23,15 @@
 
         <li>
           <b><%= Picture.human_attribute_name(:title) %></b>: <i><%=picture.title%></i>
-            <div class="image">
-              <% if picture.image.present? %>
-                <%= image_tag picture.image.url(:preview) %>
-              <% end %>
-            </div>
-            Include in Showcase?
-            <%= check_box_tag 'picture_ids[]', picture.id,
-               @showcase.pictures.include?(picture), :name =>
-                 'showcase[picture_ids][]' %>
+          <div class="image">
+            <% if picture.image.present? %>
+              <%= image_tag picture.image.url(:preview) %>
+            <% end %>
+          </div>
+          Include in Showcase?
+          <%= check_box_tag 'picture_ids[]', picture.id,
+              @showcase.pictures.include?(picture), :name =>
+                'showcase[picture_ids][]' %>
         </li>
       <% end %>
     </ol>
