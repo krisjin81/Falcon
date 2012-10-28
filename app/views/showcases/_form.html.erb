@@ -25,6 +25,10 @@
               <%= image_tag picture.image.url(:preview) %>
             <% end %>
           </div>
+          <br/>
+          Cover picture?
+          <%= radio_button("showcase","cover_picture_id",picture.id) %>
+          <br/>
           Include in Showcase?
           <%= check_box_tag 'picture_ids[]', picture.id,
               @showcase.pictures.include?(picture), :name =>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014113008) do
+ActiveRecord::Schema.define(:version => 20121028041049) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
@@ -177,6 +177,7 @@ ActiveRecord::Schema.define(:version => 20121014113008) do
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
     t.boolean  "default",          :default => false
+    t.integer  "cover_picture_id"
   end
 
   add_index "showcases", ["account_id", "created_at"], :name => "index_showcases_on_account_id_and_created_at"
