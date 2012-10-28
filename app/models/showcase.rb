@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: showcases
+#
+#  id               :integer(4)      not null, primary key
+#  name             :string(255)     not null
+#  content          :string(255)
+#  publicly_visible :boolean(1)      default(TRUE), not null
+#  account_id       :integer(4)
+#  created_at       :datetime        not null
+#  updated_at       :datetime        not null
+#  default          :boolean(1)      default(FALSE)
+#
+
+
 class Showcase < ActiveRecord::Base
   attr_accessible :account_id, :content, :name, :publicly_visible, :picture_id, :default
   belongs_to :account
@@ -14,17 +29,3 @@ class Showcase < ActiveRecord::Base
     end
   end
 end
-# == Schema Information
-#
-# Table name: showcases
-#
-#  id               :integer(4)      not null, primary key
-#  name             :string(255)     not null
-#  content          :string(255)
-#  publicly_visible :boolean(1)      default(TRUE), not null
-#  account_id       :integer(4)
-#  created_at       :datetime        not null
-#  updated_at       :datetime        not null
-#  default          :boolean(1)      default(FALSE)
-#
-
