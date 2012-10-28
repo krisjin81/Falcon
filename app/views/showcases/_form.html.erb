@@ -3,7 +3,8 @@
   <div class="well">
     <h4> Edit Showcase details</h4>
     <div class="form-inputs">
-      <%= f.input :name %>
+      <%= f.input :name, :collection => [@showcase.account.username ,
+      @showcase.owner_full_name], :prompt => t('helpers.please_select') %>
       <%= f.input :content %>
       <% if @showcase.default? %>
         <%= f.check_box :publicly_visible,:checked => true, :disabled => true %><i>Default showcase is always public</i>

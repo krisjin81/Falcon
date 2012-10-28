@@ -33,4 +33,12 @@ class Showcase < ActiveRecord::Base
     Picture.find_by_id(self.cover_picture_id)
   end
 
+  def owner_full_name
+    profile = self.account.profile
+    first_name = profile.first_name || ""
+    last_name = profile.last_name || ""
+    first_name + " " + last_name
+  end
+
+
 end
