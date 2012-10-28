@@ -28,4 +28,9 @@ class Showcase < ActiveRecord::Base
       errors.blank?
     end
   end
+
+  def cover_picture
+    Picture.find_by_id(self.cover_picture_id)
+  end
+
 end
