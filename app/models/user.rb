@@ -18,7 +18,7 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string(255)
 #  type                   :string(255)
-#  created_at             :date'time        not null
+#  created_at             :datetime        not null
 #  updated_at             :datetime        not null
 #  admin_level            :string(255)
 #  external_user_id       :string(50)
@@ -26,6 +26,7 @@
 #  username               :string(255)
 #  free_member_level      :string(255)
 #  affiliate_member_level :string(255)
+#  active                 :boolean(1)
 #
 
 class User < ActiveRecord::Base

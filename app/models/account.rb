@@ -26,6 +26,7 @@
 #  username               :string(255)
 #  free_member_level      :string(255)
 #  affiliate_member_level :string(255)
+#  active                 :boolean(1)
 #
 
 class Account < User

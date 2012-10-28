@@ -17,6 +17,9 @@
 #  filter          :string(20)
 #  formatted_image :string(255)
 #  style           :string(255)
+#  s1              :boolean(1)
+#  s2              :boolean(1)
+#  s3              :boolean(1)
 #
 
 class Picture < ActiveRecord::Base
