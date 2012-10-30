@@ -52,6 +52,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2', '~> 0.1.11'
 gem 'ruby-openid'
 gem 'omniauth-openid'
+gem 'country-select'
 
 group :development, :test do
   gem 'mongrel', :platforms => :ruby_18

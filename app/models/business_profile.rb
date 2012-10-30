@@ -14,11 +14,11 @@
 #  country_id         :integer(4)
 #  created_at         :datetime        not null
 #  updated_at         :datetime        not null
+#  country            :string(255)
 #
 
 class BusinessProfile < ActiveRecord::Base
   belongs_to :affiliate
-  belongs_to :country
   has_and_belongs_to_many :styles
   has_and_belongs_to_many :audiences, :join_table => :business_profiles_audiences
   has_and_belongs_to_many :age_groups, :join_table => :business_profiles_age_groups

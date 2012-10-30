@@ -21,9 +21,8 @@
   <%= f.input :contact_email, :input_html => { :class => 'input-xxlarge' } %>
   <%= f.input :about, :input_html => { :class => 'input-xxlarge', :rows => 5 } %>
   <%= f.input :website, :input_html => { :class => 'input-xxlarge' } %>
-  <%= f.input :country_id, :input_html => { :class => 'input-xxlarge'
-    }, :collection => Country.cached, :prompt =>
-    t('helpers.please_select') %>
+  <%= profile.input :country %>
+  <%= f.input :country %>
 
   <div class="form-actions">
     <%= f.submit t('helpers.actions.update'), :class => 'btn btn-primary' %>

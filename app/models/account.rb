@@ -34,11 +34,21 @@ class Account < User
   has_many :blogposts, :dependent => :destroy
   has_many :showcases, :dependent => :destroy
 
+  has_many :relationships, :foreign_key => "follower_id", :dependent => :destroy
+  has_many :followed_accounts, :through => :relationships, :source => :followed
+  has_many :reverse_relationships, :foreign_key => "followed_id",
+                                   :class_name =>  "Relationship",
+                                   :dependent =>   :destroy
+  has_many :followers, through: :reverse_relationships, :source => :follower
+
   accepts_nested_attributes_for :profile
   attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes,:username, :free_member_level, :affiliate_member_level, :active
+
   validates_presence_of :username
+
   FREE_MEMBER_LEVELS=['New Member','Regular Member','Loyal Member','Style Star','Model/Artist']
   SIGNUP_MEMBER_LEVELS=['New Member'] #this array contains the member levels that a user can choose while signing up
+
   validates :free_member_level, :presence=> true, :inclusion => FREE_MEMBER_LEVELS
   validates_uniqueness_of :username
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable,
@@ -49,7 +59,7 @@ class Account < User
 
   has_enumeration_for :provider, :create_helpers => true
 
-  scope :with_profile, includes(:profile => [:country, :avatar])
+  scope :with_profile, includes(:profile => [:avatar])
   scope :from_facebook, where(:provider => Provider::FACEBOOK)
   scope :from_twitter, where(:provider => Provider::TWITTER)
   scope :from_google, where(:provider => Provider::GOOGLE)
@@ -67,6 +77,18 @@ class Account < User
   def is_account_active?
     return true if ( self.active == nil || self.active == true )
     return false
+  end
+
+  def following?(other_user)
+    relationships.find_by_followed_id(other_user.id)
+  end
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationships.find_by_followed_id(other_user.id).destroy
   end
 
   # Overrides Account string representation.

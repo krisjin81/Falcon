@@ -1,0 +1,35 @@
+<div class="hero-unit">
+  <h2> My relationships </h2>
+<%= render 'following_and_followers', :account => @current_account %>
+  <ol>
+    <% @all_other_accounts.each do |account| %>
+      <li>
+        <div class="well">
+          Username: <b><%= account.username %></b>
+          <% if account.profile.full_name.empty? ||
+                 account.profile.full_name == ' ' %>
+            <br/><i>This user has not provided their full name in their profile</i>
+          <% else %>
+            <p>
+              Full Name: <i><%= account.profile.full_name %></i>
+            </p>
+          <% end %>
+          <br/>
+          <%= image_tag account.profile.avatar.image.url(:thumb) %>
+          <br/>
+          <%= render 'following_and_followers', :account => account %>
+          <% if @current_account.following?(account) %>
+            You are currently following <%= account.username %>
+            <%= render 'unfollow', :account => account,
+          :current_account => @current_account %>
+          <% else %>
+            You are not following <%= account.username %>
+            <%= render 'follow', :account => account,
+                :current_account => @current_account %>
+
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ol>
+</div>

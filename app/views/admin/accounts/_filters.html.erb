@@ -12,7 +12,7 @@
         <%= f.input :profile_username_cont, :placeholder => t('admin.filters.username_contains') %>
         <%= f.input :profile_first_name_cont, :placeholder => t('admin.filters.first_name_contains') %>
         <%= f.input :profile_last_name_cont, :placeholder => t('admin.filters.last_name_contains') %>
-        <%= f.input :profile_country_name_cont, :as => :string, :placeholder => t('admin.filters.country_contains') %>
+        <%= f.input :profile_country_cont, :as => :string, :placeholder => t('admin.filters.country_contains') %>
         <%= f.input :confirmed_at_not_null, :as => :boolean, :label => false, :inline_label => t('admin.filters.confirmed') %>
         <div class="form-actions">
           <%= f.submit t('helpers.actions.search'), :class => 'btn btn-primary' %>
