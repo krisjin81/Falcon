@@ -1,6 +1,6 @@
 <div class="well">
   <% showcases.each do |showcase| %>
-    <h3>Showcase: <%= showcase.name %> </h3>
+    <h3><%=link_to showcase.name, showcase %></h3>
     <div class="well">
       <% picture = showcase.cover_picture %>
       <% if picture %>
