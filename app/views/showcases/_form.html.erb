@@ -4,7 +4,7 @@
     <h4> Edit Showcase details</h4>
     <div class="form-inputs">
       <%= f.input :name, :collection => [@showcase.account.username ,
-      @showcase.owner_full_name], :prompt => t('helpers.please_select') %>
+                                         @showcase.owner_full_name], :prompt => t('helpers.please_select') %>
       <%= f.input :content %>
       <% if @showcase.default? %>
         <%= f.check_box :publicly_visible,:checked => true, :disabled => true %><i>Default showcase is always public</i>
@@ -26,10 +26,13 @@
               <%= image_tag picture.image.url(:preview) %>
             <% end %>
           </div>
-          <br/>
-          Cover picture?
-          <%= radio_button("showcase","cover_picture_id",picture.id) %>
-          <br/>
+
+          <% if @showcase.pictures.include?(picture) %>
+            <br/>
+            Cover picture?
+            <%= radio_button("showcase","cover_picture_id",picture.id) %>
+            <br/>
+          <% end %>
           Include in Showcase?
           <%= check_box_tag 'picture_ids[]', picture.id,
               @showcase.pictures.include?(picture), :name =>
