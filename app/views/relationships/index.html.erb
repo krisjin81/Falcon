@@ -20,8 +20,13 @@
           <%= render 'following_and_followers', :account => account %>
           <% if @current_account.following?(account) %>
             You are currently following <%= account.username %>
+            <%= render 'unfollow', :account => account,
+          :current_account => @current_account %>
           <% else %>
             You are not following <%= account.username %>
+            <%= render 'follow', :account => account,
+                :current_account => @current_account %>
+
           <% end %>
         </div>
       </li>
