@@ -9,9 +9,9 @@
           </a>
           <ul class="dropdown-menu">
             <li><%= link_to t('helpers.actions.profile'), account_profile_path %></li>
-            <li><%= link_to t('helpers.actions.blogposts'),
-            blogposts_path %></li>
+            <li><%= link_to t('helpers.actions.blogposts'), blogposts_path %></li>
             <li><%= link_to t('helpers.actions.showcases'), showcases_path %></li>
+            <li><%= link_to t('helpers.actions.relationships'), relationships_path %></li>
             <li><%= link_to t('helpers.actions.edit_language_settings'), edit_account_language_settings_path %></li>
             <li><%= link_to t('helpers.actions.change_password'), edit_account_registration_path if current_account.provider.blank? %></li>
             <li><%= link_to t('helpers.actions.sign_out'), destroy_account_session_path, :method => 'delete' %></li>
