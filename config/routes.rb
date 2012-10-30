@@ -3,6 +3,12 @@ Falcon::Application.routes.draw do
   resources :blogposts
   resources :showcases
 
+  resources :accounts do
+    member do
+      get :following, :followers
+    end
+  end
+
   namespace :account do
     resource :profile, :only => [:show, :edit, :update]
     resource :language_settings, :only => [:edit, :update]
