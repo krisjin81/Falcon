@@ -10,21 +10,7 @@
         <%= edit_link_to('Edit Profile', edit_account_profile_path, :class => 'edit-profile') if is_current_profile?(@profile) %>
       </div>
       <div class="details">
-        <div class="stats">
-          <a href="<%= following_account_path(@profile.account) %>">
 
-            <strong id="following" class="stat">
-              <%= @profile.account.followed_accounts.count %>
-            </strong>
-            following
-          </a>
-          <a href="<%= followers_account_path(@profile.account) %>">
-            <strong id="followers" class="stat">
-              <%= @profile.account.followers.count %>
-            </strong>
-            followers
-          </a>
-        </div>
         <dl>
           <dt><%= Account.human_attribute_name(:username)%>:
             <%= @profile.account.username %> </dt>
@@ -44,10 +30,23 @@
           </dd>
         </dl>
       </div>
+
       <div class="about">
         Introduction about your self. <%= edit_link_to(''.html_safe, '#', :class => 'edit') if is_current_profile?(@profile) %>
       </div>
+
     </div>
+      <div class="stats well">
+        <h4>Social Stats:</h4>
+        <strong id="following" class="stat">
+          <%= @profile.account.followed_accounts.count %>
+        </strong>
+        following
+        <strong id="followers" class="stat">
+          <%= @profile.account.followers.count %>
+        </strong>
+        followers
+      </div>
   </div>
 
   <%= render 'blogposts' %>
