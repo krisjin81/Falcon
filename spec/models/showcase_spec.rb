@@ -71,5 +71,6 @@ end
 #  created_at       :datetime        not null
 #  updated_at       :datetime        not null
 #  default          :boolean(1)      default(FALSE)
+#  cover_picture_id :integer(4)
 #
 

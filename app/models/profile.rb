@@ -12,6 +12,7 @@
 #  gender     :integer(1)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
+#  country    :string(255)
 #
 
 class Profile < ActiveRecord::Base

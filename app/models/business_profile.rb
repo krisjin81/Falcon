@@ -14,6 +14,7 @@
 #  country_id         :integer(4)
 #  created_at         :datetime        not null
 #  updated_at         :datetime        not null
+#  country            :string(255)
 #
 
 class BusinessProfile < ActiveRecord::Base
