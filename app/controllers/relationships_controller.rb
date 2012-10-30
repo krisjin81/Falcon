@@ -1,5 +1,5 @@
-
 class RelationshipsController < ApplicationController
+  before_filter :authenticate_account!
   def index
     @relationships = current_account.relationships || current_account.build_relationships
     @all_other_accounts = []
@@ -22,6 +22,4 @@ class RelationshipsController < ApplicationController
     current_user.unfollow!(@account)
     redirect_to relationships_path
   end
-
-
 end
