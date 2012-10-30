@@ -9,7 +9,7 @@
     <th><%= sortable_header(BusinessProfile.human_attribute_name(:contact_email), :profile_last_name) %></th>
     <th><%= sortable_header(Affiliate.human_attribute_name(:confirmed), :confirmed_at) %></th>
     <th><%= sortable_header(Affiliate.human_attribute_name(:last_sign_in_at), :last_sign_in_at) %></th>
-    <th><%= sortable_header(BusinessProfile.human_attribute_name(:country), :profile_country_name) %></th>
+    <th><%= sortable_header(BusinessProfile.human_attribute_name(:country), :profile_country) %></th>
     <th><%= sortable_header(Affiliate.human_attribute_name(:created_at), :created_at) %></th>
     <th><%= sortable_header(Affiliate.human_attribute_name(:updated_at), :updated_at) %></th>
     <th><%=t '.actions', :default => t('helpers.actions.actions') %></th>
@@ -26,7 +26,7 @@
       <td><%= item.business_profile.contact_email rescue '' %></td>
       <td><%= item.confirmed? %></td>
       <td><%= item.last_sign_in_at ? l(item.last_sign_in_at) : t('helpers.never') %></td>
-      <td><%= item.business_profile.country.name rescue '' %></td>
+      <td><%= item.business_profile.country rescue '' %></td>
       <td><%=l item.created_at %></td>
       <td><%=l item.updated_at %></td>
       <td>

@@ -11,7 +11,7 @@
     <th><%= sortable_header(Account.human_attribute_name(:confirmed), :confirmed_at) %></th>
     <th><%= sortable_header(Account.human_attribute_name(:last_sign_in_at), :last_sign_in_at) %></th>
     <th><%= sortable_header(Profile.human_attribute_name(:gender), :gender) %></th>
-    <th><%= sortable_header(Profile.human_attribute_name(:country), :profile_country_name) %></th>
+    <th><%= sortable_header(Profile.human_attribute_name(:country), :profile_country) %></th>
     <th><%= sortable_header(Account.human_attribute_name(:created_at), :created_at) %></th>
     <th><%= sortable_header(Account.human_attribute_name(:updated_at), :updated_at) %></th>
     <th><%=t '.actions', :default => t('helpers.actions.actions') %></th>
@@ -30,7 +30,7 @@
       <td><%= item.confirmed? %></td>
       <td><%= item.last_sign_in_at ? l(item.last_sign_in_at) : t('helpers.never') %></td>
       <td><%= item.profile.gender_humanize rescue '' %></td>
-      <td><%= item.profile.country.name rescue '' %></td>
+      <td><%= item.profile.country rescue '' %></td>
       <td><%=l item.created_at %></td>
       <td><%=l item.updated_at %></td>
       <td>

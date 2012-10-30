@@ -47,7 +47,7 @@ class Affiliate < User
 
   attr_accessor :bypass_humanizer
 
-  scope :with_profile, includes(:business_profile => [:country, :avatar])
+  scope :with_profile, includes(:business_profile => [:avatar])
 
 
 

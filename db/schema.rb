@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121028041049) do
+ActiveRecord::Schema.define(:version => 20121030050753) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20121028041049) do
     t.integer  "country_id"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
+    t.string   "country"
   end
 
   create_table "business_profiles_age_groups", :force => true do |t|
@@ -162,6 +163,7 @@ ActiveRecord::Schema.define(:version => 20121028041049) do
     t.integer  "gender",     :limit => 1
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
+    t.string   "country"
   end
 
   add_index "profiles", ["account_id"], :name => "index_profiles_on_account_id"

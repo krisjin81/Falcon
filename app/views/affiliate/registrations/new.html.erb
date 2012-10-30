@@ -24,9 +24,8 @@
     <%= profile.input :contact_email, :input_html => { :class => 'input-xxlarge' } %>
     <%= profile.input :about, :input_html => { :class => 'input-xxlarge', :rows => 5 } %>
     <%= profile.input :website, :input_html => { :class => 'input-xxlarge' } %>
-    <%= profile.input :country_id, :input_html => { :class =>
-    'input-xxlarge' }, :collection => Country.cached, :prompt =>
-    t('helpers.please_select') %>
+    <p> Country: </p>
+    <%= profile.input :country %>
   <% end %>
 
   <%=raw @humanizer.get_publisher_html unless session[:human] %>

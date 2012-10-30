@@ -49,7 +49,7 @@ class Account < User
 
   has_enumeration_for :provider, :create_helpers => true
 
-  scope :with_profile, includes(:profile => [:country, :avatar])
+  scope :with_profile, includes(:profile => [:avatar])
   scope :from_facebook, where(:provider => Provider::FACEBOOK)
   scope :from_twitter, where(:provider => Provider::TWITTER)
   scope :from_google, where(:provider => Provider::GOOGLE)
