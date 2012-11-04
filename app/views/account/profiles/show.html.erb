@@ -75,6 +75,10 @@
   <%= render 'showcases', :profile => @profile %>
 
   <div class="well">
+    <%if is_current_profile?(@profile)%>
+      <h2><%= link_to t('helpers.actions.add_more_pictures'),
+              "#!/pictures/new", :class => 'btn btn-primary new' %></h2>
+    <% end %>
     <div id="pictures">
     </div>
   </div>
