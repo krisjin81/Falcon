@@ -13,7 +13,9 @@
     </ol>
     <br />
   <% end %>
-  <%= link_to 'New Blogpost', new_blogpost_path, class: "btn
+  <% if is_current_profile?(@profile) %>
+    <%= link_to 'New Blogpost', new_blogpost_path, class: "btn
                                                                  btn-large
-                                                                 btn-primary" %>
+                                                                 btn-primary"%>
+  <% end %>
 </div>

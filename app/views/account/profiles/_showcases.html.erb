@@ -21,10 +21,11 @@
     <br />
   <% end %>
 
-  <% if current_account.can_create_additional_showcases? %>
-    <%= link_to 'New Showcase', new_showcase_path, class: "btn
+  <% if is_current_profile?(@profile) %>
+    <% if current_account.can_create_additional_showcases? %>
+      <%= link_to 'New Showcase', new_showcase_path, class: "btn
                                                                  btn-large
                                                                  btn-primary" %>
+    <% end %>
   <% end %>
-
 </div>
