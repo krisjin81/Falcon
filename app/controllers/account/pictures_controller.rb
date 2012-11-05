@@ -25,8 +25,18 @@ class Account::PicturesController < ApplicationController
 
   def edit
     @picture = resources.find(params[:id])
+    @other_accounts = list_non_owner_accounts_for(@picture)
     render :action => 'form'
   end
+
+  def list_non_owner_accounts_for(picture)
+    accounts = []
+    Account.all.each do |account|
+      accounts << account if !picture.is_owner?(account)
+    end
+    accounts
+  end
+
 
   def update
     @picture = resources.find(params[:id])

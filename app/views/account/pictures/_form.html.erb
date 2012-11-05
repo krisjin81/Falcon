@@ -48,7 +48,17 @@
     <%= f.input :brands, :as => :text, :input_html => { :class => 'input-xxlarge', :rows => 3 } %>
     <%= f.input :cost, :as => :text, :input_html => { :class => 'input-xxlarge', :rows => 3 } %>
     <%= f.input :where_to_buy, :as => :text, :input_html => { :class => 'input-xxlarge', :rows => 3 } %>
-    <%= render 'invitees', :picture => picture  %>
+      <h3> Invite people to view this photograph </h3>
+      <ul>
+        <% @other_accounts.each do |account| %>
+          <li>
+            <p><%= account.username %> is invited?
+              <%= check_box_tag 'account_ids[]', account.id,
+                  picture.has_invitee?(account), :name=>
+                    'picture[account_ids][]' %></p>
+          </li>
+        <% end %>
+      </ul>
   </div>
 
   <div class="form-actions">

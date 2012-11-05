@@ -72,12 +72,13 @@ class Picture < ActiveRecord::Base
     attachable == account.profile
   end
 
-  def has_invitee? ( account )
+  def has_invitee?(account)
     self.invitees.each do |invitee|
       return true if invitee.account_id == account.id
       end
       false
   end
+
 
   # Overrides Picture string representation.
   #
