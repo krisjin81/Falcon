@@ -5,5 +5,5 @@
   <%= link_to image_tag(picture.image.url(:preview)), picture_url(picture) %>
 </div>
 <div class="author">
-  by <%= link_to picture.attachable, account_view_url(:profile_id => picture.attachable.unique_id) %>
+  by <%= link_to picture.attachable.account.username, account_view_url(:profile_id => picture.attachable.unique_id) %>
 </div>
