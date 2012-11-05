@@ -40,6 +40,18 @@ class Account::PicturesController < ApplicationController
 
   def update
     @picture = resources.find(params[:id])
+    params[:picture][:account_ids] = [] unless params[:picture][:account_ids]
+    list_non_owner_accounts_for(@picture).each do |acc|
+      if params[:picture][:account_ids].include?(acc.id.to_s)
+        @picture.invitees.build(:account_id => acc.id)
+      else
+        @picture.invitees.each do |invitee|
+          invitee.delete if invitee.account_id == acc.id
+        end
+      end
+    end
+
+    params[:picture].delete(:account_ids)
     if @picture.update_attributes(params[:picture])
       @pictures = resources.all
       flash[:notice] = I18n.t('flash.actions.update.notice', :resource_name => resource_name)
@@ -100,12 +112,12 @@ class Account::PicturesController < ApplicationController
 
   def load_profile
     @profile ||= if params[:profile_id]
-      Profile.by_unique_id(params[:profile_id]).first.tap do |profile|
+                   Profile.by_unique_id(params[:profile_id]).first.tap do |profile|
         raise ActiveRecord::RecordNotFound.new("Could not found profile with username or id '#{params[:profile_id]}'") unless profile
       end
-    else
-      current_account.profile || current_account.build_profile
-    end
+                 else
+                   current_account.profile || current_account.build_profile
+                 end
   end
 
   def resources
