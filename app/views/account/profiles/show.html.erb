@@ -14,6 +14,8 @@
         <dl>
           <dt><%= Account.human_attribute_name(:username)%>:
             <%= @profile.account.username %> </dt>
+          <dt><%= Account.human_attribute_name(:full_name)%>:
+            <%= @profile.full_name %> </dt>
           <dt><%= Account.human_attribute_name(:Level)%>:
             <%= @profile.account.free_member_level %> </dt>
           <dt><%= Account.human_attribute_name(:country)%>:
