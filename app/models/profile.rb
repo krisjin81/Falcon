@@ -59,7 +59,7 @@ class Profile < ActiveRecord::Base
   # @return [String] username or email.
   #
   def to_s
-    username || full_name
+    self.account.username
   end
 
   # Gets user unique identifier.

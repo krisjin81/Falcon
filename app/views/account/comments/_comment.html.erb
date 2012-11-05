@@ -1,14 +1,14 @@
 <div class="comment">
   <div class="author">
     <%= image_tag comment.author.avatar.image_url(:thumb) %>
-    <%= link_to comment.author, account_view_url(:profile_id => comment.author.unique_id) %>
+    <%= link_to comment.author.account.username, account_view_url(:profile_id => comment.author.unique_id) %>
   </div>
   <div class="body">
     <blockquote>
       <p><%= comment.body %></p>
       <small>
         <%=raw t('account.comments.author_title_format',
-              :author => link_to(comment.author, account_view_url(:profile_id => comment.author.unique_id)),
+              :author => link_to(comment.author.account.username, account_view_url(:profile_id => comment.author.unique_id)),
               :time => time_ago_in_words(comment.created_at)) %>
       </small>
     </blockquote>
