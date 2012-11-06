@@ -3,6 +3,7 @@ Falcon::Application.routes.draw do
   resources :blogposts
   resources :showcases
   resources :relationships
+  resources :favorites
 
   resources :accounts do
     member do
