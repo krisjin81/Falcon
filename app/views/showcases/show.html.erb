@@ -1,5 +1,6 @@
 <h1>Showcase: <%= @showcase.name %> </h1>
 <i> This is a placeholder view, the cover flow UI will come here </i>
+<%= render "shared/showcase_favorites", :showcase => @showcase %>
 <div class="well">
   <h2> Pictures: </h2>
   <% if @showcase.pictures.empty? %>

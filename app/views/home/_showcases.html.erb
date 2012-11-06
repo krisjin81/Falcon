@@ -1,6 +1,6 @@
 <div class="well">
   <% showcases.each do |showcase| %>
-    <% if showcase.has_invitee?(current_account) ||
+    <% if (current_account && showcase.has_invitee?(current_account)) ||
            showcase.publicly_visible? %>
       <h3><%=link_to showcase.name, showcase %></h3>
       <div class="well">

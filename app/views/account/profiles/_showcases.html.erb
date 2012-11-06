@@ -2,6 +2,7 @@
   <h2>My Showcases</h2>
   <% showcase = @profile.account.default_showcase %>
   <%= render "showcase", :showcase => showcase %>
+<%= render 'shared/showcase_favorites', :showcase => showcase %>
   <% if @profile.account.non_default_showcases.any? %>
     <ol class="showcases">
       <% @profile.account.showcases.each do |showcase| %>

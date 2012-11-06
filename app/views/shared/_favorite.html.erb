@@ -1,7 +1,7 @@
 <%= form_tag('/favorites') do -%>
   <div>
     <%= hidden_field_tag 'favorite_account_id', current_account.id %>
-    <%= hidden_field_tag 'favorite_picture_id', picture.id %>
+    <%= hidden_field_tag "favorite_#{item.class.to_s.downcase}_id", item.id %>
   </div>
   <%= submit_tag "Favorite", :class => "btn btn-large btn-primary" %>
 <% end -%>
