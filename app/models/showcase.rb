@@ -19,6 +19,10 @@ class Showcase < ActiveRecord::Base
   belongs_to :account
   has_and_belongs_to_many :pictures
   attr_accessible :picture_ids, :cover_picture_id
+
+  has_many :invitees
+  has_many :accounts, :through => :invitees
+
   validates :name, :presence => true
   default_scope order: 'showcases.created_at DESC'
   before_destroy :check_if_default_showcase_is_being_destroyed
@@ -28,6 +32,13 @@ class Showcase < ActiveRecord::Base
       errors.add :account, "You cannot destroy the default showcase of the account"
       errors.blank?
     end
+  end
+
+  def has_invitee?(account)
+    self.invitees.each do |invitee|
+      return true if invitee.account_id == account.id
+    end
+    false
   end
 
   def cover_picture
@@ -41,5 +52,11 @@ class Showcase < ActiveRecord::Base
     first_name + " " + last_name
   end
 
-
+  def non_owner_accounts
+    accs = []
+    Account.all.each do |acc|
+      accs << acc if acc.id != self.account.id
+    end
+    accs
+  end
 end

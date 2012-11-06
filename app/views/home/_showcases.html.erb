@@ -1,23 +1,26 @@
 <div class="well">
   <% showcases.each do |showcase| %>
-    <h3><%=link_to showcase.name, showcase %></h3>
-    <div class="well">
-      <% picture = showcase.cover_picture %>
-      <% if picture %>
-        <li>
-          <div class="details">
-            <b><%= Picture.human_attribute_name(:title) %></b>: <i><%= picture.title %></i>
-          </div>
-          <div class="image">
-            <% if picture.image.present? %>
-              <%= image_tag picture.image.url(:preview) %>
-            <% end %>
-          </div>
-        </li>
-      <% else %>
-        <i> This showcase has no cover picture! </i>
-      <% end %>
-    </div>
+    <% if showcase.has_invitee?(current_account) ||
+           showcase.publicly_visible? %>
+      <h3><%=link_to showcase.name, showcase %></h3>
+      <div class="well">
+        <% picture = showcase.cover_picture %>
+        <% if picture %>
+          <li>
+            <div class="details">
+              <b><%= Picture.human_attribute_name(:title) %></b>: <i><%= picture.title %></i>
+            </div>
+            <div class="image">
+              <% if picture.image.present? %>
+                <%= image_tag picture.image.url(:preview) %>
+              <% end %>
+            </div>
+          </li>
+        <% else %>
+          <i> This showcase has no cover picture! </i>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>
 

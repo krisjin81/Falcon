@@ -47,6 +47,27 @@
       <% end %>
     </ol>
   </div>
+
+  <div class="well">
+    <h4> Invite other users to view this showcase</h4>
+    <ol>
+      <% @showcase.non_owner_accounts.each do |acc| %>
+        <li>
+          <% if @showcase.has_invitee?(acc) %>
+            <b><%= acc.username %></b><i> is currently allowed to view this showcase</i>
+          <% else %>
+            <b> <%= acc.username %></b> <i>is currently <b>not</b> <i>allowed to view this showcase</i>
+          <% end %>
+          <p>
+            Allow user to view showcase in the future?
+            <%= check_box_tag 'account_ids[]', acc.id,
+                @showcase.has_invitee?(acc), :name=>
+                  'showcase[account_ids][]' %>
+          </p>
+        </li>
+      <% end %>
+    </ol>
+  </div>
   <div class="form-actions">
     <%= f.button :submit , :class=>'btn btn-primary' %>
   </div>

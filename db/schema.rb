@@ -11,7 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121030064624) do
+ActiveRecord::Schema.define(:version => 20121106005407) do
+
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
     t.string   "username",   :limit => 50
@@ -100,6 +101,15 @@ ActiveRecord::Schema.define(:version => 20121030064624) do
   end
 
   add_index "countries", ["name"], :name => "index_countries_on_name"
+
+  create_table "invitees", :force => true do |t|
+    t.integer  "account_id"
+    t.integer  "showcase_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "invitees", ["account_id", "showcase_id"], :name => "index_invitees_on_account_id_and_showcase_id"
 
   create_table "language_settings", :force => true do |t|
     t.integer "user_id"
