@@ -1,0 +1,26 @@
+<h2> Manage Favorites </h2>
+<div class = "well" >
+  <h3>Showcases:</h3>
+  <ol>
+    <% @favorites.each do |favorite| %>
+      <li>
+        <% if  favorite.favoritable_type.to_s  == "Showcase" %>
+          <%= favorite.favoritable_type.to_s %>
+        <% end %>
+      </li>
+    <% end %>
+  </ol>
+</div>
+
+<div class = "well" >
+  <h3>Pictures:</h3>
+  <ol>
+    <% @favorites.each do |favorite| %>
+      <% if  favorite.favoritable_type.to_s  == "Picture" %>
+        <li>
+
+        </li>
+      <% end %>
+    <% end %>
+  </ol>
+</div>

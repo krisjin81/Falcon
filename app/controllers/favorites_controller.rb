@@ -2,6 +2,11 @@
 class FavoritesController < ApplicationController
   before_filter :authenticate_account!
 
+  def index
+    @favorites = current_account.favorites
+  end
+
+
   def create
     @favorite = Favorite.create
     account = Account.find_by_id(params[:favorite_account_id])
