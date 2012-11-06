@@ -5,6 +5,7 @@
     <li>
       <span class="content"><h3><%=link_to showcase.name, showcase
                                    %></h3></span>
+
       <% if showcase.default? %>
         <i> This is the default showcase </i>
       <% end %>
@@ -12,6 +13,8 @@
       <span class="timestamp">
         Posted <%= time_ago_in_words(showcase.created_at) %> ago.
       </span>
+      <%= render 'shared/showcase_favorites', :showcase => showcase %>
+
       <%= render 'pictures_for_showcase', :showcase => showcase %>
       <h3> Showcase actions: </h3>
       <td><%= link_to 'Edit', edit_showcase_path(showcase), :class =>

@@ -37,8 +37,8 @@ class Account < User
   has_many :relationships, :foreign_key => "follower_id", :dependent => :destroy
   has_many :followed_accounts, :through => :relationships, :source => :followed
   has_many :reverse_relationships, :foreign_key => "followed_id",
-                                   :class_name =>  "Relationship",
-                                   :dependent =>   :destroy
+  :class_name =>  "Relationship",
+  :dependent =>   :destroy
   has_many :followers, through: :reverse_relationships, :source => :follower
   has_many :favorites
 
@@ -100,7 +100,7 @@ class Account < User
 
   def get_favorite(item)
     item.favorites.each do |fav|
-      return fav if fav.favoritable_id == item.id
+      return fav if fav.account_id == self.id
     end
     nil
   end
@@ -142,7 +142,7 @@ class Account < User
         non_default_showcases << showcase
       end
     end
-      non_default_showcases
+    non_default_showcases
   end
 
   def active_for_authentication?

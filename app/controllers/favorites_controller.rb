@@ -2,14 +2,22 @@
 class FavoritesController < ApplicationController
   before_filter :authenticate_account!
 
+  def index
+    @favorites = current_account.favorites
+  end
+
+
   def create
     @favorite = Favorite.create
-    account = Account.find_by_id(params[:favorite_account_id])
-    picture = Picture.find_by_id(params[:favorite_picture_id])
-    @favorite.update_attribute(:favoritable, picture)
-    @favorite.account = account
-    if @favorite.save
-      flash[:success] = "Marked as favorite!"
+    item = Picture.find_by_id(params[:favorite_picture_id]) if params[:favorite_picture_id]
+    item = Showcase.find_by_id(params[:favorite_showcase_id]) if params[:favorite_showcase_id]
+
+    if(item)
+      @favorite.update_attribute(:favoritable, item)
+      @favorite.account = account
+      if @favorite.save
+        flash[:success] = "Marked as favorite!"
+      end
     end
     redirect_to account_profile_path
   end
