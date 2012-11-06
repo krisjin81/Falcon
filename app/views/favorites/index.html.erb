@@ -5,7 +5,18 @@
     <% @favorites.each do |favorite| %>
       <li>
         <% if  favorite.favoritable_type.to_s  == "Showcase" %>
-          <%= favorite.favoritable_type.to_s %>
+          <% showcase = Showcase.find_by_id(favorite.favoritable_id)
+             %>
+          <p><h4>Name: <%= showcase.name %></h4></p>
+          <% picture = showcase.cover_picture %>
+          <% if picture %>
+            <% if picture.image.present? %>
+              <%= image_tag picture.image.url(:preview) %>
+            <% end %>
+          <% else %>
+            <i> This showcase has no cover picture! </i>
+          <% end %>
+          <%= render "shared/showcase_favorites", :showcase => showcase %>
         <% end %>
       </li>
     <% end %>
