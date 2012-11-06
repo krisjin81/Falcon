@@ -1,20 +1,12 @@
 <div class="well">
   <h2>My Showcases</h2>
   <% showcase = @profile.account.default_showcase %>
-  <span class="content"><h4><%=link_to showcase.name, showcase %></h4></span>
-  <span class="content"><%= showcase.content %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(showcase.created_at) %> ago.
-  </span>
+  <%= render "showcase", :showcase => showcase %>
   <% if @profile.account.non_default_showcases.any? %>
     <ol class="showcases">
       <% @profile.account.showcases.each do |showcase| %>
         <li>
-          <span class="content"><h4><%=link_to showcase.name, showcase %></h4></span>
-          <span class="content"><%= showcase.content %></span>
-          <span class="timestamp">
-            Posted <%= time_ago_in_words(showcase.created_at) %> ago.
-          </span>
+          <%= render "showcase", :showcase => showcase %>
         </li>
       <% end %>
     </ol>

@@ -22,6 +22,7 @@ class Showcase < ActiveRecord::Base
 
   has_many :invitees
   has_many :accounts, :through => :invitees
+  has_many :favorites, :as => :favoritable
 
   validates :name, :presence => true
   default_scope order: 'showcases.created_at DESC'

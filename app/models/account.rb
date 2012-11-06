@@ -40,10 +40,10 @@ class Account < User
                                    :class_name =>  "Relationship",
                                    :dependent =>   :destroy
   has_many :followers, through: :reverse_relationships, :source => :follower
+  has_many :favorites
 
   accepts_nested_attributes_for :profile
   attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes,:username, :free_member_level, :affiliate_member_level, :active
-
   validates_presence_of :username
 
   FREE_MEMBER_LEVELS=['New Member','Regular Member','Loyal Member','Style Star','Model/Artist']
@@ -90,6 +90,22 @@ class Account < User
   def unfollow!(other_user)
     relationships.find_by_followed_id(other_user.id).destroy
   end
+
+  def favorited?(item)
+    item.favorites.each do |fav|
+      return true if fav.account_id == self.id
+    end
+    return false
+  end
+
+  def get_favorite(item)
+    item.favorites.each do |fav|
+      return fav if fav.favoritable_id == item.id
+    end
+    nil
+  end
+
+
 
   # Overrides Account string representation.
   #
