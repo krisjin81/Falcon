@@ -1,12 +1,12 @@
-<h2> Manage Favorites </h2>
+<h2> Manage Favorites(<%= @favorites.count %>) </h2>
 <div class = "well" >
   <h3>Showcases:</h3>
   <ol>
     <% @favorites.each do |favorite| %>
-      <li>
-        <% if  favorite.favoritable_type.to_s  == "Showcase" %>
-          <% showcase = Showcase.find_by_id(favorite.favoritable_id)
-             %>
+      <% if  favorite.favoritable_type.to_s  == "Showcase" %>
+        <% showcase = Showcase.find_by_id(favorite.favoritable_id)
+           %>
+        <li>
           <p><h4>Name: <%= showcase.name %></h4></p>
           <% picture = showcase.cover_picture %>
           <% if picture %>
@@ -16,9 +16,12 @@
           <% else %>
             <i> This showcase has no cover picture! </i>
           <% end %>
-          <%= render "shared/showcase_favorites", :showcase => showcase %>
-        <% end %>
-      </li>
+          <p> <%= showcase.favorites.count %> users(s) marked this showcase as a
+            Favorite.</p>
+          <%= render 'shared/unfavorite',:favorite=>
+                current_account.get_favorite(showcase) %>
+        </li>
+      <% end %>
     <% end %>
   </ol>
 </div>
@@ -28,8 +31,20 @@
   <ol>
     <% @favorites.each do |favorite| %>
       <% if  favorite.favoritable_type.to_s  == "Picture" %>
+        <% picture = Picture.find_by_id(favorite.favoritable_id) %>
         <li>
-
+          <div class="title">
+            <h3><%= link_to picture.title, picture_url(picture) %></h3>
+          </div>
+          <div class="image">
+            <%= link_to image_tag(picture.image.url(:preview)), picture_url(picture) %>
+          </div>
+          <div class="author">
+            by <%= link_to picture.attachable.account.username, account_view_url(:profile_id => picture.attachable.unique_id) %>
+          </div>
+          <p><%= picture.favorites.count %> user(s) marked this picture
+            as their favorite</p>
+          <%= render 'shared/unfavorite',:favorite=> current_account.get_favorite(picture) %>
         </li>
       <% end %>
     <% end %>
