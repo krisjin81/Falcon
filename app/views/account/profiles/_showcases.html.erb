@@ -8,6 +8,7 @@
       <% @profile.account.showcases.each do |showcase| %>
         <li>
           <%= render "showcase", :showcase => showcase %>
+          <%= render 'shared/showcase_favorites', :showcase => showcase %>
         </li>
       <% end %>
     </ol>
