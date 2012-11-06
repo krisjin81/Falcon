@@ -11,6 +11,7 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.create
     item = Picture.find_by_id(params[:favorite_picture_id]) if params[:favorite_picture_id]
     item = Showcase.find_by_id(params[:favorite_showcase_id]) if params[:favorite_showcase_id]
+    account = Account.find_by_id(params[:favorite_account_id])
 
     if(item)
       @favorite.update_attribute(:favoritable, item)
