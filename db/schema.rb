@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121106005407) do
+ActiveRecord::Schema.define(:version => 20121106042914) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
@@ -101,6 +101,13 @@ ActiveRecord::Schema.define(:version => 20121106005407) do
   end
 
   add_index "countries", ["name"], :name => "index_countries_on_name"
+
+  create_table "favorites", :force => true do |t|
+    t.integer  "favoritable_id"
+    t.string   "favoritable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "invitees", :force => true do |t|
     t.integer  "account_id"

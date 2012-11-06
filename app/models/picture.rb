@@ -27,6 +27,7 @@ class Picture < ActiveRecord::Base
   has_and_belongs_to_many :styles
   has_many :comments, :as => :commentable
   has_many :likes, :as => :likeable
+  has_many :favorites, :as => :favoritable
   has_and_belongs_to_many :showcases
   attr_accessible :showcase_ids
   accepts_nested_attributes_for :showcases

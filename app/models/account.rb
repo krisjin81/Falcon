@@ -41,9 +41,12 @@ class Account < User
                                    :dependent =>   :destroy
   has_many :followers, through: :reverse_relationships, :source => :follower
 
+  has_many :favorites
+  has_many :favorited_pictures,  :through => :favorites, :source => :commentable, :source_type => 'Picture'
+  has_many :favorited_showcases, :through => :favotires, :source => :commentable, :source_type => 'Showcase'
+
   accepts_nested_attributes_for :profile
   attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes,:username, :free_member_level, :affiliate_member_level, :active
-
   validates_presence_of :username
 
   FREE_MEMBER_LEVELS=['New Member','Regular Member','Loyal Member','Style Star','Model/Artist']
