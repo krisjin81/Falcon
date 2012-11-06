@@ -3,6 +3,7 @@
     <% if (current_account && showcase.has_invitee?(current_account)) ||
            showcase.publicly_visible? %>
       <h3><%=link_to showcase.name, showcase %></h3>
+      <%= render 'shared/showcase_favorites', :showcase => showcase %>
       <div class="well">
         <% picture = showcase.cover_picture %>
         <% if picture %>

@@ -1,9 +1,12 @@
 <div class="well">
   <h4>Favorites</h4>
-  <%= showcase.favorites.count %> users(s) marked this showcase as a Favorite.
-  <% if current_account.favorited?(showcase) %>
-    <%= render 'shared/unfavorite',:favorite=> current_account.get_favorite(showcase) %>
-  <% else %>
-    <%= render 'shared/favorite', :item => showcase %>
+  <%= showcase.favorites.count %> users(s) marked this showcase as a
+  Favorite.
+  <% if current_account %>
+    <% if current_account.favorited?(showcase) %>
+      <%= render 'shared/unfavorite',:favorite=> current_account.get_favorite(showcase) %>
+    <% else %>
+      <%= render 'shared/favorite', :item => showcase %>
+    <% end %>
   <% end %>
 </div>

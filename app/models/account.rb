@@ -100,7 +100,7 @@ class Account < User
 
   def get_favorite(item)
     item.favorites.each do |fav|
-      return fav if fav.favoritable_id == item.id
+      return fav if fav.account_id == self.id
     end
     nil
   end
