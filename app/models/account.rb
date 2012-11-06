@@ -41,9 +41,6 @@ class Account < User
                                    :dependent =>   :destroy
   has_many :followers, through: :reverse_relationships, :source => :follower
 
-  has_many :invitees
-  has_many :pictures, :through => :invitees
-
   accepts_nested_attributes_for :profile
   attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes,:username, :free_member_level, :affiliate_member_level, :active
 

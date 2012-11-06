@@ -31,9 +31,6 @@ class Picture < ActiveRecord::Base
   attr_accessible :showcase_ids
   accepts_nested_attributes_for :showcases
 
-  has_many :invitees
-  has_many :accounts, :through => :invitees
-
   has_enumeration_for :gender, :with => ClothingGender, :create_helpers => true
 
   attr_protected :created_at, :updated_at, :attachable_id, :attachable_type
@@ -71,14 +68,6 @@ class Picture < ActiveRecord::Base
   def is_owner?(account)
     attachable == account.profile
   end
-
-  def has_invitee?(account)
-    self.invitees.each do |invitee|
-      return true if invitee.account_id == account.id
-      end
-      false
-  end
-
 
   # Overrides Picture string representation.
   #
