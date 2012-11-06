@@ -101,12 +101,6 @@ ActiveRecord::Schema.define(:version => 20121030064624) do
 
   add_index "countries", ["name"], :name => "index_countries_on_name"
 
-  create_table "jairams", :force => true do |t|
-    t.string   "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "language_settings", :force => true do |t|
     t.integer "user_id"
     t.string  "locale",  :limit => 3
