@@ -40,10 +40,7 @@ class Account < User
                                    :class_name =>  "Relationship",
                                    :dependent =>   :destroy
   has_many :followers, through: :reverse_relationships, :source => :follower
-
   has_many :favorites
-  has_many :favorited_pictures,  :through => :favorites, :source => :favoritable, :source_type => 'Picture'
-  has_many :favorited_showcases, :through => :favorites, :source => :favoritable, :source_type => 'Showcase'
 
   accepts_nested_attributes_for :profile
   attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes,:username, :free_member_level, :affiliate_member_level, :active
@@ -95,8 +92,19 @@ class Account < User
   end
 
   def favorited?(item)
-    self.favorited_pictures.include?(item) || self.favorited_showcases.include?(item)
+    item.favorites.each do |fav|
+      return true if fav.account_id == self.id
+    end
+    return false
   end
+
+  def get_favorite(item)
+    item.favorites.each do |fav|
+      return fav if fav.favoritable_id == item.id
+    end
+    nil
+  end
+
 
 
   # Overrides Account string representation.

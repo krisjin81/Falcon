@@ -12,7 +12,7 @@
       <dd><%= picture.favorites.count %> user(s) marked this picture
         as their favorite</dd>
       <% if current_account.favorited?(picture) %>
-        <%= render 'unfavorite', :picture => picture %>
+        <%= render 'unfavorite',:favorite=> current_account.get_favorite(picture) %>
       <% else %>
         <%= render 'favorite', :picture => picture %>
       <% end %>
