@@ -105,9 +105,12 @@ ActiveRecord::Schema.define(:version => 20121106042914) do
   create_table "favorites", :force => true do |t|
     t.integer  "favoritable_id"
     t.string   "favoritable_type"
+    t.integer  "account_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
+
+  add_index "favorites", ["account_id"], :name => "index_favorites_on_account_id"
 
   create_table "invitees", :force => true do |t|
     t.integer  "account_id"

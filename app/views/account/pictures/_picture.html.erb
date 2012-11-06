@@ -10,7 +10,12 @@
       <dd><%= truncate(picture.dressing_tips) %></dd>
       <dt><%= Picture.human_attribute_name(:favorites)%></dt>
       <dd><%= picture.favorites.count %> user(s) marked this picture
-      as their favorite</dd>
+        as their favorite</dd>
+      <% if current_account.favorited?(picture) %>
+        <%= render 'unfavorite', :picture => picture %>
+      <% else %>
+        <%= render 'favorite', :picture => picture %>
+      <% end %>
     </dl>
   </div>
 

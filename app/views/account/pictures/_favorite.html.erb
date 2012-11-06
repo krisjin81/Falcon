@@ -1,0 +1,5 @@
+<%= form_for(current_account.favorites.build(:account_id => current_account.id)) do |f| %>
+  <div><%= f.hidden_field :account_id %></div>
+  <%= f.submit "Favorite", class: "btn btn-large btn-primary" %>
+<% end %>
+

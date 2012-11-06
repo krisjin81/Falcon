@@ -42,8 +42,8 @@ class Account < User
   has_many :followers, through: :reverse_relationships, :source => :follower
 
   has_many :favorites
-  has_many :favorited_pictures,  :through => :favorites, :source => :commentable, :source_type => 'Picture'
-  has_many :favorited_showcases, :through => :favotires, :source => :commentable, :source_type => 'Showcase'
+  has_many :favorited_pictures,  :through => :favorites, :source => :favoritable, :source_type => 'Picture'
+  has_many :favorited_showcases, :through => :favorites, :source => :favoritable, :source_type => 'Showcase'
 
   accepts_nested_attributes_for :profile
   attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes,:username, :free_member_level, :affiliate_member_level, :active
@@ -93,6 +93,11 @@ class Account < User
   def unfollow!(other_user)
     relationships.find_by_followed_id(other_user.id).destroy
   end
+
+  def favorited?(item)
+    self.favorited_pictures.include?(item) || self.favorited_showcases.include?(item)
+  end
+
 
   # Overrides Account string representation.
   #
