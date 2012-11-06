@@ -15,9 +15,14 @@ class ShowcasesController < InheritedResources::Base
 
   def show
     @showcase = Showcase.find_by_id(params[:id])
-    if @showcase.account.id != current_account.id && !@showcase.has_invitee?(current_account)
-      redirect_to account_profile_path
-    end
+
+    redirect_to account_profile_path unless ( @showcase.publicly_visible? || (@showcase.publicly_visible? == false && @showcase.has_invitee?(current_account)) || (@showcase.publicly_visible? == false && @showcase.account_id == current_account.id ))
+
+    # display the showcase if
+    # 1. Showcase is public
+    # 2. Showcase is not public but the user have invitee
+    # 3. Showcase is not public but it is the current user's showcase
+
     @showcase
   end
 
