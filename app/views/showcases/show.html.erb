@@ -21,8 +21,10 @@
       </li>
     <% end %>
   </ol>
-  <%= link_to "Edit this showcase", edit_showcase_path,
+  <% if current_account == @showcase.account %>
+      <%= link_to "Edit this showcase", edit_showcase_path,
       :class=>"btn btn-danger" %>
+  <% end %>
 </div>
 
 
