@@ -10,7 +10,7 @@
           <%= f.hidden_field :original_image_cache %>
         <% end %>
         <% if picture.formatted_image.present? %>
-          <%= f.hidden_field :formatted_image_cache %
+          <%= f.hidden_field :formatted_image_cache %>
         <% end %>
       <% else %>
         <span class="instructions"><%= t('account.pictures.form.drop_zone_hint') %> <%= icon("upload-alt") %></span>
