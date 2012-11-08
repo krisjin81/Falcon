@@ -56,7 +56,7 @@ class Showcase < ActiveRecord::Base
   def non_owner_accounts
     accs = []
     Account.all.each do |acc|
-      accs << acc if acc.id != self.account.id
+      accs << acc if (acc != self.account && acc.valid? )
     end
     accs
   end
