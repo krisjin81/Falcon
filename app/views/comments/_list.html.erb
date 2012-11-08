@@ -1,0 +1,9 @@
+<div class="comments">
+  <% if commentable.comments.present? %>
+    <%= render :partial => 'comments/comment', :collection => commentable.comments.descending_by_created_at %>
+  <% else %>
+    <div class="empty">
+      <%= t('account.comments.no_comments', :commentable => commentable) %>
+    </div>
+  <% end %>
+</div>

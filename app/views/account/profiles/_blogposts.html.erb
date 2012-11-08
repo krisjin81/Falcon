@@ -5,8 +5,12 @@
       <% @profile.account.blogposts.each do |blogpost| %>
         <li>
           <span class="content"><%= blogpost.content %></span>
+          <p><%= link_to 'Read more', blogpost_path(blogpost) %></p>
           <span class="timestamp">
             Posted <%= time_ago_in_words(blogpost.created_at) %> ago.
+          </span>
+          <span class="timestamp">
+        </br>(<%= blogpost.comments.count %>) comment(s).
           </span>
         </li>
       <% end %>

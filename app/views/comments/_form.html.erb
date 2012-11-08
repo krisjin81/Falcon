@@ -1,0 +1,20 @@
+<div class="comment-form">
+  <div class="author">
+    <%= image_tag current_user.profile.avatar.image_url(:thumb) %>
+    <%= link_to current_user.profile, account_view_url(:profile_id => current_user.profile.unique_id) %>
+  </div>
+  <div class="body">
+    <%= simple_form_for [ commentable, comment], :remote => true do |f| %>
+      <% if comment.errors[:body].present? %>
+        <div class="alert alert-error"><%= f.full_error :body %></div>
+      <% end %>
+
+      <%= f.text_area :body, :rows => 5 %>
+
+      <div class="actions">
+        <%= f.submit t('helpers.actions.comment'), :class => 'btn' %>
+      </div>
+    <% end %>
+  </div>
+  <div class="clearer"></div>
+</div>

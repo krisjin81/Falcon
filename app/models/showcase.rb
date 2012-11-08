@@ -23,6 +23,7 @@ class Showcase < ActiveRecord::Base
   has_many :invitees
   has_many :accounts, :through => :invitees
   has_many :favorites, :as => :favoritable
+  has_many :comments, :as => :commentable
 
   validates :name, :presence => true
   default_scope order: 'showcases.created_at DESC'
@@ -60,4 +61,9 @@ class Showcase < ActiveRecord::Base
     end
     accs
   end
+
+  def to_s
+    "\"#{self.account.username}\""
+  end
+
 end

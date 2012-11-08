@@ -26,6 +26,12 @@
         :class=>"btn btn-danger" %>
     <%= link_to "Manage Showcases", showcases_path, :class => "btn btn-primary"%>
   <% end %>
+
+</div>
+<h4>Comments:</h4>
+<div class="well">
+  <%= render 'comments/comments_box', :commentable =>
+        @showcase %>
 </div>
 
 

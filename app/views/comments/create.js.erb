@@ -1,0 +1,4 @@
+$('.comments-box .comment-form').replaceWith('<%= escape_javascript(render('form', :commentable => @commentable, :comment => Comment.new)) %>');
+$('<%= escape_javascript(render('comment', :comment => @comment)) %>').hide().prependTo('.comments-box .comments');
+$('.comments-box .comments .empty').remove();
+$('.comments-box .comments .comment:first').fadeIn(5000);

@@ -20,6 +20,8 @@ class Comment < ActiveRecord::Base
   validates :body, :presence => true, :length => { :maximum => 1000 }
 
   attr_accessible :body
+  attr_accessible :author
+  attr_accessible :created_at
 
   scope :descending_by_created_at, order('created_at DESC')
 

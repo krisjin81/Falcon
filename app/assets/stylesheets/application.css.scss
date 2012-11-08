@@ -55,3 +55,63 @@
     }
   }
 }
+
+.comments-box {
+    clear: both;
+    padding: 40px 20px;
+
+    .comment-form {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+
+        .author {
+            float: left;
+            width: 100px;
+            margin-right: 20px;
+            text-align: center;
+        }
+
+        .body {
+            float: left;
+            width: 740px;
+
+            textarea {
+                width: 720px;
+                min-width: 720px;
+                max-width: 720px;
+            }
+
+            .actions  {
+                width: 728px;
+                margin: 0;
+                padding: 4px;
+
+                .btn {
+                    float: right;
+                }
+            }
+        }
+    }
+
+    .comments {
+        margin-top: 40px;
+
+        .comment {
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+
+            .author {
+                float: left;
+                width: 100px;
+                margin-right: 20px;
+                text-align: center;
+            }
+
+            .body {
+                float: left;
+                width: 740px;
+            }
+        }
+    }
+}
