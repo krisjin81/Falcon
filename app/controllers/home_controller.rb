@@ -14,7 +14,7 @@ class HomeController < ApplicationController
           showcases << showcase
         else
           if user_signed_in?
-            showcases << showcase if showcase.has_invitee?(current_account)x
+            showcases << showcase if showcase.has_invitee?(current_account)
           end
         end
       end
