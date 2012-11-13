@@ -1,27 +1,20 @@
 <div class="well">
   <% showcases.each do |showcase| %>
-    <% if (current_account && showcase.has_invitee?(current_account)) ||
-           showcase.publicly_visible? %>
-      <h3><%=link_to showcase.name, showcase %></h3>
-      <%= render 'shared/showcase_favorites', :showcase => showcase %>
-      <div class="well">
-        <% picture = showcase.cover_picture %>
-        <% if picture %>
-          <li>
-            <div class="details">
-              <b><%= Picture.human_attribute_name(:title) %></b>: <i><%= picture.title %></i>
-            </div>
-            <div class="image">
-              <% if picture.image.present? %>
-                <%= image_tag picture.image.url(:preview) %>
-              <% end %>
-            </div>
-          </li>
-        <% else %>
-          <i> This showcase has no cover picture! </i>
-        <% end %>
-      </div>
-    <% end %>
+    <h3><%=link_to showcase.name, showcase %></h3>
+    <%= render 'shared/showcase_favorites', :showcase => showcase %>
+    <div class="well">
+      <% picture = showcase.cover_picture %>
+        <li>
+          <div class="details">
+            <b><%= Picture.human_attribute_name(:title) %></b>: <i><%= picture.title %></i>
+          </div>
+          <div class="image">
+            <% if picture.image.present? %>
+              <%= image_tag picture.image.url(:preview) %>
+            <% end %>
+          </div>
+        </li>
+    </div>
   <% end %>
 </div>
 
