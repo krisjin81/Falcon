@@ -12,11 +12,16 @@
 
 class Blogpost < ActiveRecord::Base
   attr_accessible :content
-  belongs_to :user
+  belongs_to :account
   validates :content, :length => { :maximum => 5000 }
   validates :account_id, presence: true
   default_scope order: 'blogposts.created_at DESC'
 
   has_many :comments, :as => :commentable
+
+  def to_s
+    "\"#{self.account.username}\""
+  end
+
 
 end
