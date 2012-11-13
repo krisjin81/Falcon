@@ -37,6 +37,7 @@ class Showcase < ActiveRecord::Base
   end
 
   def has_invitee?(account)
+    return false unless account
     self.invitees.each do |invitee|
       return true if invitee.account_id == account.id
     end
