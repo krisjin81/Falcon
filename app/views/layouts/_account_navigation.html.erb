@@ -1,7 +1,88 @@
+<div id="login-block" class="login-block clearfix">
+	<% unless account_signed_in? %>			 		
+		<a id="login-btn" class="login-btn" href="#">LOG IN</a>
+		<form accept-charset="UTF-8" action="/account/sign_in" class="simple_form new_account" id="sign_in" method="post" novalidate="novalidate">  
+			<div class="login-box">
+				<div class="login-row inp clearfix">
+					<label>Email</label>								 
+					<input class="string email optional" id="account_email" name="account[email]" placeholder="Email" size="50" type="email" value="" />
+				</div>
+				<div class="login-row inp clearfix">
+					<label>Password</label>
+					<input class="password optional" id="account_password" name="account[password]" placeholder="Password" size="50" type="password" />
+				</div>
+				<div class="login-row sgn clearfix">
+					<a class="sign-in" href="#">SIGN IN</a>
+					
+					<a class="forgot-password" href="/account/password/new">Forgot password</a>
+					
+				</div>
+				<div class="login-row login-with  clearfix">
+					<span>login with </span>
+					 <%= render :partial => 'account/shared/social_media_login' %>
+				</div>
+			</div>
+		 </form>		 
+	<% else %>
+		<p>
+			<a>
+				Welcome back 
+				<span id="drop_down" >&nbsp;<i class="icon-user"></i>&nbsp; <%= current_account %></span>
+			</a>			
+			<span class="comment-ico-holder"><em id="comment-ico" class="comment-ico">0</em></span>
+		</p> 
+		 
+		 <ul class="dropdown-menu">
+            <li><%= link_to t('helpers.actions.profile'), account_profile_path %></li>
+            <li><%= link_to t('helpers.actions.blogposts'), blogposts_path %></li>
+            <li><%= link_to t('helpers.actions.showcases'), showcases_path %></li>
+            <li><%= link_to t('helpers.actions.favorites'), favorites_path %></li>
+            <li><%= link_to t('helpers.actions.relationships'), relationships_path %></li>
+            <li><%= link_to t('helpers.actions.edit_language_settings'), edit_account_language_settings_path %></li>
+            <li><%= link_to t('helpers.actions.change_password'), edit_account_registration_path if current_account.provider.blank? %></li> 
+         </ul> 
+	         
+		<div class="notifications-block clearfix">
+			<p class="not-title">Notifications (0)</p>
+			<div class="clearfix">
+				<div class="not-box clearfix">
+					
+					<div class="not-description clearfix">						 
+						<p class="not-content">0 notification</p>
+					</div>
+				</div>
+			</div>
+			<!-- 
+			<div class="clearfix">
+				<div class="not-box clearfix">
+					<img src="images/not_img.jpg" alt="#">
+					<div class="not-description clearfix">
+						<p class="not-time">3 Hours ago</p>
+						<p class="not-content">You have already gathered 100 fashion score, Please email us your score and we would mail u a cheque</p>
+					</div>
+				</div>
+			</div>
+			-->
+			<div class="not-all">
+				<a href="#">SEE ALL</a>
+			</div>
+		</div>
+	<% end %>
+</div>		
+
+<div class="register-block clearfix">
+	<% unless account_signed_in? %>							 
+		<a href="/account/sign_up">REGISTER</a>
+	<% else %>
+		 
+		<%= link_to t('LOG OUT'), destroy_account_session_path, :method => 'delete' %>
+	<% end %>
+</div>			
+<!-- 
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to t('application.title'), root_path, :class => 'brand' %>
+      
       <div class="nav pull-right">
         <% if account_signed_in? %>
           <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
@@ -20,7 +101,5 @@
         <% else %>
           <%= render 'layouts/guest_navigation' %>
         <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+      </div> 
+-->

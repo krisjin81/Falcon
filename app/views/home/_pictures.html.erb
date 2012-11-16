@@ -1,11 +1,18 @@
-<div id="latest_pictures">
-  <% if pictures.present? %>
-    <% pictures.each_with_index do |picture, i| %>
-      <div class="picture <%= (i % 4 == 0) ? 'first' : '' %>">
-        <%= render 'picture', :picture => picture %>
-      </div>
-    <% end %>
-  <% else %>
-    <%= t('helpers.empty_list') %>
-  <% end %>
+<div class="pictures-block clearfix">
+  	<div class="title-block clearfix">
+		<p class="title"><span>Pictures</span> <a href="#">more</a></p>
+			<div class="sort-block clearfix">
+				<p>Show </p>
+				<select data-placeholder="Most Popular" class="chzn-select" style="width:120px;" tabindex="2" id="picture_filter">
+					<option value="popular">Most Popular</option> 
+					<option value="updated_at">most recent</option> 
+					<option value="favorited">favorited</option> 
+				</select>
+			</div>
+	</div>  
+	
+	<div id = "picture_box">
+		 <%= render "picture", :home_pictures => pictures %>
+	</div>	 
 </div>
+ 

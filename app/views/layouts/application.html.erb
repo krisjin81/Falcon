@@ -4,27 +4,68 @@
   <title><%= content_for?(:title) ? "#{t('application.title')} :: #{yield(:title)}" : t('application.title') %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+   <%= javascript_include_tag "showcases" %>
+   <%= javascript_include_tag "pictures" %>
+  <%= javascript_include_tag "slidecarousel.plugin.js" %>
+  <%= javascript_include_tag "chosen.jquery.js" %>
+  <%= javascript_include_tag "global.js" %>
   <%= styx_initialize %>
   <%= csrf_meta_tags %>
-  <%= render 'layouts/twitter_init' %>
+  <!-- <%= render 'layouts/twitter_init' %> -->
 </head>
-<body>
-  <%= render 'layouts/fb_init' %>
-  <div id="wrapper">
-    <%= render 'layouts/account_navigation' %>
-    <div class="container">
-      <div class="content">
-        <%= render 'layouts/messages' %>
-        <%= yield %>
-      </div>
-    </div>
-    <div class="push"></div>
-  </div>
+<body>	 
+	<%
+		# if the user open the sign-up page, the search box and the menu should not be displayed to the user. 
+		@is_account_signin = params[:controller].to_s == "account/registrations".to_s 
+	%>
+	
+ 	<%  unless @is_account_signin  %>		 
+  		<%= render 'layouts/search_navigation' %>
+    <% end %>
+   
+   <header>  
+		<div class="header clearfix">
+			<h1 class="logo"><%= link_to t('application.title'), root_path %></h1>
+			<%  unless @is_account_signin  %>		 
+			<ul class="main-nav"> 
+				<li><a href="#">Upload</a></li>
+				<li><a href="#">Galleries</a></li>
+				<li><a href="#">Showcase</a></li>
+				<li><a href="#">Showroom</a></li>
+				<li><a href="#">Style Studio</a></li>
+				<li><a href="#">Fashion</a></li>
+				<li><a href="#"> Stage</a></li>
+			</ul>
+			<% end %> 
+		</div>   
+  </header>
+  
+  	<% unless account_signed_in? %>
+		<%= render 'layouts/ads' %>		 
+	<% end %>
 
+	<div id="wrapper">
+		<div class="main clearfix">	
+     	  <%= yield %>
+     	</div>
+    <div class="hFooter"></div>
+    <%= #render 'layouts/account_navigation' 
+    %>
+  </div>
+   
   <footer>
-    <div class="container">
-      <p class="brand"><%=raw t('application.copyright') %></p>
-    </div>
+    	<div class="footer clearfix">
+			<ul class="footer-nav">
+				<li><a href="#">Help / Suggestions</a></li>
+				<li><a href="#">Privacy Policy</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Our Ads</a></li>
+				<li><a href="#">Terms of Service</a></li>
+			</ul>
+			<p class="copy"><%=raw t('application.copyright') %></p>
+		</div>
   </footer>
+ 
+	<script type="text/javascript"> $(".chzn-select").chosen(); $(".chzn-select-deselect").chosen({allow_single_deselect:true}); </script>
 </body>
 </html>

@@ -1,5 +1,17 @@
-<h2> Showcases </h2>
+<% unless account_signed_in? %>
+	<%= render 'news' %>
+<% end %>
+ 	
 <%= render 'showcases', :showcases => @public_showcases %>
-<h2>Pictures</h2>
-<%= render "pictures", :pictures => @latest_pictures %>
-
+  
+<div class="main-content home-page clearfix">
+	<div class="main-content-l clearfix"> 
+		<%= render "pictures", :pictures => @latest_pictures %>
+		<%= render "showroom" %>
+	</div>
+	<div class="main-content-r clearfix">
+		<%= render "fashion" %>
+	</div>
+	<div style="clear: both;"></div>		
+</div>
+ 

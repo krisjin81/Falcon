@@ -25,7 +25,7 @@ class Showcase < ActiveRecord::Base
   has_many :favorites, :as => :favoritable
 
   validates :name, :presence => true
-  default_scope order: 'showcases.created_at DESC'
+  #default_scope order: 'showcases.id ASC'
   before_destroy :check_if_default_showcase_is_being_destroyed
 
   def check_if_default_showcase_is_being_destroyed

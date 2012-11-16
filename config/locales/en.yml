@@ -5,7 +5,7 @@ en:
   application:
     title: "Fashion Invited"
     admin_area: "Admin"
-    copyright: "&copy; Fashion Invited 2012"
+    copyright: "&copy; 2012 FashionInvitied. All rights reserved"
   helpers:
     actions:
       actions: "Actions"
