@@ -1,0 +1,26 @@
+From 2839f52e51b035fa9bd23121569f8f32247e70a9 Mon Sep 17 00:00:00 2001
+From: Manish Chakavarty <manishchaks@gmail.com>
+Date: Thu, 8 Nov 2012 13:18:51 +0530
+Subject: [PATCH] Should not evaluate partially-created accounts while
+ accessing all accounts
+
+---
+ app/models/showcase.rb | 2 +-
+ 1 个文件被修改，插入 1 行(+)，删除 1 行(-)
+
+diff --git a/app/models/showcase.rb b/app/models/showcase.rb
+index af64714..5965c3c 100644
+--- a/app/models/showcase.rb
++++ b/app/models/showcase.rb
+@@ -56,7 +56,7 @@ class Showcase < ActiveRecord::Base
+   def non_owner_accounts
+     accs = []
+     Account.all.each do |acc|
+-      accs << acc if acc.id != self.account.id
++      accs << acc if (acc != self.account && acc.valid? )
+     end
+     accs
+   end
+-- 
+1.7.12.rc2
+
