@@ -1,0 +1,15 @@
+<%= simple_form_for(@group) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :open_subscription %>
+    <%= f.input :community_group %>
+    <%= f.input :member_limit %>
+    <%= f.input :owner_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
