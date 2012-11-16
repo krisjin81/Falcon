@@ -1,0 +1,59 @@
+<%
+	unless defined? @showcases
+			showcases = home_showcases
+	else
+			showcases = @showcases
+	end 			  
+	
+	showcases.each_with_index do |showcase, i|					
+	 
+	showcase_pictures = showcase.pictures
+	picture = showcase.cover_picture
+%>  	 	
+	<% if i < 3 %>
+		<div class="sc-block">
+			<% if (current_account && showcase.has_invitee?(current_account)) ||
+       				showcase.publicly_visible? %>
+					<% if picture %>
+						<a class="sc-img1" href="showcases/<%= showcase.id %>">
+								 <% if picture.image.present? %>
+					                <%= image_tag picture.image.url(:preview) %>
+					             <% end %>										 
+								<span><%= showcase.name %> <i>by</i> <Anna October> <%= showcase.account.username %> <em><%= time_ago_in_words(showcase.created_at) %> ago</em></span>
+						</a>
+					<% else %>
+						<a class="sc-img1" href="showcases/<%= showcase.id %>" style="border: 1px solid #575F83;">						 
+							<img src="empty.jpg" alt="#"> 
+							<span><%= showcase.name %> <i>by</i> <%= showcase.account.username %> <em><%= time_ago_in_words(showcase.created_at) %></em></span>
+						</a>
+					<% end %>
+					 
+					<% 									 	
+						sp_index = 1
+						showcase_pictures.each do |sp|
+							  	
+						class_name = "sc-img" + sp_index.to_s	
+						title = sp.title
+						username = showcase.account.username 
+					%>			
+						 
+					<% 					
+						picture_id = !picture ? 0 : picture.id				
+						if sp.id != picture_id && sp_index < 3
+							sp_index = sp_index + 1
+							class_name = "sc-img" + sp_index.to_s
+					%>			 
+						<a class="<%= class_name %>" href="showcases/<%= showcase.id %>">
+							 <% if sp.image.present? %>
+				                <%= image_tag sp.image.url(:preview) %>
+				             <% end %>
+							 
+							<span><%= title %> <i>by</i> <%= username %> <em><%= time_ago_in_words(showcase.updated_at) %></em></span>
+						</a>
+						<% end %>								 							
+						<%	end %>						  
+				 
+				<% end %>
+		</div>	 
+	<% end %> 
+<% end %>
