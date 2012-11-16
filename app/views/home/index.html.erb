@@ -1,7 +1,7 @@
 <% unless account_signed_in? %>
-	<%= render 'news' %>
+	
 <% end %>
- 	
+<%= render 'news' %>	
 <%= render 'showcases', :showcases => @public_showcases %>
   
 <div class="main-content home-page clearfix">

@@ -40,10 +40,15 @@
 		</div>   
   </header>
   
-  	<% unless account_signed_in? %>
-		<%= render 'layouts/ads' %>		 
-	<% end %>
-
+   	<%
+		# if the user open the home page -> 
+		@is_home = params[:controller].to_s == "home".to_s 
+	%>
+	
+	<%  if @is_home  %>		 
+  		<%= render 'layouts/ads' %>
+    <% end %> 
+	
 	<div id="wrapper">
 		<div class="main clearfix">	
      	  <%= yield %>

@@ -308,20 +308,27 @@ header{
 #drop_down
 {
   cursor: pointer;
-  color: #575F83;
+ 
 }
 
-#drop_down
+.user_bar
 {
-  color: #666666;
   display: inline-block;
   font-size: 12px;
   height: 34px;
   line-height: 27px;
-  padding: 0 12px;
+  padding: 0px 12px;
   text-transform: uppercase;
 }
+#drop_down
+{
+  color: #575F83;  
+}
  
+#welcome
+{
+  color: #666666;   
+}
 
 .main-nav{
   float:right;
