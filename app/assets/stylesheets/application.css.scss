@@ -4,14 +4,20 @@
  */
 
 @import "themes/united/united";
-@import "bootstrap";
+/* 
+ @import "bootstrap";
+ */
+   
 @import "font-awesome";
 @import "compass/css3";
 @import "layout";
 @import "forms";
 @import "account/profiles";
 @import "account/comments";
-@import "blogposts";
+@import "font";
+@import "home";
+@import "account/sign_up";
+
 .clearer {
   clear: both;
 }

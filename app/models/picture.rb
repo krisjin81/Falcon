@@ -48,7 +48,7 @@ class Picture < ActiveRecord::Base
   validates :where_to_buy, :length => { :maximum => 255 }, :allow_blank => true
   validates :gender, :presence => true, :inclusion => ClothingGender.list
 
-  scope :latest, order('created_at DESC').limit(10)
+  scope :latest, order('created_at DESC').limit(100)
 
   # Gets formatted image if filter was applied or original image otherwise.
   #

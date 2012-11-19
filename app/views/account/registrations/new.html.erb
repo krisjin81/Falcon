@@ -1,37 +1,125 @@
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :id => 'sign_up' }) do |f| %>
-  <legend><%= t('account.registrations.new.title') %></legend>
+<div class="centred-block signup-page clearfix">
+		<div class="title-block clearfix">
+				<p class="title"><span>Join <em>Fashioninvited</em></span></p>
+		</div>
+		<div class="main-content clearfix">
+			<div class="signup-block clearfix">
+				<p class="signup-description">Both Maggie Gyllenhaal and Milla Jovovich had a hand in Ryan Roche's move from designing childrenswear to women's apparel. "I actually did [Maggie's] daughter's dress for her wedding ... and then Maggie started saying, Can I get the cashmere cape in my size?" Roche, 34, told the Cut. "And Milla was the same — she was buying for her daughter and then started asking for stuff for herself." </p>
+			</div>
+			
+			
+			<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :id => 'sign_up' }, :wrapper => :light) do |f| %>
+			<% if resource.errors[:base].present? %>
+	    		<div class="alert alert-error"><%= f.error :base %></div>
+	  		<% end %>
+	  
+			<div class="signup-area clearfix">
+				<div class="signup-area-l clearfix">
+					<div class="sa-row clearfix">			
+						<label>Email</label>		 
+						<div class="sa-inp clearfix">
+							<%= f.input :email, :input_html => { :class => 'input-signup' } %>						 
+							<p>don’t worry, we will not spam you</p>
+						</div> 
+					</div>
+					
+					<div class="sa-row clearfix">
+						<label>Username</label>
+						<div class="sa-inp clearfix">
+							 <%= f.input :username, :input_html => { :class => 'input-signup' } %>
+							<p>be creative ;)</p>
+						</div>
+					</div>
+					
+					<div class="sa-row clearfix">
+						<label>Password</label>
+						<div class="sa-inp clearfix">
+							 <%= f.input :password, :input_html => { :class => 'input-signup' }  %>
+							<p>no restrictions, but remember bout safety</p>
+						</div>
+					</div>
+					
+					<div class="sa-row clearfix">
+						<label>Password confirmation</label>
+						<div class="sa-inp clearfix">
+							 <%= f.input :password_confirmation, :input_html => { :class => 'input-signup' }  %> 
+							<p>no restrictions, but remember bout safety</p>
+						</div>
+					</div>
+					
+					<div class="sa-row clearfix">	
+						<label>Type</label>
+						<div class="sa-inp clearfix">
+	  						<%= f.input :free_member_level, :collection =>
+	        					Account::SIGNUP_MEMBER_LEVELS, :prompt =>  t('helpers.please_select') %>
+	        				<p>You can only sign up as 'New Member'</p>
+	        			</div>
+					</div>
+					
+					<%= f.simple_fields_for :profile do |profile| %>
+					<div class="sa-row clearfix">
+						<label>Country</label>
+						<div class="sa-inp clearfix">
+							<%= profile.country_select :country  %>
+							<p>Please default coutry to select a country</p>
+						</div>
+					</div>
+					
+					<div class="sa-row clearfix">
+						<label>Birthday</label>
+						<div class="sa-np clearfix">						
+							<%= profile.input :birth_date, :start_year => Date.today.year - 100, :end_year => Date.today.year, :default => Profile::DEFAULT_BIRTH_DATE %>
+						</div>
+					</div>
+					<% end %>
+	
+	 				<%=raw @humanizer.get_publisher_html unless session[:human] %>
+	 				<div class="sa-row clearfix">
+						<label>&nbsp;</label>
+						<div class="sign-up clearfix">					 
+							 <%= f.submit t('helpers.actions.sign_up'), :class => 'signup-submit' %> 
+							
+							<span>Already a member?							
+								<!-- <%= link_to t('helpers.actions.forgot_your_password'), new_password_path(resource_name) %> -->								
+							</span>
+							
+							
+						</div>
+						
+						<div class="sign-in-btn clearfix">
+							<%= link_to t('helpers.actions.sign_in'), new_session_path(resource_name), :class => 'signup-a' %>
+						</div>
+					</div>
+					<!--
+					<div class="sa-row clearfix">
+						<label>&nbsp;</label>
+						<div class="sa-inp clearfix">
+							 <%= link_to t('helpers.actions.sign_in'), new_session_path(resource_name), :class => 'signup-a' %>
+							 
+							 <span>
+							 	<%= link_to t('helpers.actions.resend_confirmation_instruction'), new_confirmation_path(resource_name) %>
+							 </span>
+						</div>
+					</div>
+					-->
+				</div> 
+		
+				<div class="signup-area-r clearfix">
+					<%= render :partial => 'account/shared/social_media_login' %>
+					<span>By creating an account using your Facebook or Google account,
+						  you agree to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.</span>		
+				</div>
+			</div>
+		</div>  
+	<% end %>
+</div>
 
-  <% if resource.errors[:base].present? %>
-    <div class="alert alert-error"><%= f.error :base %></div>
-  <% end %>
 
-  <%= f.input :email, :input_html => { :class => 'input-xxlarge' } %>
-  <%= f.input :username, :input_html => { :class => 'input-xxlarge' } %>
-
-  <%= f.input :password, :input_html => { :class => 'input-xxlarge' } %>
-  <%= f.input :password_confirmation, :input_html => { :class =>
-        'input-xxlarge' } %>
-  <i> You can only sign up as 'New Member'</i>
-  <%= f.input :free_member_level, :collection =>
-        Account::SIGNUP_MEMBER_LEVELS, :prompt =>  t('helpers.please_select') %>
-
-  <%= f.simple_fields_for :profile do |profile| %>
-    <p>Country:</p>
-    <%= profile.country_select :country  %>
-    <%= profile.input :birth_date, :start_year => Date.today.year - 100, :end_year => Date.today.year, :default => Profile::DEFAULT_BIRTH_DATE %>
-  <% end %>
-
-
-  <%=raw @humanizer.get_publisher_html unless session[:human] %>
-
-  <div class="form-actions">
-    <%= f.submit t('helpers.actions.sign_up'), :class => 'btn btn-primary' %>
-    <div class="pull-right">
-      <%= link_to t('helpers.actions.sign_in'), new_session_path(resource_name), :class => 'btn' %>
-      <%= link_to t('helpers.actions.forgot_your_password'), new_password_path(resource_name), :class => 'btn' %>
-      <%= link_to t('helpers.actions.resend_confirmation_instruction'), new_confirmation_path(resource_name), :class => 'btn' %>
-    </div>
-  </div>
-
-  <%= render :partial => 'account/shared/social_media_login' %>
-<% end %>
+<script type="text/javascript">
+  var uvOptions = {};
+  (function() {
+    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/IyApPKH5Q8C4V20XdCsog.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+  })();
+</script>

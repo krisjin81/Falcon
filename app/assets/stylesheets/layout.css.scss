@@ -1,48 +1,435 @@
-html, body {
+html {
   height: 100%;
+  font-size:100.01%;
 }
 
+body
+{
+  font-family: 'Orienta', sans-serif;
+  font-size:13px;
+  margin:0;
+  padding:0;
+  color:#333;
+  background:#fff url(asset-path("body_bg.png", image)) no-repeat 50% 0px ;
+    
+}
+ 
+
 #wrapper {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto (-$navbarHeight);
-
-  .push {
-    height: $navbarHeight;
-  }
-
+  height: auto;
+   
   > .container, > .container-fluid {
-      padding-top: ($navbarHeight + 10);
+     
       padding-bottom: ($navbarHeight / 2);
   }
 }
 
 footer {
-  height: $navbarHeight;
-  @include gradient-vertical($navbarBackgroundHighlight, $navbarBackground);
-  @include box-shadow(#{0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)});
-
-  .brand {
-    float: left;
-    display: block;
-    // Vertically center the text given $navbarHeight
-    $elementHeight: 14px;
-    margin: (($navbarHeight - $elementHeight) / 2 - 2) 0px (($navbarHeight - $elementHeight) / 2 + 2);
-    font-size: $elementHeight;
-    font-weight: 200;
-    line-height: 1;
-    color: $navbarBrandColor;
-  }
+    width:100%;
+  height:95px;
+  margin:-95px 0 0;
+  background:#8e765d;
+}
+.footer-holder{
+  width:100%;
+  height:95px;
+  margin:-95px 0 0;
+  background:#8e765d;
+}
+.centred-block {
+    margin: 0 auto;
+    min-width: 1100px;
+    padding: 0 0 30px;
+    width: 1100px;  
 }
 
-.centred-block {
-    width: 540px;
-    padding: 10px 20px;
-    border: 1px solid #EEE;
-    margin:0 auto;
-    margin-top: 100px;
-    background: #fff;
-    @include border-radius(5px);
-    @include box-shadow(#ccc 0 0 25px);
+div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video{
+  margin:0;
+  padding:0;
+  border:0;
+  font-size:100%;
+  vertical-align:baseline;
+}
+fieldset, img{
+  display:block;
+  border:none;
+}
+ul li{
+  list-style:none;
+}
+a{
+  text-decoration:none;
+}
+a:hover{
+  text-decoration:none;
+}
+:focus{
+  outline:0;
+}
+ins{
+  text-decoration:none;
+}
+del{
+  text-decoration:line-through;
+}
+textarea{
+  resize:none;
+}
+
+.clearfix:after{
+  visibility:hidden;
+  display:block;
+  font-size:0;
+  content:" ";
+  clear:both;
+  height:0;
+}
+* html .clearfix{
+  zoom:1;
+}
+*:first-child+html .clearfix{
+  zoom:1;
+}
+.top-line-holder{
+  width:100%;
+  background:#d3d2d1;
+}
+.top-line{
+  width:1100px;
+  min-width:1100px;
+  margin:0 auto;
+  padding:6px 0 0;
+}
+.soc-top{
+  float:left;
+}
+.fb-block,
+.tw-block{
+  float:left;
+  margin:0 5px 0 0;
+}
+.sl-block{
+  float:right;
+}
+.top-search{
+  float:left;
+  background:#fff;
+  height:27px;
+  padding:0 37px 0 13px;
+  width:402px;
+  margin:0 9px 0 0;
+  position:relative;
+}
+.top-search input.txt{
+  padding:0;
+  border:none;
+  background:#fff;
+  width:402px;
+  height:27px;
+  color: #999;
+  font-size: 12px;
+  font-family: 'Orienta', sans-serif;
+}
+.top-search input.search{
+  width:16px;
+  height:16px;
+  display:block;
+  text-indent:-9999px;
+  border:none;
+  padding:0;
+  position:absolute;
+  top:5px;
+  right:8px;
+  cursor:pointer;
+  background:url(asset-path("elements.png", image)) no-repeat 0 0;
+  
+}
+.login-area{
+  float:left;
+}
+.login-block{
+  float:left;
+  margin:0 9px 0 0;
+  position:relative;
+}
+.register-block{
+  float:left;
+}
+.register-block a{
+  font-size:12px;
+  color:#575f83;
+  display:inline-block;
+  line-height:27px;
+}
+.login-btn{
+  padding:0 12px;
+  height:34px;
+  line-height:27px;
+  font-size:12px;
+  color:#575f83;
+  display:inline-block;
+  text-transform:uppercase;
+}
+.login-btn span{
+  color:#666;
+}
+.login-block.active .login-btn{
+  background-color: rgba(62, 69, 105, 0.9);
+  color:#fff;
+}
+.login-block.active .login-btn.logedin{
+  background:none;
+  color:#575f83;
+}
+.login-box{
+  position:absolute;
+  top:34px;
+  right:0;
+  background-color: rgba(62, 69, 105, 0.9);
+  padding:16px 15px 12px 20px;
+  width:346px;
+  display:none;
+}
+.login-block.active .login-box{
+  display:block;
+  z-index:100;
+}
+.login-row{
+  margin:0 0 14px 78px;
+}
+.login-row.inp{
+  margin:0 0 14px;
+}
+.login-row:last-child{
+  margin:0 0 0 44px;
+}
+.login-row label{
+  opacity: .8;
+  color: #fff;
+  font-family: 'Orienta', sans-serif;
+  font-size: 14px;
+  text-shadow: 0 1px 0 rgba(91,10,45,.18);
+  width:68px;
+  margin:0 10px 0 0;
+  float:left;
+  line-height:26px;
+}
+.login-row input{
+  width:258px;
+  padding:0 5px;
+  border:none;
+  height:26px;
+  background:#fff;
+  color: #999;
+  font-size: 12px;
+  font-family: 'Orienta', sans-serif;
+}
+.sign-in{
+  float:left;
+  line-height:31px;
+  height:31px;
+  padding:0 23px;
+  background:#b37738;
+  color: #fff;
+  font-family: 'Karla', sans-serif;
+  font-size: 15px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.18);
+}
+.forgot-password{
+  float:right;
+  margin:10px 0 0;
+  color: #e3e3eb;
+  font-size: 11px;
+  text-decoration: underline;
+}
+.forgot-password:hover{
+  text-decoration:none;
+}
+.sgn{
+  margin:0 0 10px 78px;
+  padding:0 0 10px;
+  border-bottom:1px solid #555b77;
+}
+.login-with span{
+  opacity: .66;
+  color: #fff;
+  font-family: 'Karla', sans-serif;
+  font-size: 10px;
+  text-shadow: 0 1px 0 rgba(77,54,29,.39);
+  display:inline-block;
+  float:left;
+  margin:0 11px 0 0;
+  line-height:26px;
+}
+.login-with a{
+  text-transform:uppercase;
+  float:left;
+  margin:0 2px 0 0;
+  height:26px;
+  line-height:26px;
+  color: #fff;
+  font-family: 'Karla', sans-serif;
+  font-size: 11px;
+  text-shadow: 0 1px 0 rgba(77,54,29,.39);
+  padding:0 12px;
+}
+.login-with a:last-child{
+  margin:0;
+}
+header{
+  background:#575f83;
+  width:100%;
+}
+.header{
+  width:1100px;
+  min-height: 73px;
+  min-width:1100px;
+  margin:0 auto;
+  padding:13px 0 0;
+}
+.logo{
+  display:block;
+  width:228px;
+  height:49px;
+  font-weight:normal;
+  text-align:center;
+  float:left;
+  margin:4px 35px 0 0;
+  background:url(asset-path("logo.png", image)) no-repeat 0 0;
+}
+.logo a{
+  text-indent:-9999px;
+  display:block;
+  width:228px;
+  height:49px;
+  margin:0;
+  cursor:pointer;
+}
+#drop_down
+{
+  cursor: pointer;
+ 
+}
+
+.user_bar
+{
+  display: inline-block;
+  font-size: 12px;
+  height: 34px;
+  line-height: 27px;
+  padding: 0px 12px;
+  text-transform: uppercase;
+}
+#drop_down
+{
+  color: #575F83;  
+}
+ 
+#welcome
+{
+  color: #666666;   
+}
+
+.main-nav{
+  float:right;
+  padding:0;
+}
+.main-nav li{
+  float:left;
+  padding:21px 20px 32px;
+  margin:0;
+}
+.main-nav li.active{
+  background:#fff;
+}
+.main-nav li.active a{
+  color:#575f83;
+}
+.main-nav li:first-child{
+  margin:0;
+}
+.main-nav li a{
+  text-transform:uppercase;
+  color: #fff;
+  font-family: 'Karla', sans-serif;
+  font-size: 17px;
+}
+.main{
+  width:1100px;
+  margin:0 auto;
+  min-width:1100px;
+  padding:0 0 30px;
+}
+
+.hFooter{
+  height:95px;
+}
+
+.footer{
+  width:1100px;
+  min-width:1100px;
+  margin:0 auto;
+  padding:40px 0;
+}
+.footer-nav{
+  float:left;
+}
+.footer-nav li{
+  float:left;
+  padding:0 14px 0 0;
+  margin:0 0 0 14px;
+  background:url(asset-path("footer_nav_devider.gif", image)) no-repeat 100% 2px;
+}
+.footer-nav li:first-child{
+  margin:0;
+}
+.footer-nav li:last-child{
+  padding:0;
+  background:none;
+}
+.footer-nav li a{
+  font-size:12px;
+  line-height:14px;
+  color:#fff;
+}
+.footer-nav li a:hover{
+  text-decoration:underline;
+}
+.copy{
+  float:right;
+  font-size:12px;
+  color:#e4d4c4;
+  line-height:14px;
+}
+
+.title-block{
+  width:100%;
+  margin:0 0 13px;
+}
+.title{
+  font-size:25px;
+  color:#575f83;
+  font-family: 'bodonisvtytwoscitcttbook';
+  text-transform:uppercase;
+  float:left;
+}
+.title span{
+  float:left;
+  margin:0 17px 0 0;
+}
+.title a{
+  font-size:10px;
+  color:#b37738;
+  font-family: 'Karla', sans-serif;
+  float:left;
+  margin:9px 0 0;
+}
+.title a:after{
+  width:4px;
+  height:7px;
+  display:inline-block;
+  content:" ";
+  background:url("../images/elements.png") no-repeat 0 -16px;
+  float:right;
+  margin:3px 0 0 5px;
 }

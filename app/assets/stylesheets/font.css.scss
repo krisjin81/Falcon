@@ -1,0 +1,14 @@
+/*FONTS START*/
+
+@font-face {
+  font-family: 'bodonisvtytwoscitcttbook';
+  
+  src: url(asset-path("bodonisvtytwoscitcttbook.eot", font));
+  src: url(asset-path("bodonisvtytwoscitcttbook.eot?#iefix", font)) format('embedded-opentype'),
+  url( asset-path("bodonisvtytwoscitcttbook.woff", font)) format('woff'),
+  url( asset-path("bodonisvtytwoscitcttbook.ttf", font)) format('truetype'),
+  url( asset-path("bodonisvtytwoscitcttbook.svg#bodonisvtytwoscitcttbook", font)) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/*FONTS END*/

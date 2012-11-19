@@ -58,8 +58,7 @@ Falcon::Application.routes.draw do
   end
 
   get "home/index"
-
-  root :to => "home#index"
-
-
+  get "home/showcase_by_filter"
+  get "home/picture_by_filter"
+  root :to => "home#index" 
 end

@@ -1,0 +1,55 @@
+<div class="top-line-holder">
+		<div class="top-line clearfix">
+			<div class="soc-top clearfix">
+				<div class="fb-block clearfix">
+					<div class="fb-like" data-href="http://www.facebook.com/" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div>
+				</div>
+				<div class="tw-block clearfix">
+					<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+				</div>
+			</div>
+			<div class="sl-block clearfix">
+				<div class="top-search clearfix">
+					<input class="txt" type="text" value="Search"/>
+					<input class="search" type="submit"/>
+				</div>
+				 
+				<div class="login-area clearfix">
+					 <%= render 'layouts/account_navigation' %>					 
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<script type="text/javascript">
+		$(document).ready(function(){
+				$('#login-btn').click(function() {
+					$('#login-block').toggleClass('active');
+				});
+				
+				$('#comment-ico').click(function() {
+					$('#login-block').toggleClass('active'); 
+					$('.dropdown-menu').removeClass('active');
+				});
+			 	
+			 	$('#drop_down').click(
+			 		function()
+			 		{
+			 			$('.dropdown-menu').toggleClass('active');
+			 			$('#login-block').removeClass('active'); 
+			 		}
+			 	);
+				$('.sign-in').click(function()
+					{
+						$("#sign_in").submit();
+					}
+				);
+				 
+				$(document).click(function(e) {
+					if (!$(e.target).closest('#login-block').length) {
+						$('#login-block').removeClass('active');
+						$('.dropdown-menu').removeClass('active');
+					}
+				})
+			});
+</script>

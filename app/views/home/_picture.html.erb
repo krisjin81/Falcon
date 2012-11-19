@@ -1,9 +1,56 @@
-<div class="title">
-  <h3><%= link_to picture.title, picture_url(picture) %></h3>
+<%
+	unless defined? @pictures
+			pictures = home_pictures
+	else
+			pictures = @pictures
+	end 	 
+			
+	random_pic = rand(pictures.each_with_index.count )
+%>
+								
+<div class="pictures-block-top clearfix">
+	<% pictures.each_with_index do |picture, i| %>
+		<% if i < 4 %>
+			<%= link_to image_tag(picture.image.url(:preview)), picture_url(picture) %>				 
+		<% end %>
+	<% end %>
 </div>
-<div class="image">
-  <%= link_to image_tag(picture.image.url(:preview)), picture_url(picture) %>
-</div>
-<div class="author">
-  by <%= link_to picture.attachable.account.username, account_view_url(:profile_id => picture.attachable.unique_id) %>
+ 
+<div class="pictures-block-bot clearfix">
+	<div class="pic-bot-l clearfix">			 
+		<% pictures.each_with_index do |picture, i| %>
+			<% if i == random_pic %>										
+				<%= link_to image_tag(picture.image.url(:preview)), picture_url(picture) %>
+							
+			<% end %>
+		<% end %>
+	</div>
+	
+	<div class="pic-bot-r clearfix">
+		<% 
+			line_index = 0
+			line_count = 3
+			s_idx, e_idx = 0   
+			pic_count = pictures.count
+			until line_index > line_count do						
+		%>	
+			<div class="pic-row clearfix">		
+				<%
+					s_idx = ((line_index * 4) + 4) < pic_count ? ((line_index * 4) + 4) : pic_count 
+					e_idx = (s_idx + 3) < pic_count ? (s_idx + 3) : pic_count
+					
+					unless s_idx == e_idx  
+						line_pic = pictures[s_idx..e_idx]  
+						line_pic.each_with_index do |picture, i| 
+				%>
+					<%= link_to image_tag(picture.image.url(:preview)), picture_url(picture) %>
+		 
+				  <% end %>						 
+				<% end %>
+			</div> 
+		<%
+			line_index += 1 
+			end 
+		%>
+	</div>
 </div>

@@ -1,11 +1,14 @@
-select.input-xxlarge {
-  width: 540px;
-}
-
-input[type=file].input-xxlarge {
-  width: 435px;
-}
-
+.input-signup {
+  border:none;
+  background-color: #fff;
+  padding:0 10px;
+  width:371px;
+  height:26px;
+  line-height:26px;
+  color: #656669;
+  font-size: 14px;
+  font-family: 'Orienta', sans-serif;
+} 
 select.date {
-  width: 178px;
+  width: 117px;
 }
