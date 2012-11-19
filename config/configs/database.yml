@@ -15,7 +15,7 @@ development:
   database: falcon_development
   pool: 5
   username: root
-  password: kris_jin81
+  password: 
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -28,7 +28,7 @@ test: &test
   database: falcon_test
   pool: 5
   username: root
-  password: kris_jin81
+  password: 
   socket: /var/run/mysqld/mysqld.sock
 
 staging:
@@ -38,7 +38,7 @@ staging:
   database: falcon_staging
   pool: 5
   username: root
-  password: kris_jin81
+  password: 
   socket: /var/run/mysqld/mysqld.sock
 
 production:
@@ -48,7 +48,7 @@ production:
   database: falcon_production
   pool: 5
   username: root
-  password: kris_jin81
+  password:
   socket: /var/run/mysqld/mysqld.sock
 
 cucumber:
