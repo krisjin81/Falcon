@@ -143,30 +143,6 @@
 }
 
 
-.main-nav{
-  float:right;
-  padding:0;
-}
-.main-nav li{
-  float:left;
-  padding:21px 20px 32px;
-  margin:0;
-}
-.main-nav li.active{
-  background:#fff;
-}
-.main-nav li.active a{
-  color:#575f83;
-}
-.main-nav li:first-child{
-  margin:0;
-}
-.main-nav li a{
-  text-transform:uppercase;
-  color: #fff;
-  font-family: 'Karla', sans-serif;
-  font-size: 17px;
-}
 .main{
   width:1100px;
   margin:0 auto;
@@ -216,40 +192,7 @@
 .showcase-block{
   margin:15px 0 0;
 }
-
-.title-block{
-  width:100%;
-  margin:0 0 13px;
-}
-.title{
-  font-size:25px;
-  color:#575f83;
-  font-family: 'bodonisvtytwoscitcttbook';
-  text-transform:uppercase;
-  float:left;
-}
-.title span{
-  float:left;
-  margin:0 17px 0 0;
-}
-.title a{
-  font-size:10px;
-  color:#b37738;
-  font-family: 'Karla', sans-serif;
-  float:left;
-  margin:9px 0 0;
-}
-.title a:after{
-  width:4px;
-  height:7px;
-  display:inline-block;
-  content:" ";
-  background:url(asset-path( "elements.png", image )) no-repeat 0 -16px;
-  float:right;
-  margin:3px 0 0 5px;
-}
-
-
+ 
 /* chzn */
 
 .chzn-container {
@@ -360,19 +303,7 @@
   float:left;
   line-height:20px;
 }
-
-.sort-block {
-  float:right;
-  margin:4px 10px 0 0;
-}
-.sort-block p{
-  color:#999;
-  font-family: 'Karla', sans-serif;
-  font-size:13px;
-  text-transform:uppercase;
-  float:left;
-  line-height:20px;
-}
+ 
 .sc-block{
   float:left;
   width:360px;

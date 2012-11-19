@@ -1,6 +1,6 @@
 /*
  *= require_self
- *= require jquery.ui.all
+ 
  */
 
 @import "themes/united/united";
@@ -17,6 +17,7 @@
 @import "font";
 @import "home";
 @import "account/sign_up";
+@import "galleries";
 
 .clearer {
   clear: both;
