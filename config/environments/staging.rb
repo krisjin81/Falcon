@@ -46,7 +46,7 @@ Falcon::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += ['showcases.js.coffee','pictures.js.coffee', 'slidercarousel.plugin', 'global', 'chosen.jquery.js'] 
+  config.assets.precompile += ['galleries.js.coffee','showcases.js.coffee','pictures.js.coffee', 'slidercarousel.plugin', 'global', 'chosen.jquery.js'] 
 
   # Disable delivery errors, bad email addresses will be ignored
   config.action_mailer.raise_delivery_errors = false
