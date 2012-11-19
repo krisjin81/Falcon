@@ -1,0 +1,26 @@
+<div class="title-block gallery-sort clearfix">
+	<p class="title"><span>galleries</span></p>
+	<div class="sort-block clearfix">
+		<div class="in-search clearfix">
+			<p>search by keyword </p>
+			<input class="in-s" type="text" value="sports"/>
+			<input class="in-go" type="submit"/>
+		</div>
+		<div class="sm-block clearfix">
+			<p>Show</p>
+			<select data-placeholder="Most Popular" class="chzn-select" style="width:120px;" tabindex="1">
+				<option value="">Most Popular</option>
+				<option value="most recent">most recent</option>
+				<option value="favorited">favorited</option>
+			</select>
+		</div>
+		<div class="gallery-style clearfix">
+			<a class="gallery-grid active" href="#">&nbsp;</a>
+			<a class="gallery-list" href="#">&nbsp;</a>
+		</div>
+	</div>
+</div>
+
+<div class="main-content clearfix">
+	<%= render "galleries", :home_galleries => @home_galleries %>
+</div>

@@ -1,0 +1,32 @@
+<%
+	if defined? @galleries
+		galleries = @galleries
+	else
+		galleries = home_galleries
+	end
+	
+	thumb_count = (galleries.count % 6 == 0 ) ? (galleries.count / 6) : ((galleries.count / 6).round) + 1
+	thumb_idx = 0	
+  	
+  	until thumb_idx > (thumb_count - 1) do 
+  		s_idx = thumb_idx * 6
+  		e_idx = ( ( s_idx + 5 ) > galleries.count ) ? galleries.count  : s_idx + 5
+		row_galleries = galleries[ s_idx..e_idx ]
+	           
+		
+%>  
+		<div class="gallery-row clearfix">
+			 <% row_galleries.each_with_index do | picture, i | %> 
+			 	<div class="gallery-thumb clearfix">
+				<a href="<%= picture_url(picture) %>">
+					<span><%= picture.title %> <i>by</i> Anna October <em><%= time_ago_in_words(picture.updated_at) %> days ago</em></span>
+					<%= link_to image_tag(picture.image.url(:preview)), picture_url(picture) %>
+				</a>
+			</div>
+			 <% end %> 
+		</div>
+<%
+		
+		thumb_idx += 1
+	end 
+%>   

@@ -23,7 +23,7 @@
 						</a>
 					<% else %>
 						<a class="sc-img1" href="showcases/<%= showcase.id %>" style="border: 1px solid #575F83;">						 
-							<img src="empty.jpg" alt="#"> 
+							<img src="/assets/empty.jpg" alt="#"> 
 							<span><%= showcase.name %> <i>by</i> <%= showcase.account.username %> <em><%= time_ago_in_words(showcase.created_at) %></em></span>
 						</a>
 					<% end %>

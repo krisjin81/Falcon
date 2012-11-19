@@ -23,13 +23,19 @@
   		<%= render 'layouts/search_navigation' %>
     <% end %>
    
+   <%
+   		# check menu active
+   		@controller = params[:controller].to_s   		
+   		@galleries_class = (@controller == 'galleries') ? 'active' : ''
+   %>
+    
    <header>  
 		<div class="header clearfix">
 			<h1 class="logo"><%= link_to t('application.title'), root_path %></h1>
 			<%  unless @is_account_signin  %>		 
 			<ul class="main-nav"> 
 				<li><a href="#">Upload</a></li>
-				<li><a href="#">Galleries</a></li>
+				<li class='<%= @galleries_class %>'><%= link_to 'galleries', galleries_path  %></li>
 				<li><a href="#">Showcase</a></li>
 				<li><a href="#">Showroom</a></li>
 				<li><a href="#">Style Studio</a></li>
