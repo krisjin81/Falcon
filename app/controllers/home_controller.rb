@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     @latest_pictures = Picture.latest
-    @showcases = home_page_showcases
+    @public_showcases = Showcase.all
   end
 
   def showcase_by_filter
@@ -106,5 +106,4 @@ class HomeController < ApplicationController
       end
       showcases
    end
->>>>>>> kris_dev
 end
