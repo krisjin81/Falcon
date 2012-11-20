@@ -31,5 +31,5 @@ $(document).ready(function() {
 	
 	setInterval(function(){
 		$('#carouselNext').trigger('click');
-	},5000);
+	},20000);
 });

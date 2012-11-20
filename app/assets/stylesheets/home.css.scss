@@ -13,7 +13,8 @@
   min-width:1100px;
 }
 #visuals.active .carousel-wrapper {
-  position: absolute;
+  padding: 0 !important;
+  margin: 0 auto;
   overflow: hidden;
 }
 #visuals ul {
@@ -385,6 +386,7 @@
 }
 .main-content.home-page{
   background:url(asset-path("main_content_r_bg.gif", image)) repeat-y 741px 0;
+  margin-top: 23px;
 }
 .main-content-l{
   float:left;
