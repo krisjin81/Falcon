@@ -10,10 +10,10 @@
 	showcase_pictures = showcase.pictures
 	picture = showcase.cover_picture
 %>  	 	
+ 
 	<% if i < 3 %>
 		<div class="sc-block">
-			<% if (current_account && showcase.has_invitee?(current_account)) ||
-       				showcase.publicly_visible? %>
+ 
 					<% if picture %>
 						<a class="sc-img1" href="showcases/<%= showcase.id %>">
 								 <% if picture.image.present? %>
@@ -53,7 +53,7 @@
 						<% end %>								 							
 						<%	end %>						  
 				 
-				<% end %>
+				 
 		</div>	 
 	<% end %> 
 <% end %>
