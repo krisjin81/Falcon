@@ -5,7 +5,7 @@
 ##= require jquery_ujs
 ##= require jquery.ui.all
 ##= require jquery.blockUI
-
+##= require bootstrap 
 ##= require jquery-fileupload/basic
 ##= require_tree ./account
 ##= require_tree ./affiliate
