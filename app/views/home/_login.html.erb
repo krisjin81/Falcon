@@ -1,0 +1,22 @@
+<div id = "login_dlg">	
+	<div class="login-box">
+		<div class="login-row inp clearfix">
+			<label>Email</label>								 
+			<input class="string email optional" id="account_email" name="account[email]" placeholder="Email" size="50" type="email" value="" />
+		</div>
+		<div class="login-row inp clearfix">
+			<label>Password</label>
+			<input class="password optional" id="account_password" name="account[password]" placeholder="Password" size="50" type="password" />
+		</div>
+		<div class="login-row sgn clearfix">
+			<a class="sign-in" href="#">SIGN IN</a>
+			
+			<a class="forgot-password" href="/account/password/new">Forgot password</a>
+			
+		</div>
+		<div class="login-row login-with  clearfix">
+			<span>login with </span>
+			 <%= render :partial => 'account/shared/social_media_login' %>
+		</div>
+	</div>
+</div>
