@@ -1,4 +1,14 @@
 <%
+ 	if @filter == 'unlisted' && !account_signed_in?
+%>
+ 	<script> 		
+ 		$("html, body").animate({scrollTop:0}, 'slow');
+ 		$('#login-btn').trigger('click');
+ 	</script>
+<% 
+ 	end
+%>
+<%	
 	unless defined? @showcases
 			showcases = home_showcases
 	else
@@ -19,12 +29,12 @@
 								 <% if picture.image.present? %>
 					                <%= image_tag picture.image.url(:preview) %>
 					             <% end %>										 
-								<span><%= showcase.name %> <i>by</i> <Anna October> <%= showcase.account.username %> <em><%= time_ago_in_words(showcase.created_at) %> ago</em></span>
+								<span><%= showcase.name %> <i>by</i> <Anna October> <%= showcase.account.username %> <em><%= time_ago_in_words(showcase.updated_at) %> ago</em></span>
 						</a>
 					<% else %>
 						<a class="sc-img1" href="showcases/<%= showcase.id %>" style="border: 1px solid #575F83;">						 
 							<img src="/assets/empty.jpg" alt="#"> 
-							<span><%= showcase.name %> <i>by</i> <%= showcase.account.username %> <em><%= time_ago_in_words(showcase.created_at) %></em></span>
+							<span><%= showcase.name %> <i>by</i> <%= showcase.account.username %> <em><%= time_ago_in_words(showcase.updated_at) %></em></span>
 						</a>
 					<% end %>
 					 

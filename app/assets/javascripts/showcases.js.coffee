@@ -10,10 +10,11 @@
 $ ->
   $("#showcase_filter").bind 'change', () ->     
       id = $(this).val()
+             
       $.ajax '/home/showcase_by_filter'
         type: 'GET'
         dataType: 'html'
         data: {"filter": id}
-        success: (data, textStatus, jqXHR) ->   
+        success: (data, textStatus, jqXHR) ->
           $("#showcase_box").html "#{data}" 
         
